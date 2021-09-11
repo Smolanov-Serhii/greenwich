@@ -20,7 +20,7 @@ const sass = require('gulp-sass');
 
 //Порядок подключения файлов со стилями
 const styleClientFiles = [
-   // './src/scss/_swiper-bundle.scss',
+   // './src/client/scss/_swiper-bundle.scss',
    './src/client/scss/main.scss'
 
 
@@ -28,12 +28,12 @@ const styleClientFiles = [
 //Порядок подключения js файлов
 const scriptClientFiles = [
    // './src/js/jquery-3.5.1.js',
-   // './src/js/aos.js',
+   // './src/client/js/aos.js',
    // './src/js/slick.js',
    // './src/js/feedback.js',
    // './src/js/jquery.selectric.js',
-   // './src/js/swiper-bundle.js',
-   // './src/js/fresco.min.js',
+   './src/client/js/swiper-bundle.js',
+   // './src/client/js/fresco.min.js',
    './src/client/js/scripts.js'
 
 ]
@@ -98,6 +98,6 @@ gulp.task('watchClient', () => {
    //При изменении HTML запустить синхронизацию
    gulp.watch("./*.html").on('change', browserSync.reload);
 });
-
+Fresco.init();
 //Таск по умолчанию, Запускает del, styles, scripts и watch
 gulp.task('default', gulp.series('delClient', gulp.parallel('sassClient', 'scriptsClient'), 'watchClient'));

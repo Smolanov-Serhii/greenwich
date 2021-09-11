@@ -50,7 +50,9 @@ if ( ! function_exists( 'greenwich_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'greenwich' ),
+				'Page-menu' => esc_html__( 'Меню страниц', 'greenwich' ),
+				'Content-menu' => esc_html__( 'Меню контента', 'greenwich' ),
+				'Footer-menu' => esc_html__( 'Меню футер', 'greenwich' ),
 			)
 		);
 
@@ -140,10 +142,9 @@ add_action( 'widgets_init', 'greenwich_widgets_init' );
  * Enqueue scripts and styles.
  */
 function greenwich_scripts() {
-	wp_enqueue_style( 'greenwich-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'greenwich-style', 'rtl', 'replace' );
-
-	wp_enqueue_script( 'greenwich-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_style( 'greenwich-style', get_template_directory_uri() . '/dist/css/style.css', array(), _S_VERSION );
+    wp_enqueue_script('busybeeclean-jquery', "https://code.jquery.com/jquery-3.6.0.min.js");
+    wp_enqueue_script('greenwichn-script', get_template_directory_uri() . '/dist/js/common.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -177,4 +178,128 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+        'page_title' 	=> 'Параметры',
+        'menu_title'	=> 'Параметры темы',
+        'menu_slug' 	=> 'theme-general-settings',
+        'capability'	=> 'edit_posts',
+        'redirect'		=> false
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Параметры Header',
+        'menu_title'	=> 'Header',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Параметры Footer',
+        'menu_title'	=> 'Footer',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Параметры общие',
+        'menu_title'	=> 'Общие',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Параметры Контакты',
+        'menu_title'	=> 'Контакты',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+
+}
+
+add_action( 'init', 'register_post_types' );
+function register_post_types()
+{
+    register_post_type('treners', [
+        'label' => null,
+        'labels' => [
+            'name' => 'Treners', // основное название для типа записи
+            'singular_name' => 'Treners', // название для одной записи этого типа
+            'add_new' => 'Add trener', // для добавления новой записи
+            'add_new_item' => 'Addition trener', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item' => 'Edition trener', // для редактирования типа записи
+            'new_item' => 'New trener', // текст новой записи
+            'view_item' => 'Show trener', // для просмотра записи этого типа.
+            'search_items' => 'Search trener', // для поиска по этим типам записи
+            'not_found' => 'not found', // если в результате поиска ничего не было найдено
+            'not_found_in_trash' => 'Not found in the basket', // если не было найдено в корзине
+            'parent_item_colon' => '', // для родителей (у древовидных типов)
+            'menu_name' => 'Тренеры и массажисты', // название меню
+        ],
+        'description' => '',
+        'public' => true,
+        // 'publicly_queryable'  => null, // зависит от public
+        // 'exclude_from_search' => null, // зависит от public
+        // 'show_ui'             => null, // зависит от public
+        // 'show_in_nav_menus'   => null, // зависит от public
+        'show_in_menu' => null, // показывать ли в меню адмнки
+        // 'show_in_admin_bar'   => null, // зависит от show_in_menu
+        'show_in_rest' => null, // добавить в REST API. C WP 4.7
+        'rest_base' => null, // $post_type. C WP 4.7
+        'menu_position' => null,
+        'menu_icon' => 'dashicons-businessman',
+        //'capability_type'   => 'post',
+        //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+        //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+        'hierarchical' => false,
+        'supports' => ['title','editor'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+        'taxonomies' => [],
+        'has_archive' => true,
+        'rewrite' => true,
+        'query_var' => true,
+    ]);
+    register_post_type('trenings', [
+        'label' => null,
+        'labels' => [
+            'name' => 'trenings', // основное название для типа записи
+            'singular_name' => 'Trenings', // название для одной записи этого типа
+            'add_new' => 'Add trening', // для добавления новой записи
+            'add_new_item' => 'Addition trening', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item' => 'Edition trening', // для редактирования типа записи
+            'new_item' => 'New trening', // текст новой записи
+            'view_item' => 'Show trening', // для просмотра записи этого типа.
+            'search_items' => 'Search trening', // для поиска по этим типам записи
+            'not_found' => 'not found', // если в результате поиска ничего не было найдено
+            'not_found_in_trash' => 'Not found in the basket', // если не было найдено в корзине
+            'parent_item_colon' => '', // для родителей (у древовидных типов)
+            'menu_name' => 'Тренировки', // название меню
+        ],
+        'description' => '',
+        'public' => true,
+        // 'publicly_queryable'  => null, // зависит от public
+        // 'exclude_from_search' => null, // зависит от public
+        // 'show_ui'             => null, // зависит от public
+        // 'show_in_nav_menus'   => null, // зависит от public
+        'show_in_menu' => null, // показывать ли в меню адмнки
+        // 'show_in_admin_bar'   => null, // зависит от show_in_menu
+        'show_in_rest' => null, // добавить в REST API. C WP 4.7
+        'rest_base' => null, // $post_type. C WP 4.7
+        'menu_position' => null,
+        'menu_icon' => 'dashicons-businessman',
+        //'capability_type'   => 'post',
+        //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+        //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+        'hierarchical' => false,
+        'supports' => ['title','editor'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+        'taxonomies' => [],
+        'has_archive' => true,
+        'rewrite' => true,
+        'query_var' => true,
+    ]);
+
+}
+
+function add_menu_link_class($atts, $item, $args)
+{
+    $atts['class'] = 'btn btn-lg btn-primary';
+    return $atts;
+}
+add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
 
