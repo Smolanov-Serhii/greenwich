@@ -9144,8 +9144,10 @@ textarea.form-control-lg {
 }
 
 .text-white {
+  max-width: 885px;
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important
+  color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+  line-height: 80%;
 }
 
 .text-body {
@@ -12433,7 +12435,12 @@ body {
   text-transform: uppercase;
   font-weight: 700
 }
-
+.sec0{
+  .text-white{
+    text-align: center;
+    margin: auto;
+  }
+}
 header .btn-group .btn-group-lg > .btn, header .btn-group .btn-lg {
   font-size: 1rem
 }

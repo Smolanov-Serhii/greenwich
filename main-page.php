@@ -317,9 +317,9 @@ $post_id = get_the_ID();
                  style="background-image: url(<?php echo the_field('kartinka_na_fon_bloka_kontakty', $post_id); ?>); background-size: cover; background-repeat: no-repeat; background-position: 0% 0%;">
                 <div class="p-5 m-5">
                     <div class="motion">
-                        <h2 class="title text-white"><?php echo the_field('zagolovok_dlya_kontakty', $post_id); ?></h2>
+                        <h2 class="title text-white" style="text-align: left"><?php echo the_field('zagolovok_dlya_kontakty', $post_id); ?></h2>
                     </div>
-                    <div class="motion text-white pb-5">
+                    <div class="motion text-white pb-5" style="text-align: left">
                         <p class="leader mb-1">
                             <strong>
                                 <?php echo the_field('adres', options); ?>

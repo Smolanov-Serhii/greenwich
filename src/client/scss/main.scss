@@ -310,6 +310,81 @@ header{
 }
 .about-seo{
   margin-top: 162px;
+
+}
+.subscription{
+  padding-top: 175px;
+  @media all and (max-width: 1600px){
+    padding-left: 170px;
+    padding-right: 170px;
+  }
+  &__header{
+    display: flex;
+    align-items: center;
+    .counter{
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 30px;
+      color: #1D8FBD;
+    }
+  }
+  &__title{
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 60px;
+    color: #191919;
+    margin-bottom: 0;
+  }
+  &__list{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -40px;
+    width: calc(100% + 40px);
+  }
+  &__list{
+    padding-top: 102px;
+  }
+  &__item{
+    margin-right: 40px;
+    width: calc(25% - 40px);
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    margin-bottom: 44px;
+    &-title{
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 32px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      padding: 25px 25px 19px 25px;
+      margin-bottom: 0;
+    }
+    .dlit{
+      font-size: 18px;
+      line-height: 40px;
+      text-align: center;
+      letter-spacing: 0.05em;
+      color: #191919;
+      font-weight: 700;
+    }
+    .srok{
+      font-weight: bolder;
+      font-size: 18px;
+      line-height: 40px;
+      text-align: center;
+      letter-spacing: 0.05em;
+      color: #191919;
+    }
+    .price{
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 45px;
+      text-align: center;
+      color: #E1C91A;
+    }
+  }
+
 }
 
 

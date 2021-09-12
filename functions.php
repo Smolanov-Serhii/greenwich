@@ -344,3 +344,65 @@ wp_clear_scheduled_hook( 'wp_update_plugins' );
 remove_action('load-update-core.php','wp_update_themes');
 add_filter('pre_site_transient_update_themes',create_function('$a', "return null;"));
 wp_clear_scheduled_hook('wp_update_themes');
+
+## заменим слово «записи» на «статьи»
+//$labels = apply_filters( "post_type_labels_{$post_type}", $labels );
+add_filter('post_type_labels_post', 'rename_posts_labels');
+function rename_posts_labels( $labels ){
+    // заменять автоматически не пойдет например заменили: Запись = Статья, а в тесте получится так "Просмотреть статья"
+
+    /* оригинал
+        stdClass Object (
+            'name'                  => 'Записи',
+            'singular_name'         => 'Запись',
+            'add_new'               => 'Добавить новую',
+            'add_new_item'          => 'Добавить запись',
+            'edit_item'             => 'Редактировать запись',
+            'new_item'              => 'Новая запись',
+            'view_item'             => 'Просмотреть запись',
+            'search_items'          => 'Поиск записей',
+            'not_found'             => 'Записей не найдено.',
+            'not_found_in_trash'    => 'Записей в корзине не найдено.',
+            'parent_item_colon'     => '',
+            'all_items'             => 'Все записи',
+            'archives'              => 'Архивы записей',
+            'insert_into_item'      => 'Вставить в запись',
+            'uploaded_to_this_item' => 'Загруженные для этой записи',
+            'featured_image'        => 'Миниатюра записи',
+            'set_featured_image'    => 'Задать миниатюру',
+            'remove_featured_image' => 'Удалить миниатюру',
+            'use_featured_image'    => 'Использовать как миниатюру',
+            'filter_items_list'     => 'Фильтровать список записей',
+            'items_list_navigation' => 'Навигация по списку записей',
+            'items_list'            => 'Список записей',
+            'menu_name'             => 'Записи',
+            'name_admin_bar'        => 'Запись',
+        )
+    */
+
+    $new = array(
+        'name'                  => 'Абонементы',
+        'singular_name'         => 'Абонементы',
+        'add_new'               => 'Добавить абонемент',
+        'add_new_item'          => 'Добавить абонемент',
+        'edit_item'             => 'Редактировать абонемент',
+        'new_item'              => 'Новый абонемент',
+        'view_item'             => 'Просмотреть абонемент',
+        'search_items'          => 'Поиск абонементов',
+        'not_found'             => 'Абонементов не найдено.',
+        'not_found_in_trash'    => 'Абонементов в корзине не найдено.',
+        'parent_item_colon'     => '',
+        'all_items'             => 'Все абонементы',
+        'archives'              => 'Архивы абонементов',
+        'insert_into_item'      => 'Вставить в статью',
+        'uploaded_to_this_item' => 'Загруженные для этой статьи',
+        'featured_image'        => 'Миниатюра абонемента',
+        'filter_items_list'     => 'Фильтровать список абонементов',
+        'items_list_navigation' => 'Навигация по списку абонементов',
+        'items_list'            => 'Список абонементов',
+        'menu_name'             => 'Абонементы',
+        'name_admin_bar'        => 'Абонемент', // пункте "добавить"
+    );
+
+    return (object) array_merge( (array) $labels, $new );
+}
