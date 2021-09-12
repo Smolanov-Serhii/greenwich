@@ -126,13 +126,9 @@ add_action( 'after_setup_theme', 'greenwich_content_width', 0 );
 function greenwich_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'greenwich' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'greenwich' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'name'          => esc_html__( 'Языки', 'greenwich' ),
+			'id'            => 'language-mob',
+			'description'   => esc_html__( 'Добавте переключатель языков', 'greenwich' ),
 		)
 	);
 }
@@ -217,18 +213,56 @@ if( function_exists('acf_add_options_page') ) {
 add_action( 'init', 'register_post_types' );
 function register_post_types()
 {
+    register_post_type('faq', [
+        'label' => null,
+        'labels' => [
+            'name' => 'Вопросы и ответы', // основное название для типа записи
+            'singular_name' => 'Вопросы и ответы', // название для одной записи этого типа
+            'add_new' => 'Добавить новый', // для добавления новой записи
+            'add_new_item' => 'Добавить вопрос', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item' => 'Редактировать вопрос', // для редактирования типа записи
+            'new_item' => 'Новый вопрос', // текст новой записи
+            'view_item' => 'Посмотреть вопрос', // для просмотра записи этого типа.
+            'search_items' => 'Искать вопрос', // для поиска по этим типам записи
+            'not_found' => 'ничего не найдено', // если в результате поиска ничего не было найдено
+            'not_found_in_trash' => 'Not found in the basket', // если не было найдено в корзине
+            'parent_item_colon' => '', // для родителей (у древовидных типов)
+            'menu_name' => 'Вопросы и ответы', // название меню
+        ],
+        'description' => '',
+        'public' => true,
+        // 'publicly_queryable'  => null, // зависит от public
+        // 'exclude_from_search' => null, // зависит от public
+        // 'show_ui'             => null, // зависит от public
+        // 'show_in_nav_menus'   => null, // зависит от public
+        'show_in_menu' => null, // показывать ли в меню адмнки
+        // 'show_in_admin_bar'   => null, // зависит от show_in_menu
+        'show_in_rest' => null, // добавить в REST API. C WP 4.7
+        'rest_base' => null, // $post_type. C WP 4.7
+        'menu_position' => null,
+        'menu_icon' => 'dashicons-businessman',
+        //'capability_type'   => 'post',
+        //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+        //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+        'hierarchical' => false,
+        'supports' => ['title','editor'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+        'taxonomies' => [],
+        'has_archive' => true,
+        'rewrite' => true,
+        'query_var' => true,
+    ]);
     register_post_type('treners', [
         'label' => null,
         'labels' => [
-            'name' => 'Treners', // основное название для типа записи
-            'singular_name' => 'Treners', // название для одной записи этого типа
-            'add_new' => 'Add trener', // для добавления новой записи
-            'add_new_item' => 'Addition trener', // заголовка у вновь создаваемой записи в админ-панели.
-            'edit_item' => 'Edition trener', // для редактирования типа записи
-            'new_item' => 'New trener', // текст новой записи
-            'view_item' => 'Show trener', // для просмотра записи этого типа.
-            'search_items' => 'Search trener', // для поиска по этим типам записи
-            'not_found' => 'not found', // если в результате поиска ничего не было найдено
+            'name' => 'Тренеры и массажисты', // основное название для типа записи
+            'singular_name' => 'Запись', // название для одной записи этого типа
+            'add_new' => 'Добавить нового', // для добавления новой записи
+            'add_new_item' => 'Добавление нового', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item' => 'Редактировать тренира', // для редактирования типа записи
+            'new_item' => 'Новый тренер', // текст новой записи
+            'view_item' => 'Посмотреть тренера', // для просмотра записи этого типа.
+            'search_items' => 'Искать тренера', // для поиска по этим типам записи
+            'not_found' => 'не найлено', // если в результате поиска ничего не было найдено
             'not_found_in_trash' => 'Not found in the basket', // если не было найдено в корзине
             'parent_item_colon' => '', // для родителей (у древовидных типов)
             'menu_name' => 'Тренеры и массажисты', // название меню
@@ -258,15 +292,15 @@ function register_post_types()
     register_post_type('trenings', [
         'label' => null,
         'labels' => [
-            'name' => 'trenings', // основное название для типа записи
-            'singular_name' => 'Trenings', // название для одной записи этого типа
-            'add_new' => 'Add trening', // для добавления новой записи
-            'add_new_item' => 'Addition trening', // заголовка у вновь создаваемой записи в админ-панели.
-            'edit_item' => 'Edition trening', // для редактирования типа записи
-            'new_item' => 'New trening', // текст новой записи
-            'view_item' => 'Show trening', // для просмотра записи этого типа.
-            'search_items' => 'Search trening', // для поиска по этим типам записи
-            'not_found' => 'not found', // если в результате поиска ничего не было найдено
+            'name' => 'Тренировки', // основное название для типа записи
+            'singular_name' => 'Тренировка', // название для одной записи этого типа
+            'add_new' => 'Добавить тренировку', // для добавления новой записи
+            'add_new_item' => 'Добавление новой', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item' => 'Редактировать тренировку', // для редактирования типа записи
+            'new_item' => 'Новая тренировка', // текст новой записи
+            'view_item' => 'Посмотреть тренировку', // для просмотра записи этого типа.
+            'search_items' => 'Искать тренировку', // для поиска по этим типам записи
+            'not_found' => 'не найлено', // если в результате поиска ничего не было найдено
             'not_found_in_trash' => 'Not found in the basket', // если не было найдено в корзине
             'parent_item_colon' => '', // для родителей (у древовидных типов)
             'menu_name' => 'Тренировки', // название меню
@@ -303,3 +337,10 @@ function add_menu_link_class($atts, $item, $args)
 }
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
 
+remove_action( 'load-update-core.php', 'wp_update_plugins' );
+add_filter( 'pre_site_transient_update_plugins', create_function( '$a', "return null;" ) );
+wp_clear_scheduled_hook( 'wp_update_plugins' );
+
+remove_action('load-update-core.php','wp_update_themes');
+add_filter('pre_site_transient_update_themes',create_function('$a', "return null;"));
+wp_clear_scheduled_hook('wp_update_themes');

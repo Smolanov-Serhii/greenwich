@@ -20,8 +20,6 @@
                 src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                 crossorigin="anonymous"></script>
-        <link rel="icon" href="images/favicon.png">
-        <meta property="og:image" content="images/dist/preview.jpg">
         <style>
             body .preloader {
                 background-color: #1d8fbd;
@@ -188,6 +186,7 @@
                         );
                         ?>
                     </div>
+                    <?php get_sidebar("language-mob"); ?>
                     <div class="col-md-auto">
                         <div class="btn-group justify-content-center">
                             <a class="btn btn-sm socials-icon" href="<?php echo the_field('instagram', options)?>">

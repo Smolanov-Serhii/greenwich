@@ -98,6 +98,6 @@ gulp.task('watchClient', () => {
    //При изменении HTML запустить синхронизацию
    gulp.watch("./*.html").on('change', browserSync.reload);
 });
-Fresco.init();
+
 //Таск по умолчанию, Запускает del, styles, scripts и watch
 gulp.task('default', gulp.series('delClient', gulp.parallel('sassClient', 'scriptsClient'), 'watchClient'));

@@ -1,7 +1,8 @@
 @import "else";
 @import "swiper-bundle";
-//@import "aos";
 @import "fresco";
+//@import "aos";
+
 // FONTS LOAD SECTION
 $fontsize: 18px; // Body Font Size
 $lineheight: 1.65; // Document Line Height
@@ -30,7 +31,16 @@ $systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif; // System Fon
   -webkit-tap-highlight-color: transparent;
   font-feature-settings: 'pnum' on, 'lnum' on;
 }
-
+.content-container{
+  max-width: 1940px;
+  padding-left: 170px;
+  padding-right: 170px;
+  margin: auto;
+  @media all and (max-width: 1600px){
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 #Page-menu{
   padding: 0;
   margin: 0;
@@ -59,7 +69,14 @@ header{
       padding-left: 0;
     }
   }
- }
+  .qtranxs_widget{
+    li{
+      list-style: none;
+    }
+    display: inline-block;
+    width: auto;
+  }
+}
 #carouselVideoSlider{
   .swiper-slide{
     position: relative;
@@ -79,11 +96,222 @@ header{
 .tabs-content{
   .lead{
     cursor: pointer;
+    &.current{
+      span{
+        color: #1d8fbd;
+      }
+    }
   }
   .hidden{
     display: none;
   }
 }
+.phone-img-container{
+  position: relative;
+  overflow: visible;
+  .left-phone-img{
+    position: absolute;
+    bottom: -190px;
+    left: -226px;
+  }
+}
+.apps-section{
+  .text-part{
+    padding-top: 80px;
+  }
+}
+.reviewes{
+  overflow: hidden;
+  #carouselReview{
+    overflow: visible;
+    max-width: 1320px;
+    padding-right: 40px;
+    padding-left: 40px;
+    width: 100%;
+    margin: 30px auto 0 auto;
+    .swiper-slide{
+      .ramka{
+        height: 100%;
+        svg{
+          width: 100%;
+          height: auto;
+        }
+      }
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .review_cont{
+    padding-left: 0;
+  }
+}
+.about{
+  &__content{
+    padding-top: 170px;
+  }
+  &__title{
+    text-align: center;
+    margin-bottom: 100px;
+  }
+  &__cases{
+
+  }
+  &__item{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 90px;
+    &-title{
+      text-transform: uppercase;
+    }
+    &:nth-child(odd){
+      .about__text-part{
+        padding-right: 117px;
+        @media all and (max-width: 1600px){
+          padding-left: 170px;
+        }
+      }
+      .ramka{
+        left: -10px;
+      }
+      .about__img-part{
+        padding-left: 20px;
+      }
+    }
+    &:nth-child(even){
+      flex-direction: row-reverse;
+      .about__text-part{
+        padding-left: 117px;
+        @media all and (max-width: 1600px){
+          padding-right: 170px;
+        }
+      }
+      .ramka{
+        left: 10px;
+      }
+      .about__img-part{
+        padding-right: 20px;
+      }
+    }
+  }
+  &__text-part{
+    width: 50%;
+
+  }
+  &__img-part{
+    width: 50%;
+    position: relative;
+    .ramka{
+      height: 100%;
+      top: -20px;
+      transform: translate(0,0);
+      svg{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__show-item{
+    cursor: pointer;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  &__buttons{
+    display: flex;
+    justify-content: center;
+    a{
+      margin: 0 15px;
+    }
+  }
+}
+.partners{
+  padding-top: 130px;
+  padding-bottom: 167px;
+  .section{
+    padding-top: 60px;
+  }
+  &__title{
+    text-align: center;
+  }
+  img{
+    height: 70px;
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.5;
+  }
+}
+.type-trening{
+  background-color: #1D8FBD;
+  &__container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 196px;
+    padding-bottom: 176px;
+    @media all and (max-width: 1600px){
+      padding: 196px 40px 176px 40px;
+    }
+  }
+  &__item{
+    width: calc(50% - 20px);
+    position: relative;
+    .ramka{
+      height: 100%;
+      svg{
+        width: 100%;
+        height: 100%;
+      }
+      rect{
+        stroke: #FFFFFF;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  &__img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    img{
+      object-fit: cover;
+      object-position: top center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__content{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 141px 0;
+  }
+  &__title{
+    font-size: 36px;
+    line-height: 45px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-weight: 700;
+    max-width: 400px;
+  }
+  &__lnk{
+    background-color: #FFFFFF;
+    border: none;
+  }
+}
+.about-seo{
+  margin-top: 162px;
+}
+
 
 
 

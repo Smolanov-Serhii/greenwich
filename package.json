@@ -1,10 +1,9 @@
 {
-  "name": "busybeeclean",
+  "name": "greenwich",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "bootstrap": "^5.1.1",
     "del": "^3.0.0",
     "glob": "^7.1.6"
   },

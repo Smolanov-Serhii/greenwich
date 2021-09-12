@@ -12790,7 +12790,8 @@ ul.sp li:hover:before {
 }
 
 .bg-video {
-  z-index: 0
+  z-index: 0;
+  pointer-events: none;
 }
 
 .bg-video:before {
@@ -13373,14 +13374,18 @@ footer {
 }
 
 #map {
-  height: 100vh
+  height: auto;
 }
 
 .maps {
   background: #dadada;
-  height: 100vh;
-  width: 100%;
-  display: block
+  height: auto;
+  width: 50%;
+  display: block;
+  #map{
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .tab-main {

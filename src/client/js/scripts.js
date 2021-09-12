@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+
     if ($(".about-photo-slider").length){
         var AboutSlider = new Swiper(".about-photo-slider .swiper-container", {
             loop: true,
@@ -39,6 +40,26 @@ $( document ).ready(function() {
             $(".item-content").hide().eq($(this).index()).fadeIn();
         }).eq(0).addClass("current");
     }
+
+    if ($("#carouselReview").length){
+        var AboutVideoSlider = new Swiper("#carouselReview", {
+            loop: true,
+            spaceBetween: 88,
+            // autoplay: {
+            //     delay: 2000,
+            //     disableOnInteraction: false,
+            // },
+            pagination: {
+                el: ".reviewes  .count-sliders",
+                type: "fraction",
+            },
+            navigation: {
+                nextEl: ".reviewes .carousel-control-next",
+                prevEl: ".reviewes .carousel-control-prev",
+            },
+        });
+    }
+
 
     var ticking
 
