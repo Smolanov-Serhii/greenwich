@@ -56,7 +56,7 @@ $post_id = get_the_ID();
                             <?php echo $fullcontent; ?>
                         </div>
                         <div class="about__show-item js-show-case-item text-primary">
-                            <?php echo the_field('podrobnee', options); ?>
+                            <?php echo the_field('podrobnee', 'options'); ?>
                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10 0.838313L9.1879 -3.54978e-08L5.57423 3.73048L5.00002 4.33171L4.42574 3.73048L0.812097 -4.01616e-07L-3.66438e-08 0.838313L5.00002 6L10 0.838313Z" fill="#1D8FBD"/>
                             </svg>
@@ -75,8 +75,8 @@ $post_id = get_the_ID();
         <?php endif; ?>
     </div>
     <div class="about__buttons">
-        <a class="btn btn-outline-primary" href="<?php echo the_field('ekskursiya', options); ?>"><?php echo the_field('ekskursiya', options); ?></a>
-        <a class="btn btn-primary" href="<?php echo the_field('raspisanie', options); ?>"><?php echo the_field('raspisanie', options); ?></a>
+        <a class="btn btn-outline-primary" href="<?php echo the_field('ekskursiya', 'options'); ?>"><?php echo the_field('ekskursiya', 'options'); ?></a>
+        <a class="btn btn-primary" href="<?php echo the_field('raspisanie', 'options'); ?>"><?php echo the_field('raspisanie', 'options'); ?></a>
     </div>
 </section>
 <section class="partners">
@@ -121,7 +121,7 @@ $post_id = get_the_ID();
                     <?php echo the_field('zagolovok_dlya_gruppovye_trenirovki', $post_id); ?>
                 </h3>
                 <a href="<?php echo site_url().'/gruppovye-trenirovki/'; ?>" class="type-trening__lnk btn btn-outline-primary">
-                    <?php echo the_field('podrobnee', options); ?>
+                    <?php echo the_field('podrobnee', 'options'); ?>
                 </a>
             </div>
         </div>
@@ -142,7 +142,7 @@ $post_id = get_the_ID();
                     <?php echo the_field('zagolovok_dlya_individualnye_trenirovki', $post_id); ?>
                 </h3>
                 <a href="<?php echo site_url().'/individualnye-trenirovki/'; ?>" class="type-trening__lnk btn btn-outline-primary">
-                    <?php echo the_field('podrobnee', options); ?>
+                    <?php echo the_field('podrobnee', 'options'); ?>
                 </a>
             </div>
         </div>
@@ -170,6 +170,3 @@ get_template_part( 'inc/words-carusel' );
 ?>
 
 <?php get_footer(); ?>
-
-
-</body></html>

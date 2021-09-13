@@ -321,11 +321,28 @@ header{
   &__header{
     display: flex;
     align-items: center;
+    padding: 41px 0 38px 0;
+    border-top: 1px solid #ECECEC;
+    cursor: pointer;
+    &:hover{
+      .subscription__title{
+        color: #1D8FBD;
+      }
+    }
+    &:last-child{
+      //border-bottom: 1px solid #ECECEC;
+    }
+    &.open{
+      svg{
+        transform: rotate(-90deg);
+      }
+    }
     .counter{
       font-weight: 700;
       font-size: 24px;
       line-height: 30px;
       color: #1D8FBD;
+      margin-right: 24%;
     }
   }
   &__title{
@@ -334,6 +351,8 @@ header{
     line-height: 60px;
     color: #191919;
     margin-bottom: 0;
+    flex: 1;
+    transition: 0.3s;
   }
   &__list{
     display: flex;
@@ -350,6 +369,31 @@ header{
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.05);
     text-align: center;
     margin-bottom: 44px;
+    &-by{
+      margin-top: 30px;
+    }
+    &-content{
+      padding: 32px 31px 48px 31px;
+      position: relative;
+      overflow: hidden;
+    }
+    &-absolute{
+      position: absolute;
+      right: -34px;
+      top: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 320px;
+      line-height: 400px;
+      text-align: right;
+      color: #F7F7F7;
+      z-index: -1;
+      &.more-move{
+        right: -80px;
+      }
+    }
     &-title{
       font-weight: 700;
       font-size: 26px;
@@ -382,9 +426,9 @@ header{
       line-height: 45px;
       text-align: center;
       color: #E1C91A;
+      margin-top: 37px;
     }
   }
-
 }
 
 

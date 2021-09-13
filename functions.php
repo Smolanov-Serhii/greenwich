@@ -251,11 +251,53 @@ function register_post_types()
         'rewrite' => true,
         'query_var' => true,
     ]);
+
+    add_action( 'init', 'create_taxonomy' );
+    function create_taxonomy(){
+
+        // список параметров: wp-kama.ru/function/get_taxonomy_labels
+        register_taxonomy( 'taxonomy', [ 'directions' ], [
+            'label'                 => '', // определяется параметром $labels->name
+            'labels'                => [
+                'name'              => 'Направление',
+                'singular_name'     => 'Направление',
+                'search_items'      => 'Искать направление',
+                'all_items'         => 'Все направления',
+                'view_item '        => 'Смотреть направление',
+                'parent_item'       => 'Родительское направление',
+                'parent_item_colon' => 'Родительское направление:',
+                'edit_item'         => 'Редактировать направление',
+                'update_item'       => 'Обновить направление',
+                'add_new_item'      => 'Добавить новое направление',
+                'new_item_name'     => 'Добавить имя напревления',
+                'menu_name'         => 'Направления',
+            ],
+            'description'           => '', // описание таксономии
+            'public'                => true,
+            // 'publicly_queryable'    => null, // равен аргументу public
+            // 'show_in_nav_menus'     => true, // равен аргументу public
+            // 'show_ui'               => true, // равен аргументу public
+            // 'show_in_menu'          => true, // равен аргументу show_ui
+            // 'show_tagcloud'         => true, // равен аргументу show_ui
+            // 'show_in_quick_edit'    => null, // равен аргументу show_ui
+            'hierarchical'          => false,
+            'rewrite'               => true,
+            //'query_var'             => $taxonomy, // название параметра запроса
+            'capabilities'          => array(),
+            'meta_box_cb'           => null, // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
+            'show_admin_column'     => false, // авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
+            'show_in_rest'          => null, // добавить в REST API
+            'rest_base'             => null, // $taxonomy
+            // '_builtin'              => false,
+            //'update_count_callback' => '_update_post_term_count',
+        ] );
+    }
+
     register_post_type('treners', [
         'label' => null,
         'labels' => [
             'name' => 'Тренеры и массажисты', // основное название для типа записи
-            'singular_name' => 'Запись', // название для одной записи этого типа
+            'singular_name' => 'Тренеры и массажисты', // название для одной записи этого типа
             'add_new' => 'Добавить нового', // для добавления новой записи
             'add_new_item' => 'Добавление нового', // заголовка у вновь создаваемой записи в админ-панели.
             'edit_item' => 'Редактировать тренира', // для редактирования типа записи
@@ -269,6 +311,7 @@ function register_post_types()
         ],
         'description' => '',
         'public' => true,
+        'taxonomies'		 => [],
         // 'publicly_queryable'  => null, // зависит от public
         // 'exclude_from_search' => null, // зависит от public
         // 'show_ui'             => null, // зависит от public
@@ -284,7 +327,6 @@ function register_post_types()
         //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
         'hierarchical' => false,
         'supports' => ['title','editor'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-        'taxonomies' => [],
         'has_archive' => true,
         'rewrite' => true,
         'query_var' => true,

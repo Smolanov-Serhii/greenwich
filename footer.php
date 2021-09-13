@@ -20,8 +20,8 @@
                 <p class="small">GREENWICH. All right reserved. 2021</p>
                 <div class="my-3">
                     <?php
-                    $visa = get_field('ikonka_visa', options);
-                    $mastercard = get_field('ikonka_matercard', options);
+                    $visa = get_field('ikonka_visa', 'options');
+                    $mastercard = get_field('ikonka_matercard', 'options');
                     ?>
                     <img class="img-fluid"
                             src="<?php echo esc_url($visa['url']); ?>"
@@ -58,20 +58,20 @@
                 <p>greenwich.fitnessclub@gmail.com</p>
                 <div class="col-md-auto">
                     <div class="btn-group justify-content-center">
-                        <a class="btn btn-sm socials-icon" href="<?php echo the_field('instagram', options)?>">
+                        <a class="btn btn-sm socials-icon" href="<?php echo the_field('instagram', 'options')?>">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14.5862 0H5.41382C2.42859 0 0 2.42859 0 5.41382V14.5863C0 17.5714 2.42859 20 5.41382 20H14.5863C17.5714 20 20 17.5714 20 14.5863V5.41382C20 2.42859 17.5714 0 14.5862 0ZM10 15.4686C6.98456 15.4686 4.5314 13.0154 4.5314 10C4.5314 6.98456 6.98456 4.5314 10 4.5314C13.0154 4.5314 15.4686 6.98456 15.4686 10C15.4686 13.0154 13.0154 15.4686 10 15.4686ZM15.5994 5.82108C14.7083 5.82108 13.9835 5.09628 13.9835 4.20517C13.9835 3.31406 14.7083 2.58911 15.5994 2.58911C16.4905 2.58911 17.2154 3.31406 17.2154 4.20517C17.2154 5.09628 16.4905 5.82108 15.5994 5.82108Z" fill="#1D8FBD"/>
                                 <path d="M10 5.70389C7.63123 5.70389 5.70389 7.63107 5.70389 10C5.70389 12.3688 7.63123 14.2961 10 14.2961C12.3689 14.2961 14.2961 12.3688 14.2961 10C14.2961 7.63107 12.3689 5.70389 10 5.70389Z" fill="#1D8FBD"/>
                                 <path d="M15.5994 3.76175C15.3549 3.76175 15.1559 3.96072 15.1559 4.20517C15.1559 4.44962 15.3549 4.64859 15.5994 4.64859C15.844 4.64859 16.0429 4.44977 16.0429 4.20517C16.0429 3.96057 15.844 3.76175 15.5994 3.76175Z" fill="#1D8FBD"/>
                             </svg>
                         </a>
-                        <a class="btn btn-sm socials-icon" href="<?php echo the_field('youtube', options)?>">
+                        <a class="btn btn-sm socials-icon" href="<?php echo the_field('youtube', 'options')?>">
                             <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10.357 10.8896L14.3198 8.77952L10.357 6.63242V10.8896Z" fill="#1D8FBD"/>
                                 <path d="M23.8235 4.24834L23.8224 4.23746C23.8021 4.04617 23.5997 2.34455 22.7644 1.47933C21.7989 0.461441 20.7043 0.337786 20.1779 0.278496C20.1343 0.27342 20.0944 0.269068 20.0587 0.264354L20.0167 0.260002C16.8439 0.0315484 12.0522 0.000362625 12.0042 0H11.9958C11.9478 0.000362625 7.15613 0.0315484 3.95471 0.260002L3.91241 0.264354C3.87836 0.268887 3.84082 0.273057 3.79999 0.277771C3.2796 0.337242 2.19672 0.461078 1.22845 1.51559C0.432861 2.37193 0.202881 4.03693 0.17926 4.22404L0.176514 4.24834C0.169373 4.32793 0 6.22283 0 8.12517V9.90348C0 11.8058 0.169373 13.7007 0.176514 13.7803L0.177795 13.7925C0.19812 13.9805 0.400269 15.6507 1.23175 16.5165C2.13959 17.5005 3.28748 17.6305 3.90491 17.7005C4.0025 17.7115 4.08673 17.7211 4.14386 17.7311L4.19934 17.7385C6.03131 17.9113 11.7751 17.9964 12.0187 17.9998L12.026 18L12.0331 17.9998C12.0813 17.9996 16.8728 17.9685 20.0457 17.7398L20.0876 17.7356C20.1275 17.7304 20.1725 17.7257 20.222 17.7206C20.7396 17.6662 21.8165 17.5532 22.7715 16.5131C23.5671 15.6567 23.7971 13.9917 23.8207 13.8046L23.8235 13.7803C23.8306 13.7007 24 11.8058 24 9.90348V8.12517C24 6.22283 23.8306 4.32812 23.8235 4.24834ZM15.6879 9.63224L10.3857 12.4555C10.2402 12.5331 10.082 12.5717 9.92413 12.5717C9.75183 12.5717 9.5799 12.5256 9.4248 12.4341C9.12781 12.2582 8.95056 11.9487 8.95056 11.6062V5.91007C8.95056 5.56594 9.12891 5.25589 9.42773 5.08038C9.72656 4.90505 10.0871 4.89871 10.392 5.06388L15.6942 7.93678C16.0078 8.10667 16.2019 8.43231 16.2006 8.78641C16.1993 9.14034 16.0029 9.46452 15.6879 9.63224Z" fill="#1D8FBD"/>
                             </svg>
                         </a>
-                        <a class="btn btn-sm socials-icon" href="<?php echo the_field('facebook', options)?>">
+                        <a class="btn btn-sm socials-icon" href="<?php echo the_field('facebook', 'options')?>">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M18.896 2.26231e-08H1.10303C0.493774 0.000366235 -0.000122048 0.494507 2.26231e-08 1.104V18.897C0.000366235 19.5062 0.494507 20.0001 1.104 20H10.6836V12.2656H8.08594V9.23828H10.6836V7.01038C10.6836 4.42676 12.2609 3.02051 14.5656 3.02051C15.6694 3.02051 16.618 3.10278 16.8945 3.13953V5.83984H15.3053C14.0514 5.83984 13.8086 6.43567 13.8086 7.31018V9.23828H16.8066L16.416 12.2656H13.8086V20H18.896C19.5056 20.0001 19.9999 19.5061 20 18.8965C20 18.8964 20 18.8962 20 18.896V1.10303C19.9998 0.493774 19.5055 -0.000122048 18.896 2.26231e-08Z" fill="#1D8FBD"/>
                             </svg>
@@ -80,11 +80,11 @@
                 </div>
                 <div class="btn-group pt-2 mt-5 w-75">
                     <?php
-                    $appimage = get_field('ikonka_appstore', options);
-                    $googleimage = get_field('ikonka_googleplay', options);
+                    $appimage = get_field('ikonka_appstore', 'options');
+                    $googleimage = get_field('ikonka_googleplay', 'options');
                     ?>
-                    <a href="<?php echo the_field('ssylka_appstore', options);?>" class="mx-2"><img class="img-fluid" src="<?php echo esc_url($appimage['url']); ?>" alt="<?php echo esc_attr($appimage['alt']); ?>" /></a>
-                    <a href="<?php echo the_field('ssylka_googleplay', options);?>" class="mx-2 mr-0"><img class="img-fluid" src="<?php echo esc_url($googleimage['url']); ?>" alt="<?php echo esc_attr($googleimage['alt']); ?>" /></a>
+                    <a href="<?php echo the_field('ssylka_appstore', 'options');?>" class="mx-2"><img class="img-fluid" src="<?php echo esc_url($appimage['url']); ?>" alt="<?php echo esc_attr($appimage['alt']); ?>" /></a>
+                    <a href="<?php echo the_field('ssylka_googleplay', 'options');?>" class="mx-2 mr-0"><img class="img-fluid" src="<?php echo esc_url($googleimage['url']); ?>" alt="<?php echo esc_attr($googleimage['alt']); ?>" /></a>
                 </div>
             </div>
         </div>

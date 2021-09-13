@@ -240,13 +240,13 @@ $post_id = get_the_ID();
                 <div class="motion">
                     <div class="btn-group mt-5 d-block text-center d-lg-flex">
                         <?php
-                        $appimage = get_field('ikonka_appstore', options);
-                        $googleimage = get_field('ikonka_googleplay', options);
+                        $appimage = get_field('ikonka_appstore', 'options');
+                        $googleimage = get_field('ikonka_googleplay', 'options');
                         ?>
-                        <a href="<?php echo the_field('ssylka_appstore', options); ?>"><img
+                        <a href="<?php echo the_field('ssylka_appstore', 'options'); ?>"><img
                                     src="<?php echo esc_url($appimage['url']); ?>"
                                     alt="<?php echo esc_attr($appimage['alt']); ?>"></a>
-                        <a href="<?php echo the_field('ssylka_googleplay', options); ?>" class="mx-4"><img
+                        <a href="<?php echo the_field('ssylka_googleplay', 'options'); ?>" class="mx-4"><img
                                     src="<?php echo esc_url($googleimage['url']); ?>"
                                     alt="<?php echo esc_attr($googleimage['alt']); ?>"></a>
                     </div>
@@ -322,49 +322,49 @@ $post_id = get_the_ID();
                     <div class="motion text-white pb-5" style="text-align: left">
                         <p class="leader mb-1">
                             <strong>
-                                <?php echo the_field('adres', options); ?>
+                                <?php echo the_field('adres', 'options'); ?>
                             </strong>
-                            <?php echo the_field('adress', options); ?>
+                            <?php echo the_field('adress', 'options'); ?>
                         </p>
                         <p class="leader mb-1">
                             <strong>
-                                <?php echo the_field('nomer_telefona_n', options); ?>
+                                <?php echo the_field('nomer_telefona_n', 'options'); ?>
                             </strong>
-                            <?php echo the_field('nomer_telefona', options); ?>
+                            <?php echo the_field('nomer_telefona', 'options'); ?>
                         </p>
                         <p class="leader mb-1">
                             <strong>
-                                <?php echo the_field('e-mail-n', options); ?>
+                                <?php echo the_field('e-mail-n', 'options'); ?>
                             </strong>
-                            <?php echo the_field('e-mail', options); ?>
+                            <?php echo the_field('e-mail', 'options'); ?>
                         </p>
                         <p class="strong mb-1 mt-4">
                             <strong>
-                                <?php echo the_field('grafik_raboty', options); ?>
+                                <?php echo the_field('grafik_raboty', 'options'); ?>
                             </strong>
                         </p>
                         <p class="leader mb-1">
                             <strong>
-                                <?php echo the_field('pn_-_pt', options); ?>
+                                <?php echo the_field('pn_-_pt', 'options'); ?>
                             </strong>
-                            <?php echo the_field('pn_-_pt_vremya_raboty', options); ?>
+                            <?php echo the_field('pn_-_pt_vremya_raboty', 'options'); ?>
                         </p>
                         <p class="leader mb-1">
                             <strong>
-                                <?php echo the_field('sb', options); ?>
+                                <?php echo the_field('sb', 'options'); ?>
                             </strong>
-                            <?php echo the_field('sb_vremya_raboty', options); ?>
+                            <?php echo the_field('sb_vremya_raboty', 'options'); ?>
                         </p>
                         <p class="leader mb-1">
                             <strong>
-                                <?php echo the_field('vs', options); ?>
+                                <?php echo the_field('vs', 'options'); ?>
                             </strong>
-                            <?php echo the_field('vs_vremya_raboty', options); ?>
+                            <?php echo the_field('vs_vremya_raboty', 'options'); ?>
                         </p>
                     </div>
                     <div class="motion">
-                        <a href="https://www.google.com/maps" class="btn btn-outline-secondary"><?php echo the_field('prolozhit_marshrut', options); ?></a>
-                        <a href="http://g.tomorrowheads.com/#222" class="btn text-white"><?php echo the_field('dobavit_v_kontakty', options); ?></a>
+                        <a href="https://www.google.com/maps" class="btn btn-outline-secondary"><?php echo the_field('prolozhit_marshrut', 'options'); ?></a>
+                        <a href="http://g.tomorrowheads.com/#222" class="btn text-white"><?php echo the_field('dobavit_v_kontakty', 'options'); ?></a>
                     </div>
                 </div>
             </div>
@@ -382,7 +382,7 @@ $post_id = get_the_ID();
         <div class="row">
             <div class="col text-center">
                 <div class="motion">
-                    <a href="http://g.tomorrowheads.com/#222" class="btn btn-primary"><?php echo the_field('ekskursiya', options); ?></a>
+                    <a href="http://g.tomorrowheads.com/#222" class="btn btn-primary"><?php echo the_field('ekskursiya', 'options'); ?></a>
                 </div>
             </div>
         </div>
@@ -416,5 +416,3 @@ $post_id = get_the_ID();
 
 <?php get_footer(); ?>
 
-
-</body></html>

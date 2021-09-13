@@ -41,6 +41,13 @@ $( document ).ready(function() {
         }).eq(0).addClass("current");
     }
 
+    if ($(".subscription").length){
+        $(".subscription__header").click( function(e) {
+            $(this).toggleClass('open');
+            $(this).closest('.subscription__group').find('.subscription__list').fadeToggle(300);
+        });
+    }
+
     if ($("#carouselReview").length){
         var AboutVideoSlider = new Swiper("#carouselReview", {
             loop: true,

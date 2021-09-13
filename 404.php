@@ -1,60 +1,55 @@
 <?php
-/**
- * The template for displaying 404 pages (not found)
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package greenwich
- */
 
+/**
+ * Template Name: 404
+ *
+ */
 get_header();
+$post_id = get_the_ID();
 ?>
 
-	<main id="primary" class="site-main">
+<div class="section sec0 py-0"
+     style="background-image: url(<?php echo the_field('izobrazhenie_dlya_banera', 102) ?>); background-size: cover; background-repeat: no-repeat; background-position: 50% 50%;">
+    <div class="bg-video">
+        <video autoplay="" muted="" loop="" id="myVideo">
+            <source src="<?php echo the_field('videofajl_dlya_banera', 102) ?>" type="video/mp4">
+        </video>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col text-center">
+                <div class="logo">
+                    <?php echo the_field('zagolovok_v_bloke_h1', 102) ?>
+                </div>
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'greenwich' ); ?></h1>
-			</header><!-- .page-header -->
-
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'greenwich' ); ?></p>
-
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'greenwich' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$greenwich_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'greenwich' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$greenwich_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
-
+                <h1 class="text-white mb-0"><?php echo the_field('zagolovok_v_bloke_h1', 102) ?><span
+                            class="d-block"><?php echo the_field('podzagolovok_v_banner', 102) ?></span></h1>
+                <div class="btn-main">
+                    <div class="js-<?php echo the_field('rol_knopki', 102); ?> btn btn-secondary btn-lg text-primary"><?php echo the_field('nadpis_na_knopke_banera', 102) ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="about-seo section sec8 bg-white py-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="motion">
+                    <h3 class="title text-lightgray"><?php echo the_field('zagolovok_bloka_seo', 102); ?></h3>
+                </div>
+            </div>
+            <div class="col-lg-6 text-lightgray">
+                <?php echo the_field('levyj_blok_seo', 102); ?>
+            </div>
+            <div class="col-lg-6 text-lightgray">
+                <?php echo the_field('pravyj_blok_seo', 102); ?>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
-get_footer();
+get_template_part( 'inc/words-carusel' );
+?>
+
+<?php get_footer(); ?>

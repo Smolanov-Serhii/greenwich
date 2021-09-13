@@ -36,6 +36,7 @@ $post_id = get_the_ID();
         <?php
         //НАЧАЛО СПИСКА
         $counter = 1;
+        $dec = 0;
         $arg_cat = array(
             'orderby' => 'name',
             'order' => 'ASC',
@@ -54,31 +55,49 @@ $post_id = get_the_ID();
                 $query = new WP_Query($arg_posts);
 
                 if ($query->have_posts()) : ?>
+                <div class="subscription__group">
                     <div class="subscription__header">
-                        <span class="counter"><?php echo $counter;?></span>
+                        <span class="counter"><?php echo $dec . $counter;?></span>
                         <h3 class="subscription__title"><?php echo $cat->name; ?></h3>
                         <svg width="46" height="27" viewBox="0 0 46 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M33.384 0L31.335 2.19266L40.4529 11.9496H0V15.0505H40.4529L31.335 24.8073L33.384 27L46 13.4999L33.384 0Z" fill="#1D8FBD"/>
                         </svg>
                     </div>
-                    <div class="subscription__list">
+                    <div class="subscription__list" style="display: none">
                         <?php while ($query->have_posts()) : $query->the_post(); ?>
                             <div class="subscription__item">
                                 <h3 class="subscription__item-title" style="background-color: <?php echo the_field('vydelyat_element') ?>"><?php the_title(); ?></h3>
                                 <div class="subscription__item-content">
+                                    <?php $abscount = get_field('chislo_na_fone_kartochki');
+                                    if ($abscount > 9){
+                                        $docclass = "more-move";
+                                    } else {
+                                        $docclass = "";
+                                    }
+                                    ?>
+
+                                    <div class="subscription__item-absolute <?php echo $docclass;?>">
+                                        <?php echo $abscount; ?>
+                                    </div>
                                     <div class="dlit"><?php echo the_field('kol-vo_zanyatij') ?></div>
                                     <div class="srok"><?php echo the_field('srok_abonementa') ?></div>
                                     <div class="price"><?php echo the_field('czena_abonementa') ?></div>
-                                    <div class="subscription__item-by">
+                                    <div class="subscription__item-by btn btn-primary">
                                         Купить
                                     </div>
                                 </div>
 
                             </div>
-                        <?php $counter++; ?>
+                            <?php $counter++;
+                            if($counter > 10){
+                                $dec++;
+                            }
+                            ?>
+
                         <?php endwhile;
                         wp_reset_postdata(); ?>
                     </div>
+                </div>
                 <?php endif;
             }
         }
@@ -88,58 +107,41 @@ $post_id = get_the_ID();
     </div>
 </div>
 <section class="about__content content-container">
-    <h2 class="about__title text-primary">
-        <?php echo the_field('zagolovok_vseh_kejsov', $post_id) ?>
-    </h2>
     <div class="about__cases">
-        <?php if (have_rows('kejsy', $post_id)): ?>
-            <?php while (have_rows('kejsy', $post_id)): the_row();
-                $image = get_sub_field('izobrazhenie_dlya_kejsa');
-                $exerpt = get_sub_field('kratkoe_opisanie_kejsa');
-                $fullcontent = get_sub_field('polnoe_opisanie_kejsa');
-                $title = get_sub_field('zagolovok_dlya_odnogo_kejsa');
-                $alt = get_sub_field('seo_opisanie_dlya_kartinki');
-                ?>
-                <div class="about__item">
-                    <div class="about__text-part">
-                        <h3 class="about__item-title text-primary">
-                            <?php echo $title; ?>
-                        </h3>
-                        <div class="about__item-exerpt">
-                            <?php echo $exerpt; ?>
-                        </div>
-                        <div class="about__item-full" style="display: none;">
-                            <?php echo $fullcontent; ?>
-                        </div>
-                        <div class="about__show-item js-show-case-item text-primary">
-                            <?php echo the_field('podrobnee', options); ?>
-                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 0.838313L9.1879 -3.54978e-08L5.57423 3.73048L5.00002 4.33171L4.42574 3.73048L0.812097 -4.01616e-07L-3.66438e-08 0.838313L5.00002 6L10 0.838313Z" fill="#1D8FBD"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="about__img-part">
-                        <img src="<?php echo $image; ?>" alt="<?php echo $alt; ?>">
-                        <div class="ramka">
-                            <svg width="100%" height="100%" viewBox="0 0 780 516" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="0.5" y="0.5" width="779" height="515" stroke="#1D8FBD"/>
-                            </svg>
-                        </div>
-                    </div>
+        <div class="about__item">
+            <div class="about__text-part">
+                <h3 class="about__item-title text-primary">
+                    <?php echo the_field('zagolovok_blok_dlya_kontenta', $post_id); ?>
+                </h3>
+                <div class="about__item-exerpt">
+                    <?php echo the_field('korotkoe_opisanie_zagolovok_blok_dlya_kontenta', $post_id); ?>
                 </div>
-            <?php endwhile; ?>
-        <?php endif; ?>
-    </div>
-    <div class="about__buttons">
-        <a class="btn btn-outline-primary" href="<?php echo the_field('ekskursiya', options); ?>"><?php echo the_field('ekskursiya', options); ?></a>
-        <a class="btn btn-primary" href="<?php echo the_field('raspisanie', options); ?>"><?php echo the_field('raspisanie', options); ?></a>
+                <div class="about__item-full" style="display: none;">
+                    <?php echo the_field('polnoe_opisanie_blok_dlya_kontenta', $post_id); ?>
+                </div>
+                <div class="about__show-item js-show-case-item text-primary">
+                    <?php echo the_field('podrobnee', 'options'); ?>
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 0.838313L9.1879 -3.54978e-08L5.57423 3.73048L5.00002 4.33171L4.42574 3.73048L0.812097 -4.01616e-07L-3.66438e-08 0.838313L5.00002 6L10 0.838313Z" fill="#1D8FBD"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="about__img-part">
+                <img src="<?php echo the_field('kartinka_dlya_blok_dlya_kontenta', $post_id); ?>" alt="<?php echo the_field('zagolovok_blok_dlya_kontenta', $post_id); ?>"/>
+                <div class="ramka">
+                    <svg width="100%" height="100%" viewBox="0 0 780 516" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="779" height="515" stroke="#1D8FBD"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <div class="type-trening">
     <div class="type-trening__container content-container">
         <div class="type-trening__item">
             <?php
-            $groupimg = get_field('kartinka_dlya_gruppovye_trenirovki', $post_id);
+            $groupimg = get_field('kartinka_dlya_gruppovye_trenirovki', 11);
             ?>
             <div class="type-trening__img">
                 <img src="<?php echo esc_url($groupimg['url']); ?>" alt="<?php echo esc_attr($groupimg['alt']); ?>">
@@ -152,17 +154,17 @@ $post_id = get_the_ID();
             </div>
             <div class="type-trening__content">
                 <h3 class="type-trening__title">
-                    <?php echo the_field('zagolovok_dlya_gruppovye_trenirovki', $post_id); ?>
+                    <?php echo the_field('zagolovok_dlya_gruppovye_trenirovki', 11); ?>
                 </h3>
                 <a href="<?php echo site_url() . '/gruppovye-trenirovki/'; ?>"
                    class="type-trening__lnk btn btn-outline-primary">
-                    <?php echo the_field('podrobnee', options); ?>
+                    <?php echo the_field('podrobnee', 'options'); ?>
                 </a>
             </div>
         </div>
         <div class="type-trening__item">
             <?php
-            $indimg = get_field('kartinka_dlya_individualnye_trenirovki', $post_id);
+            $indimg = get_field('kartinka_dlya_individualnye_trenirovki', 11);
             ?>
             <div class="type-trening__img">
                 <img src="<?php echo esc_url($indimg['url']); ?>" alt="<?php echo esc_attr($indimg['alt']); ?>">
@@ -175,11 +177,11 @@ $post_id = get_the_ID();
             </div>
             <div class="type-trening__content">
                 <h3 class="type-trening__title">
-                    <?php echo the_field('zagolovok_dlya_individualnye_trenirovki', $post_id); ?>
+                    <?php echo the_field('zagolovok_dlya_individualnye_trenirovki', 11); ?>
                 </h3>
                 <a href="<?php echo site_url() . '/individualnye-trenirovki/'; ?>"
                    class="type-trening__lnk btn btn-outline-primary">
-                    <?php echo the_field('podrobnee', options); ?>
+                    <?php echo the_field('podrobnee', 'options'); ?>
                 </a>
             </div>
         </div>
@@ -207,6 +209,3 @@ get_template_part('inc/words-carusel');
 ?>
 
 <?php get_footer(); ?>
-
-
-</body></html>
