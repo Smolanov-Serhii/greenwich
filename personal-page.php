@@ -20,6 +20,53 @@ $post_id = get_the_ID();
         </div>
     </div>
 </div>
+<div class="specialists">
+    <div class="specialists__container content-container">
+        <div class="specialists__filter">
+
+        </div>
+        <div class="specialists__list">
+            <?php
+            $args = array(
+                'post_type' => 'treners',
+                'showposts' => "-1", //сколько показать статей
+                'orderby' => "menu_order", //сортировка по дате
+                'caller_get_posts' => 1);
+            $my_query = new wp_query($args);
+            if ($my_query->have_posts()) {
+                while ($my_query->have_posts()) {
+                    $my_query->the_post();
+                    $postpers_id = get_the_ID();
+                    $image = get_field('fotografiya_dlya_straniczy_vseh_trenerov', $postpers_id);
+                    $name = get_field('imya_speczialista', $postpers_id);
+                    $services = get_field('napravlenie', $postpers_id);
+                    ?>
+                    <a href="<?php the_permalink();?>" class="specialists__item">
+                        <div class="specialists__item-image">
+                            <img src="<?php echo $image;?>">
+                        </div>
+                        <h3 class="specialists__item-name">
+                            <?php echo $name;?>
+                        </h3>
+                        <div class="specialists__item-service">
+                            <?php
+                                foreach ($services['napravlenie_vybor'] as $service) {
+                                echo '<span>' . $service . '</span>';
+                            }
+                            ?>
+                        </div>
+                    </a>
+
+                <?php }
+            }
+            wp_reset_query(); ?>
+        </div>
+    </div>
+    <div class="about__buttons">
+        <a class="btn btn-outline-primary" href="<?php echo the_field('ekskursiya', 'options'); ?>"><?php echo the_field('ekskursiya', 'options'); ?></a>
+        <a class="btn btn-primary" href="<?php echo the_field('raspisanie', 'options'); ?>"><?php echo the_field('raspisanie', 'options'); ?></a>
+    </div>
+</div>
 <div class="type-trening">
     <div class="type-trening__container content-container">
         <div class="type-trening__item">

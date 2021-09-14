@@ -430,6 +430,188 @@ header{
     }
   }
 }
+.specialists{
+  padding-bottom: 175px;
+  &__list{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -40px;
+    margin-bottom: 40px;
+  }
+  &__item{
+    width: calc(25% - 40px);
+    margin-right: 40px;
+    margin-bottom: 49px;
+    position: relative;
+    text-decoration: none;
+    &-image{
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+    &-name{
+      transform: rotate(-90deg);
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 37px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      position: absolute;
+      left: 34px;
+      bottom: -30px;
+      transform-origin: left;
+    }
+    &-service{
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      top: 21px;
+      right: 25px;
+      span{
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 700;
+        text-align: right;
+        letter-spacing: 0.05em;
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+.treners{
+  padding-top: 97px;
+  .send-wanted{
+    margin: 127px auto 0 auto;
+  }
+  &__header{
+    position: relative;
+    .move-under{
+      position: absolute;
+      top: -20px;
+      left: 0;
+    }
+    .untitle-stroke{
+      font-weight: 700;
+      font-size: 76px;
+      line-height: 95px;
+      text-transform: uppercase;
+      color: transparent;
+      -webkit-text-stroke: 1px #1D8FBD;
+    }
+    h1{
+      transform: translateY(0) !important;
+      font-weight: 700;
+      font-size: 72px!important;
+      line-height: 90px;
+      text-transform: uppercase;
+      color: #1D8FBD;
+    }
+  }
+  &__container{
+
+  }
+  &__content{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__photo{
+    width: 40%;
+    margin-right: 10%;
+  }
+  .swiper-slide{
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__desc{
+    width: 50%;
+    &-tags{
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 48px;
+      span{
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        color: #1D8FBD;
+        padding: 6px 14px 5px 14px;
+        border: 1px solid #1D8FBD;
+        margin-right: 12px;
+        cursor: pointer;
+        text-transform: lowercase;
+        margin-bottom: 12px;
+      }
+    }
+    &-socials{
+      display: flex;
+      margin-top: 41px;
+      border-top: 1px solid #ECECEC;
+      padding-top: 42px;
+      align-items: center;
+      a{
+        text-decoration: none;
+        margin-right: 16px;
+        img{
+          height: 20px;
+          width: auto;
+        }
+      }
+    }
+    &-sert{
+      padding-top: 59px;
+      display: flex;
+      flex-wrap: wrap;
+      .treners__desc-title{
+        width: 100%;
+      }
+      .sert-item{
+        width: 100px;
+        height: auto;
+        margin-right: 42px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        img{
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}
+.faq-page{
+  .subscription{
+    padding-top: 162px;
+  }
+  .treners__header{
+    margin-top: 97px;
+    .move-under{
+      width: 100%;
+      text-align: center;
+    }
+    h1{
+      margin-bottom: 0;
+    }
+  }
+  .subscription{
+    &__group{
+      .counter{
+        width: 24%;
+        margin-right: 0;
+      }
+    }
+    &__list{
+      padding-left: 24%;
+      padding-top: 28px;
+      padding-bottom: 74px;
+    }
+  }
+}
 
 
 
