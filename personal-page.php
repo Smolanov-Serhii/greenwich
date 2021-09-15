@@ -7,19 +7,17 @@
 get_header();
 $post_id = get_the_ID();
 ?>
-
-<div class="banner-text">
-    <div class="container">
-        <div class="row">
-            <div class="">
-                <div class="">
-                    <?php echo the_field('zagolovok_shapka_tekst', $post_id) ?>
-                </div>
-                <h1 class=""><?php echo the_field('zagolovok_shapka_tekst', $post_id) ?></h1>
-            </div>
+<div class="faq-page content-container">
+    <div class="treners__header text-center">
+        <div class="move-under">
+            <span class="untitle-stroke"><?php echo the_field("zagolovok_shapka_tekst", $post_id);?></span>
+        </div>
+        <div class="move-header">
+            <h1><?php echo the_field("zagolovok_shapka_tekst", $post_id);?></h1>
         </div>
     </div>
 </div>
+
 <div class="specialists">
     <div class="specialists__container content-container">
         <div class="specialists__filter">
@@ -39,7 +37,7 @@ $post_id = get_the_ID();
                     $postpers_id = get_the_ID();
                     $image = get_field('fotografiya_dlya_straniczy_vseh_trenerov', $postpers_id);
                     $name = get_field('imya_speczialista', $postpers_id);
-                    $services = get_field('napravlenie', $postpers_id);
+                    $services = get_the_terms( $postpers_id, 'trenirovki' );
                     ?>
                     <a href="<?php the_permalink();?>" class="specialists__item">
                         <div class="specialists__item-image">
@@ -50,8 +48,10 @@ $post_id = get_the_ID();
                         </h3>
                         <div class="specialists__item-service">
                             <?php
-                                foreach ($services['napravlenie_vybor'] as $service) {
-                                echo '<span>' . $service . '</span>';
+                            if( is_array( $services ) ){
+                                foreach( $services as $service ){
+                                    echo '<span>' . $service->name . '</span>';
+                                }
                             }
                             ?>
                         </div>

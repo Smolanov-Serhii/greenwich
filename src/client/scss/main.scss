@@ -59,6 +59,13 @@ $systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif; // System Fon
   }
 }
 header{
+  .nav-item.dropdown{
+    &:hover{
+      .dropdown-menu{
+        display: block;
+      }
+    }
+  }
   .btn-group{
     a{
       padding-right: 0;
@@ -609,6 +616,75 @@ header{
       padding-left: 24%;
       padding-top: 28px;
       padding-bottom: 74px;
+    }
+  }
+}
+.type-icons{
+  margin-top: 175px;
+  &__container{
+
+  }
+  &__list{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -40px;
+  }
+  &__item{
+    height: 266px;
+    width: calc(25% - 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #1D8FBD;
+    margin-right: 40px;
+    margin-bottom: 40px;
+  }
+  &__title{
+    margin-top: 28px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #1D8FBD;
+    margin-bottom: 0;
+  }
+  &__img{
+    height: 70px;
+    width: auto;
+    img{
+      height: 100%;
+      width: auto;
+    }
+  }
+}
+.oferta{
+  margin-top: 152px;
+  &__container{
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+  }
+  &__nav{
+    width: 50%;
+    position: sticky;
+    top: 80px;
+    a{
+      text-decoration: none;
+      margin-bottom: 12px;
+      display: block;
+      color: #191919;
+      font-weight: 700;
+      &:hover{
+        color: #1D8FBD;
+      }
+    }
+  }
+  &__description{
+    width: 50%;
+    &-item{
+      margin-bottom: 40px;
     }
   }
 }

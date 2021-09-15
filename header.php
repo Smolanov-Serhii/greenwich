@@ -239,44 +239,75 @@
                 <ul class="navbar-nav mr-auto col">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Тренировки
+                            <?php echo the_field('trenirovki', 'options'); ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <?php
+                            $args = array(
+                                'post_type' => 'trenings',
+                                'showposts' => "-1", //сколько показать статей
+                                'orderby' => "menu_order", //сортировка по дате
+                                'caller_get_posts' => 1);
+                            $my_query = new wp_query($args);
+                            if ($my_query->have_posts()) {
+                                while ($my_query->have_posts()) {
+                                    $my_query->the_post();
+                                    $postpers_id = get_the_ID();
+                                    $services = get_field('napravlenie', $postpers_id);
+                                    ?>
+                                    <a class="dropdown-item" href="<?php the_permalink();?>"><?php the_title();?></a>
+                                <?php }
+                            }
+                            wp_reset_query(); ?>
+
+<!--                            <div class="dropdown-divider"></div>-->
+<!--                            <a class="dropdown-item" href="#">Something else here</a>-->
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#33" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Массаж и SPA
+                            <?php echo the_field('massazh_i_spa', 'options'); ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+<!--                            <div class="dropdown-divider"></div>-->
+<!--                            <a class="dropdown-item" href="#">Something else here</a>-->
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#44" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Тренеры
+                            <?php echo the_field('trenery', 'options'); ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <?php
+                            $args = array(
+                                'post_type' => 'treners',
+                                'showposts' => "-1", //сколько показать статей
+                                'orderby' => "menu_order", //сортировка по дате
+                                'caller_get_posts' => 1);
+                            $my_query = new wp_query($args);
+                            if ($my_query->have_posts()) {
+                                while ($my_query->have_posts()) {
+                                    $my_query->the_post();
+                                    $postpers_id = get_the_ID();
+                                    $services = get_field('napravlenie', $postpers_id);
+                                    ?>
+                                    <a class="dropdown-item" href="<?php the_permalink();?>"><?php the_title();?></a>
+                                <?php }
+                            }
+                            wp_reset_query(); ?>
+<!--                            <div class="dropdown-divider"></div>-->
+<!--                            <a class="dropdown-item" href="#">Something else here</a>-->
                         </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav col-auto">
                     <li class="nav-item">
-                        <a href="#" class="btn btn-secondary nav-link">Экскурсия</a>
+                        <a href="#" class="btn btn-secondary nav-link"><?php echo the_field('ekskursiya', 'options'); ?></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="btn btn-primary my-2 my-sm-0">Расписание</a>
+                        <a href="#" class="btn btn-primary my-2 my-sm-0"><?php echo the_field('raspisanie', 'options'); ?></a>
                     </li>
                 </ul>
             </div>

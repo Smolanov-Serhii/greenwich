@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Template Name: Персонал
- *
- */
 get_header();
 $post_id = get_the_ID();
 ?>
@@ -75,9 +71,12 @@ $post_id = get_the_ID();
                 <div class="treners__desc-tags">
                     <?php
                     $postpers_id = get_the_ID();
-                    $services = get_field('napravlenie', $postpers_id);
-                    foreach ($services['napravlenie_vybor'] as $service) {
-                        echo '<span>' . $service . '</span>';
+                    $services = get_the_terms( $postpers_id, 'trenirovki' );
+
+                    if (is_array($services)) {
+                        foreach ($services as $service) {
+                            echo '<span>' . $service->name . '</span>';
+                        }
                     }
                     ?>
                 </div>

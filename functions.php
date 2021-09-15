@@ -209,6 +209,244 @@ if( function_exists('acf_add_options_page') ) {
     ));
 
 }
+add_action( 'init', 'mayak_taxonomy_register3' );
+function mayak_taxonomy_register3(){
+    $labels = array(
+        'name'                     => 'Тренировки', // основное название во множественном числе
+        'singular_name'            => 'Тип тренировок', // название единичного элемента таксономии
+        'menu_name'                => 'Типы тренировок', // Название в меню. По умолчанию: name.
+        'all_items'                => 'Все типы тренировок',
+        'edit_item'                => 'Изменить тренировку',
+        'view_item'                => 'Просмотр тренировки', // текст кнопки просмотра записи на сайте (если поддерживается типом)
+        'update_item'              => 'Обновить тренировку',
+        'add_new_item'             => 'Добавить тренировку',
+        'new_item_name'            => 'Название новой',
+        'parent_item'              => 'Родительская тренировка', // только для таксономий с иерархией
+        'parent_item_colon'        => 'Родительская тренировка:',
+        'search_items'             => 'Искать тренировку',
+        'popular_items'            => 'Популярные тренировки', // для таксономий без иерархий
+        'separate_items_with_commas' => 'Разделяйте тренировки запятыми',
+        'add_or_remove_items'      => 'Добавить или удалить тренировку',
+        'choose_from_most_used'    => 'Выбрать из часто используемых тренировок',
+        'not_found'                => 'Тренировка не найден',
+        'back_to_items'            => '← Назад к полам',
+    );
+    $args = array(
+        'labels'                => $labels,
+        'label'                 => 'Тренировки',
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_nav_menus'     => true,
+        'show_in_rest'          => false,
+        'rest_base'             => 'url_rest',
+        'rest_controller_class' => 'WP_REST_Terms_Controller',
+        'show_tagcloud'         => true,
+        'show_in_quick_edit'    => true,
+        'meta_box_cb'           => null,
+        'show_admin_column'     => true,
+        'description'           => '',
+        'hierarchical'          => true,
+        'update_count_callback' => '',
+        'query_var'             => $taxonomy,
+        'rewrite'               => true,
+        'sort'                  => true,
+        '_builtin'              => false,
+    );
+    register_taxonomy('trenirovki', array('treners'), $args);
+}
+
+add_action( 'init', 'mayak_taxonomy_register1' );
+function mayak_taxonomy_register1(){
+    $labels = array(
+        'name'                     => 'Пол тренера', // основное название во множественном числе
+        'singular_name'            => 'Пол тренера', // название единичного элемента таксономии
+        'menu_name'                => 'Пол тренера', // Название в меню. По умолчанию: name.
+        'all_items'                => 'Все полы',
+        'edit_item'                => 'Изменить пол',
+        'view_item'                => 'Просмотр пол', // текст кнопки просмотра записи на сайте (если поддерживается типом)
+        'update_item'              => 'Обновить пол',
+        'add_new_item'             => 'Добавить пол',
+        'new_item_name'            => 'Название нового',
+        'parent_item'              => 'Родительский пол', // только для таксономий с иерархией
+        'parent_item_colon'        => 'Родительский пол:',
+        'search_items'             => 'Искать пол',
+        'popular_items'            => 'Популярные полы', // для таксономий без иерархий
+        'separate_items_with_commas' => 'Разделяйте полы запятыми',
+        'add_or_remove_items'      => 'Добавить или удалить пол',
+        'choose_from_most_used'    => 'Выбрать из часто используемых полов',
+        'not_found'                => 'Пол не найден',
+        'back_to_items'            => '← Назад к полам',
+    );
+    $args = array(
+        'labels'                => $labels,
+        'label'                 => 'Пол',
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_nav_menus'     => true,
+        'show_in_rest'          => false,
+        'rest_base'             => 'url_rest',
+        'rest_controller_class' => 'WP_REST_Terms_Controller',
+        'show_tagcloud'         => true,
+        'show_in_quick_edit'    => true,
+        'meta_box_cb'           => null,
+        'show_admin_column'     => true,
+        'description'           => '',
+        'hierarchical'          => true,
+        'update_count_callback' => '',
+        'query_var'             => $taxonomy,
+        'rewrite'               => true,
+        'sort'                  => true,
+        '_builtin'              => false,
+    );
+    register_taxonomy('pol', array('treners'), $args);
+}
+
+add_action( 'init', 'mayak_taxonomy_register2' );
+function mayak_taxonomy_register2(){
+    $labels = array(
+        'name'                     => 'Типы занятий', // основное название во множественном числе
+        'singular_name'            => 'Тип занятия', // название единичного элемента таксономии
+        'menu_name'                => 'Типы занятий', // Название в меню. По умолчанию: name.
+        'all_items'                => 'Все типы занятий',
+        'edit_item'                => 'Изменить тип',
+        'view_item'                => 'Просмотр тип', // текст кнопки просмотра записи на сайте (если поддерживается типом)
+        'update_item'              => 'Обновить тип',
+        'add_new_item'             => 'Добавить тип',
+        'new_item_name'            => 'Название нового',
+        'parent_item'              => 'Родительский тип', // только для таксономий с иерархией
+        'parent_item_colon'        => 'Родительский пол:',
+        'search_items'             => 'Искать тип',
+        'popular_items'            => 'Популярные типы', // для таксономий без иерархий
+        'separate_items_with_commas' => 'Разделяйте типы запятыми',
+        'add_or_remove_items'      => 'Добавить или удалить тип',
+        'choose_from_most_used'    => 'Выбрать из часто используемых типов',
+        'not_found'                => 'тип не найден',
+        'back_to_items'            => '← Назад к полам',
+    );
+    $args = array(
+        'labels'                => $labels,
+        'label'                 => 'Тип занятия',
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_nav_menus'     => true,
+        'show_in_rest'          => false,
+        'rest_base'             => 'url_rest',
+        'rest_controller_class' => 'WP_REST_Terms_Controller',
+        'show_tagcloud'         => true,
+        'show_in_quick_edit'    => true,
+        'meta_box_cb'           => null,
+        'show_admin_column'     => true,
+        'description'           => '',
+        'hierarchical'          => true,
+        'update_count_callback' => '',
+        'query_var'             => $taxonomy,
+        'rewrite'               => true,
+        'sort'                  => true,
+        '_builtin'              => false,
+    );
+    register_taxonomy('zanatia', array('treners'), $args);
+}
+add_action( 'init', 'mayak_taxonomy_register' );
+function mayak_taxonomy_register(){
+    $labels = array(
+        'name'                     => 'Направление тренера', // основное название во множественном числе
+        'singular_name'            => 'Направление тренера', // название единичного элемента таксономии
+        'menu_name'                => 'Направления тренеров', // Название в меню. По умолчанию: name.
+        'all_items'                => 'Все направления',
+        'edit_item'                => 'Изменить направление',
+        'view_item'                => 'Просмотр направления', // текст кнопки просмотра записи на сайте (если поддерживается типом)
+        'update_item'              => 'Обновить направление',
+        'add_new_item'             => 'Добавить новое направление',
+        'new_item_name'            => 'Название нового направления',
+        'parent_item'              => 'Родительское направление', // только для таксономий с иерархией
+        'parent_item_colon'        => 'Родительское направление:',
+        'search_items'             => 'Искать направления',
+        'popular_items'            => 'Популярные направления', // для таксономий без иерархий
+        'separate_items_with_commas' => 'Разделяйте направления запятыми',
+        'add_or_remove_items'      => 'Добавить или удалить направления',
+        'choose_from_most_used'    => 'Выбрать из часто используемых направлений',
+        'not_found'                => 'Направлений не найдено',
+        'back_to_items'            => '← Назад к направлениям',
+    );
+    $args = array(
+        'labels'                => $labels,
+        'label'                 => 'Направления',
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_nav_menus'     => true,
+        'show_in_rest'          => false,
+        'rest_base'             => 'url_rest',
+        'rest_controller_class' => 'WP_REST_Terms_Controller',
+        'show_tagcloud'         => true,
+        'show_in_quick_edit'    => true,
+        'meta_box_cb'           => null,
+        'show_admin_column'     => true,
+        'description'           => '',
+        'hierarchical'          => true,
+        'update_count_callback' => '',
+        'query_var'             => $taxonomy,
+        'rewrite'               => true,
+        'sort'                  => true,
+        '_builtin'              => false,
+    );
+    register_taxonomy('directions', array('treners'), $args);
+}
+
+add_action( 'init', 'mayak_taxonomy_register4' );
+function mayak_taxonomy_register4(){
+    $labels = array(
+        'name'                     => 'Тип тренировок', // основное название во множественном числе
+        'singular_name'            => 'Тип тренировок', // название единичного элемента таксономии
+        'menu_name'                => 'Типы тренировок', // Название в меню. По умолчанию: name.
+        'all_items'                => 'Все типы тренировок',
+        'edit_item'                => 'Изменить тренировку',
+        'view_item'                => 'Просмотр тренировки', // текст кнопки просмотра записи на сайте (если поддерживается типом)
+        'update_item'              => 'Обновить тренировку',
+        'add_new_item'             => 'Добавить тренировку',
+        'new_item_name'            => 'Название новой',
+        'parent_item'              => 'Родительская тренировка', // только для таксономий с иерархией
+        'parent_item_colon'        => 'Родительская тренировка:',
+        'search_items'             => 'Искать тренировку',
+        'popular_items'            => 'Популярные тренировки', // для таксономий без иерархий
+        'separate_items_with_commas' => 'Разделяйте тренировки запятыми',
+        'add_or_remove_items'      => 'Добавить или удалить тренировку',
+        'choose_from_most_used'    => 'Выбрать из часто используемых тренировок',
+        'not_found'                => 'Тренировка не найден',
+        'back_to_items'            => '← Назад к полам',
+    );
+    $args = array(
+        'labels'                => $labels,
+        'label'                 => 'Тренировки',
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_nav_menus'     => true,
+        'show_in_rest'          => false,
+        'rest_base'             => 'url_rest',
+        'rest_controller_class' => 'WP_REST_Terms_Controller',
+        'show_tagcloud'         => true,
+        'show_in_quick_edit'    => true,
+        'meta_box_cb'           => null,
+        'show_admin_column'     => true,
+        'description'           => '',
+        'hierarchical'          => true,
+        'update_count_callback' => '',
+        'query_var'             => $taxonomy,
+        'rewrite'               => true,
+        'sort'                  => true,
+        '_builtin'              => false,
+    );
+    register_taxonomy('trenirovkitype', array('trenings'), $args);
+}
 
 add_action( 'init', 'register_post_types' );
 function register_post_types()
@@ -252,47 +490,6 @@ function register_post_types()
         'query_var' => true,
     ]);
 
-    add_action( 'init', 'create_taxonomy' );
-    function create_taxonomy(){
-
-        // список параметров: wp-kama.ru/function/get_taxonomy_labels
-        register_taxonomy( 'taxonomy', [ 'directions' ], [
-            'label'                 => '', // определяется параметром $labels->name
-            'labels'                => [
-                'name'              => 'Направление',
-                'singular_name'     => 'Направление',
-                'search_items'      => 'Искать направление',
-                'all_items'         => 'Все направления',
-                'view_item '        => 'Смотреть направление',
-                'parent_item'       => 'Родительское направление',
-                'parent_item_colon' => 'Родительское направление:',
-                'edit_item'         => 'Редактировать направление',
-                'update_item'       => 'Обновить направление',
-                'add_new_item'      => 'Добавить новое направление',
-                'new_item_name'     => 'Добавить имя напревления',
-                'menu_name'         => 'Направления',
-            ],
-            'description'           => '', // описание таксономии
-            'public'                => true,
-            // 'publicly_queryable'    => null, // равен аргументу public
-            // 'show_in_nav_menus'     => true, // равен аргументу public
-            // 'show_ui'               => true, // равен аргументу public
-            // 'show_in_menu'          => true, // равен аргументу show_ui
-            // 'show_tagcloud'         => true, // равен аргументу show_ui
-            // 'show_in_quick_edit'    => null, // равен аргументу show_ui
-            'hierarchical'          => false,
-            'rewrite'               => true,
-            //'query_var'             => $taxonomy, // название параметра запроса
-            'capabilities'          => array(),
-            'meta_box_cb'           => null, // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
-            'show_admin_column'     => false, // авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
-            'show_in_rest'          => null, // добавить в REST API
-            'rest_base'             => null, // $taxonomy
-            // '_builtin'              => false,
-            //'update_count_callback' => '_update_post_term_count',
-        ] );
-    }
-
     register_post_type('treners', [
         'label' => null,
         'labels' => [
@@ -311,7 +508,7 @@ function register_post_types()
         ],
         'description' => '',
         'public' => true,
-        'taxonomies'		 => [],
+        'taxonomies'		 => array('trenertype', 'pol', 'zanatia' , 'trenirovki' ),
         // 'publicly_queryable'  => null, // зависит от public
         // 'exclude_from_search' => null, // зависит от public
         // 'show_ui'             => null, // зависит от public
@@ -364,7 +561,7 @@ function register_post_types()
         //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
         'hierarchical' => false,
         'supports' => ['title','editor'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-        'taxonomies' => [],
+        'taxonomies'		 => array('trenirovkitype'),
         'has_archive' => true,
         'rewrite' => true,
         'query_var' => true,
