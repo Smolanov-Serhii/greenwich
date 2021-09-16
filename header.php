@@ -186,6 +186,11 @@
                         );
                         ?>
                     </div>
+                    <div class="search-btn">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.6685 12.0426L10.4498 8.7796C10.9967 7.89703 11.3141 6.85388 11.3141 5.73439C11.3141 2.56719 8.7812 0 5.65691 0C2.53262 0 0 2.56719 0 5.73439C0 8.9017 2.5325 11.4687 5.65691 11.4687C6.85875 11.4687 7.97196 11.0878 8.88798 10.4406L12.0684 13.6647C12.2894 13.8885 12.5791 14 12.8684 14C13.1581 14 13.4475 13.8885 13.6688 13.6647C14.1105 13.2166 14.1105 12.4907 13.6685 12.0426ZM5.65691 9.6108C3.54517 9.6108 1.83311 7.8754 1.83311 5.73463C1.83311 3.59385 3.54517 1.85834 5.65691 1.85834C7.76876 1.85834 9.48071 3.59385 9.48071 5.73463C9.48071 7.8754 7.76876 9.6108 5.65691 9.6108Z" fill="white"/>
+                        </svg>
+                    </div>
                     <?php get_sidebar("language-mob"); ?>
                     <div class="col-md-auto">
                         <div class="btn-group justify-content-center">
@@ -276,38 +281,17 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#44" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link" href="<?php echo get_home_url();?>/trenery-i-massazhisty/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php echo the_field('trenery', 'options'); ?>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <?php
-                            $args = array(
-                                'post_type' => 'treners',
-                                'showposts' => "-1", //сколько показать статей
-                                'orderby' => "menu_order", //сортировка по дате
-                                'caller_get_posts' => 1);
-                            $my_query = new wp_query($args);
-                            if ($my_query->have_posts()) {
-                                while ($my_query->have_posts()) {
-                                    $my_query->the_post();
-                                    $postpers_id = get_the_ID();
-                                    $services = get_field('napravlenie', $postpers_id);
-                                    ?>
-                                    <a class="dropdown-item" href="<?php the_permalink();?>"><?php the_title();?></a>
-                                <?php }
-                            }
-                            wp_reset_query(); ?>
-<!--                            <div class="dropdown-divider"></div>-->
-<!--                            <a class="dropdown-item" href="#">Something else here</a>-->
-                        </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav col-auto">
                     <li class="nav-item">
-                        <a href="#" class="btn btn-secondary nav-link"><?php echo the_field('ekskursiya', 'options'); ?></a>
+                        <a href="#" class="btn btn-secondary nav-link else-btn"><?php echo the_field('ekskursiya', 'options'); ?></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="btn btn-primary my-2 my-sm-0"><?php echo the_field('raspisanie', 'options'); ?></a>
+                        <a href="#" class="btn btn-primary my-2 my-sm-0 else-btn"><?php echo the_field('raspisanie', 'options'); ?></a>
                     </li>
                 </ul>
             </div>
@@ -341,18 +325,23 @@
                                 <li>
                                     <p class="lead strong mb-3">Тренировки</p>
                                 </li>
-                                <li><a class="btn px-0 py-2" href="#6">Индивидуальные занятия</a></li>
-                                <li><a class="btn px-0 py-2" href="#7">Групповые занятия</a></li>
-                                <li><a class="btn px-0 py-2" href="#8">Детские занятия</a></li>
-                                <li><a class="btn px-0 py-2" href="#9">Body Sculpt</a></li>
-                                <li><a class="btn px-0 py-2" href="#0">Step</a></li>
-                                <li><a class="btn px-0 py-2" href="#9">TABATA</a></li>
-                                <li><a class="btn px-0 py-2" href="#8">TRX</a></li>
-                                <li><a class="btn px-0 py-2" href="#7">Soft fitness</a></li>
-                                <li><a class="btn px-0 py-2" href="#6">Stretching</a></li>
-                                <li><a class="btn px-0 py-2" href="#5">Pilates</a></li>
-                                <li><a class="btn px-0 py-2" href="#4">YOGA</a></li>
-                                <li><a class="btn px-0 py-2" href="#3">Fly-yoga</a></li>
+                                <?php
+                                $args = array(
+                                    'post_type' => 'trenings',
+                                    'showposts' => "-1", //сколько показать статей
+                                    'orderby' => "menu_order", //сортировка по дате
+                                    'caller_get_posts' => 1);
+                                $my_query = new wp_query($args);
+                                if ($my_query->have_posts()) {
+                                    while ($my_query->have_posts()) {
+                                        $my_query->the_post();
+                                        $postpers_id = get_the_ID();
+                                        $services = get_field('napravlenie', $postpers_id);
+                                        ?>
+                                        <li><a class="btn px-0 py-2" href="<?php the_permalink();?>"><?php the_title();?></a></li>
+                                    <?php }
+                                }
+                                wp_reset_query(); ?>
                             </ul>
                         </div>
                         <div class="col-3 py-5">

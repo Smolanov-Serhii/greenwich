@@ -32,7 +32,7 @@ $systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif; // System Fon
   font-feature-settings: 'pnum' on, 'lnum' on;
 }
 .content-container{
-  max-width: 1940px;
+  max-width: 1600px;
   padding-left: 170px;
   padding-right: 170px;
   margin: auto;
@@ -59,6 +59,35 @@ $systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif; // System Fon
   }
 }
 header{
+  .search-btn{
+    width: auto;
+    margin-right: 31px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  .navbar-nav{
+    .nav-item .else-btn{
+      padding: 16px 44px 13px 44px;
+    }
+  }
+  #qtranslate-2{
+    margin-right: 125px;
+    select{
+      cursor: pointer;
+      border: none;
+      color: #FFFFFF;
+      background-color: transparent;
+      padding-right: 6px;
+      option{
+        color: #FFFFFF;
+        background-color: #1D8FBD;
+      }
+    }
+    .language-chooser{
+      background-color: #1D8FBD;
+    }
+  }
   .nav-item.dropdown{
     &:hover{
       .dropdown-menu{
