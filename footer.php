@@ -1,5 +1,5 @@
-<footer class="py-4 bg-white">
-    <div class="container-fluid">
+<footer class="py-4 bg-white footer">
+    <div class="big-container">
         <div class="row justify-content-between align-items-start">
             <div class="col-md">
                 <h6>
@@ -90,7 +90,9 @@
         </div>
     </div>
 </footer>
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="https://cdn.jsdelivr.net/jquery.marquee/1.4.0/jquery.marquee.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?key="></script>
+<!--AIzaSyBHgn3V0cmGfWXOY_chTAV3eY0yWa1Msz0-->
 <?php wp_footer(); ?>
 <script src="<?php echo get_template_directory_uri() . '/dist/js/fresco.min.js'?>">
 

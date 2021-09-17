@@ -988,7 +988,8 @@ progress {
 
 .img-fluid {
   max-width: 100%;
-  height: auto
+  height: auto;
+  width: 100%;
 }
 
 .img-thumbnail {
@@ -3626,14 +3627,15 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #191919;
+  border: none;
   background-color: #1d8fbd;
-  border-color: #1d8fbd
+  //border-color: #1d8fbd
 }
 
 .btn-primary:hover {
   color: #191919;
-  background-color: #3fa0c7;
-  border-color: #349ac4
+  //background-color: #3fa0c7;
+  //border-color: #349ac4
 }
 
 .btn-check:focus + .btn-primary, .btn-primary:focus {
@@ -4712,7 +4714,7 @@ textarea.form-control-lg {
   text-decoration: none;
   -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
   -o-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -12303,29 +12305,36 @@ textarea.form-control-lg {
 @font-face {
   font-family: noah-oh5;
   font-style: normal;
+  font-weight: 300;
+  src: url(../../fonts/Noah-Light.woff2) format("woff2")
+}
+
+@font-face {
+  font-family: noah-oh5;
+  font-style: normal;
   font-weight: 400;
-  src: url(../fonts/Noah-Regular.woff2) format("woff2")
+  src: url(../../fonts/Noah-Regular.woff2) format("woff2")
 }
 
 @font-face {
   font-family: noah-oh5;
   font-style: italic;
   font-weight: 400;
-  src: url(../fonts/Noah-RegularItalic.woff2) format("woff2")
+  src: url(../../fonts/Noah-RegularItalic.woff2) format("woff2")
 }
 
 @font-face {
   font-family: noah-oh5;
   font-style: normal;
   font-weight: 700;
-  src: url(../fonts/Noah-Bold.woff2) format("woff2")
+  src: url(../../fonts/Noah-Bold.woff2) format("woff2")
 }
 
 @font-face {
   font-family: noah-oh5;
   font-style: italic;
   font-weight: 700;
-  src: url(../fonts/Noah-BoldItalic.woff2) format("woff2")
+  src: url(../../fonts/Noah-BoldItalic.woff2) format("woff2")
 }
 
 ::-webkit-input-placeholder {
@@ -12409,6 +12418,14 @@ body {
   -webkit-filter: none !important;
   filter: none !important
 }
+.btn-primary .btn{
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-flex;
+  height: 100%;
+  align-items: center;
+}
 
 .btn.btn-primary {
   color: #fff;
@@ -12420,6 +12437,12 @@ body {
 }
 
 .btn.btn-light {
+  color: #1d8fbd;
+  text-transform: uppercase;
+  font-weight: 700
+}
+
+.btn-secondary .btn {
   color: #1d8fbd;
   text-transform: uppercase;
   font-weight: 700
@@ -12620,24 +12643,29 @@ ul.sp li:hover:before {
 
 .navbar-expand-lg {
   padding-top: .75rem;
-  padding-bottom: 1rem
+  padding-bottom: 1rem;
+  .navbar-brand {
+    display: -ms-inline-grid;
+    display: inline-grid;
+  }
+  .navbar-nav {
+    padding-top: .25rem;
+    .nav-link {
+      text-transform: uppercase;
+      line-height: 1rem;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      @media all and (max-width: 1250px){
+        font-size: 14px;
+      }
+      @media all and (max-width: 1060px){
+        font-size: 13px;
+        padding: 1rem 10px;
+      }
+    }
+  }
 }
 
-.navbar-expand-lg .navbar-brand {
-  display: -ms-inline-grid;
-  display: inline-grid
-}
-
-.navbar-expand-lg .navbar-nav {
-  padding-top: .25rem
-}
-
-.navbar-expand-lg .navbar-nav .nav-link {
-  text-transform: uppercase;
-  line-height: 1rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem
-}
 
 .motion {
   opacity: 0;
@@ -12813,11 +12841,12 @@ ul.sp li:hover:before {
 }
 
 .bg-video video {
-  position: fixed;
+  position: absolute;
+  top: -154px;
   right: 0;
   bottom: 0;
   min-width: 100%;
-  min-height: 100%;
+  min-height: calc(100% + 154px);
   z-index: 0
 }
 
@@ -12831,7 +12860,6 @@ ul.sp li:hover:before {
 }
 
 header {
-  height: 154px;
   z-index: 5;
   position: relative
 }
@@ -12924,7 +12952,10 @@ header .tab-main .btn.active {
   padding: 0;
   text-align: left;
   margin-right: 35px;
-  margin-left: 5px
+  @media all and (max-width: 500px){
+    margin-right: 18px;
+    margin-left: 0;
+  }
 }
 
 .btn-burger span {
@@ -13324,6 +13355,12 @@ header .tab-main .btn.active {
 }
 .ramka{
   pointer-events: none;
+  width: 100% !important;
+  height: 100% !important;
+  svg{
+    width: 100%;
+    height: 100%;
+  }
 }
 .bg-primary .ramka rect {
   stroke: #fff;

@@ -8,14 +8,14 @@ get_header();
 $post_id = get_the_ID();
 ?>
 
-<div class="section sec0 py-0"
+<div class="section sec0 py-0 main-title-paralax"
      style="background-image: url(<?php echo the_field('izobrazhenie_dlya_banera', $post_id) ?>); background-size: cover; background-repeat: no-repeat; background-position: 50% 50%;">
     <div class="bg-video">
         <video autoplay="" muted="" loop="" id="myVideo">
             <source src="<?php echo the_field('videofajl_dlya_banera', $post_id) ?>" type="video/mp4">
         </video>
     </div>
-    <div class="container">
+    <div class="container main-title-paralax__content">
         <div class="row justify-content-center align-items-center">
             <div class="col text-center">
                 <div class="logo">
@@ -25,7 +25,9 @@ $post_id = get_the_ID();
                 <h1 class="text-white mb-0"><?php echo the_field('zagolovok_v_bloke_h1', $post_id) ?><span
                             class="d-block"><?php echo the_field('podzagolovok_v_banner', $post_id) ?></span></h1>
                 <div class="btn-main">
-                    <div class="js-<?php echo the_field('rol_knopki', $post_id); ?> btn btn-secondary btn-lg text-primary"><?php echo the_field('nadpis_na_knopke_banera', $post_id) ?></div>
+                    <div class="js-<?php echo the_field('rol_knopki', $post_id); ?> btn btn-secondary btn-lg text-primary">
+                        <span><?php echo the_field('nadpis_na_knopke_banera', $post_id) ?></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -310,12 +312,12 @@ $post_id = get_the_ID();
 </div>
 
 
-<div class="section sec6 bg-white py-0" style="overflow: hidden;">
+<div class="section sec6 bg-white py-0 main-map" style="overflow: hidden;">
     <div class="container-fluid p-0">
         <div class="row g-0 justify-content-between">
             <div class="col-lg-6"
                  style="background-image: url(<?php echo the_field('kartinka_na_fon_bloka_kontakty', $post_id); ?>); background-size: cover; background-repeat: no-repeat; background-position: 0% 0%;">
-                <div class="p-5 m-5">
+                <div class="main-map__desc">
                     <div class="motion">
                         <h2 class="title text-white" style="text-align: left"><?php echo the_field('zagolovok_dlya_kontakty', $post_id); ?></h2>
                     </div>

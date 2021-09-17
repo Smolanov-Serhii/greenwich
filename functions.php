@@ -131,6 +131,13 @@ function greenwich_widgets_init() {
 			'description'   => esc_html__( 'Добавте переключатель языков', 'greenwich' ),
 		)
 	);
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Языки-мобильный', 'greenwich' ),
+            'id'            => 'language-mob2',
+            'description'   => esc_html__( 'Добавте переключатель языков', 'greenwich' ),
+        )
+    );
 }
 add_action( 'widgets_init', 'greenwich_widgets_init' );
 
@@ -571,7 +578,7 @@ function register_post_types()
 
 function add_menu_link_class($atts, $item, $args)
 {
-    $atts['class'] = 'btn btn-lg btn-primary';
+    $atts['class'] = 'btn btn-lg';
     return $atts;
 }
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);

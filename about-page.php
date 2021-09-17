@@ -8,14 +8,14 @@ get_header();
 $post_id = get_the_ID();
 ?>
 
-<div class="section sec0 py-0"
+<div class="section sec0 py-0 main-title-paralax"
      style="background-image: url(<?php echo the_field('izobrazhenie_dlya_banera', $post_id) ?>); background-size: cover; background-repeat: no-repeat; background-position: 50% 50%;">
     <div class="bg-video">
         <video autoplay="" muted="" loop="" id="myVideo">
             <source src="<?php echo the_field('videofajl_dlya_banera', $post_id) ?>" type="video/mp4">
         </video>
     </div>
-    <div class="container">
+    <div class="container main-title-paralax__content">
         <div class="row justify-content-center align-items-center">
             <div class="col text-center">
                 <div class="logo">
