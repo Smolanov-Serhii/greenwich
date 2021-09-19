@@ -28,11 +28,12 @@ const styleClientFiles = [
 //Порядок подключения js файлов
 const scriptClientFiles = [
    // './src/js/jquery-3.5.1.js',
-   // './src/client/js/aos.js',
+   './src/client/js/aos.js',
    // './src/js/slick.js',
    // './src/js/feedback.js',
    // './src/js/jquery.selectric.js',
    './src/client/js/swiper-bundle.js',
+   // './src/client/js/jquery.mCustomScrollbar.js',
    // './src/client/js/fresco.min.js',
    './src/client/js/scripts.js'
 

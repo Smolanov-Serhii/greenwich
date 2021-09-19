@@ -1,4 +1,83 @@
 $( document ).ready(function() {
+    AOS.init({
+        // Global settings:
+        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+        startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+        initClassName: 'aos-init', // class applied after initialization
+        animatedClassName: 'aos-animate', // class applied on animation
+        useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+        disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+        debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+        throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+        // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+        offset: 100, // offset (in px) from the original trigger point
+        delay: 0, // values from 0 to 3000, with step 50ms
+        duration: 800, // values from 0 to 3000, with step 50ms
+        easing: 'ease', // default easing for AOS animations
+        once: false, // whether animation should happen only once - while scrolling down
+        mirror: false, // whether elements should animate out while scrolling past them
+        anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+
+    });
+    if ($(".treners__similar-list").length){
+        var SimilarSlider = new Swiper(".treners__similar-list", {
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".treners__similar .carousel-control-next",
+                prevEl: ".treners__similar .carousel-control-prev",
+            },
+            breakpoints: {
+                500: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 40,
+                },
+            },
+        });
+    };
+
+    if ($(".words-carusel").length){
+        var SimilarSlider = new Swiper(".words-carusel__container", {
+            loop: true,
+            autoplay: {
+                delay: 800,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                500: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+            },
+        });
+    };
 
     if ($(".slide-carusel").length){
         $('.slide-carusel').marquee({
@@ -8,6 +87,62 @@ $( document ).ready(function() {
         });
     };
 
+    if ($(".js-search-popup").length){
+        $(".js-search-popup").click( function(e) {
+            $('body').addClass('locked');
+            $('.popup-fade').fadeIn(300);
+            $('.popup-search').fadeIn(300);
+        });
+        $(".close-search").click( function(e) {
+            $('body').removeClass('locked');
+            $('.popup-fade').fadeOut(300);
+            $('.popup-search').fadeOut(300);
+        });
+
+        $(".js-exursion").click( function(e) {
+            $('body').addClass('locked');
+            $('.popup-fade').fadeIn(300);
+            $('.popup-ekskursia').fadeIn(300);
+        });
+        $(".close-ekskursia").click( function(e) {
+            $('body').removeClass('locked');
+            $('.popup-fade').fadeOut(300);
+            $('.popup-ekskursia').fadeOut(300);
+        });
+
+        $(".js-trenerovka").click( function(e) {
+            $('body').addClass('locked');
+            $('.popup-fade').fadeIn(300);
+            $('.popup-trenerovka').fadeIn(300);
+        });
+        $(".close-trenerovka").click( function(e) {
+            $('body').removeClass('locked');
+            $('.popup-fade').fadeOut(300);
+            $('.popup-trenerovka').fadeOut(300);
+        });
+        document.addEventListener( 'wpcf7mailsent', function( event ) {
+            console.log('sended');
+            $('body').removeClass('locked');
+            $('.popup-fade > div').fadeOut(300);
+            $('.popup-fade').fadeOut(300);
+            setTimeout(function (){
+                $('#success-send').removeClass('active-popup');
+            }, 2000);
+        }, false );
+    };
+
+    if ($(".about__item-full").length){
+        $(".js-show-case-item").click( function(e) {
+            $('.popup-fade').fadeIn(300);
+            $('body').addClass('locked');
+            $(this).closest('.about__text-part').find('.about__item-full').fadeIn(300);
+        });
+        $(".close-item-about").click( function(e) {
+            $('.popup-fade').fadeOut(300);
+            $('body').removeClass('locked');
+            $(this).closest('.about__text-part').find('.about__item-full').fadeOut(300);
+        });
+    };
 
     function parallax(){
         var scrolled = $(window).scrollTop();
@@ -76,6 +211,7 @@ $( document ).ready(function() {
         var AboutVideoSlider = new Swiper("#carouselReview", {
             loop: true,
             spaceBetween: 88,
+            autoHeight: true, //enable auto height
             // autoplay: {
             //     delay: 2000,
             //     disableOnInteraction: false,
@@ -110,8 +246,12 @@ $( document ).ready(function() {
         // console.log('scroll')
 
         $('.motion').each( function (e) {
-
-            if ( $(this).offset().top + $(this).height() > ( scroll_pos + wh - 250 ) && $(this).offset().top  < ( scroll_pos + wh - 150 ) ) {
+            if ( $(window).width() > 768 ) {
+                var scrollParam = 150;
+            } else {
+                var scrollParam = 20;
+            }
+            if ( $(this).offset().top + $(this).height() > ( scroll_pos + wh - scrollParam ) && $(this).offset().top  < ( scroll_pos + wh - scrollParam ) ) {
 
                 $(this).addClass('show')
 

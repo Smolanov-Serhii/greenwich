@@ -7,10 +7,10 @@ $post_id = get_the_ID();
     <div class="treners__container content-container">
         <div class="treners__header">
             <div class="move-under">
-                <span class="untitle-stroke"><?php echo the_field("imya_speczialista", $post_id); ?><?php echo the_field("familiya_speczialista", $post_id); ?></span>
+                <span class="untitle-stroke"><?php echo the_field("imya_speczialista", $post_id); ?> <?php echo the_field("familiya_speczialista", $post_id); ?></span>
             </div>
             <div class="move-header">
-                <h1><?php echo the_field("imya_speczialista", $post_id); ?><?php echo the_field("familiya_speczialista", $post_id); ?></h1>
+                <h1><?php echo the_field("imya_speczialista", $post_id); ?> <?php echo the_field("familiya_speczialista", $post_id); ?></h1>
             </div>
         </div>
         <div class="treners__content">
@@ -141,61 +141,105 @@ $post_id = get_the_ID();
                 <?php echo the_field('zapisatsya_na_trenirovku', 'options') ?>
             </div>
             <div class="treners__similar">
-
-            </div>
-        </div>
-    </div>
-    <div class="">
-        <div class="container">
-            <div class="row">
-                <div class="">
-                    <div class="">
-                        <?php echo the_field('zagolovok_shapka_tekst', $post_id) ?>
-                    </div>
-                    <h1 class=""><?php echo the_field('zagolovok_shapka_tekst', $post_id) ?></h1>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="about-seo section sec8 bg-white py-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="motion">
-                        <h3 class="title text-lightgray"><?php echo the_field('zagolovok_bloka_seo', $post_id); ?></h3>
+                <div class="treners__similar-header">
+                    <h2 class="treners__similar-title about__title text-primary">
+                        <?php echo the_field('nadpis_vas_mogut_zainteresovat', 'options') ?>
+                    </h2>
+                    <div class="controls row justify-content-end motion">
+                        <div class="col-auto">
+                            <button class="carousel-control-prev btn" type="button" data-bs-target="#carouselReview" data-bs-slide="prev" tabindex="0" aria-label="Previous slide" aria-controls="swiper-wrapper-82f69b58f2705bb5">
+                                <svg class="img-fluid" width="47" height="27" viewBox="0 0 47 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.8903 27L14.9838 24.8073L5.66768 15.0504L47 15.0504L47 11.9495L5.66768 11.9495L14.9838 2.19266L12.8903 -8.32733e-07L2.63449e-06 13.5001L12.8903 27Z" fill="#1D8FBD"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="col-auto">
+                            <button class="carousel-control-next btn" type="button" data-bs-target="#carouselReview" data-bs-slide="next" tabindex="0" aria-label="Next slide" aria-controls="swiper-wrapper-82f69b58f2705bb5">
+                                <svg class="img-fluid" width="46" height="27" viewBox="0 0 46 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M33.384 0L31.335 2.19266L40.4529 11.9496H0V15.0505H40.4529L31.335 24.8073L33.384 27L46 13.4999L33.384 0Z" fill="#1D8FBD"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6 text-lightgray">
-                    <?php echo the_field('levyj_blok_seo', $post_id); ?>
-                </div>
-                <div class="col-lg-6 text-lightgray">
-                    <?php echo the_field('pravyj_blok_seo', $post_id); ?>
+                <div class="treners__similar-list swiper-container">
+                    <div class="treners__similar-wrapper swiper-wrapper">
+                        <?php
+                        $post_objects = get_field('pohozhie_speczialisty');
+                        if( $post_objects ): ?>
+                                <?php foreach( $post_objects as $post): ?>
+                                    <?php setup_postdata($post); ?>
+                                    <?php
+                                    $postpers_id = get_the_ID();
+                                    $image = get_field('fotografiya_dlya_straniczy_vseh_trenerov', $postpers_id);
+                                    $name = get_field('imya_speczialista', $postpers_id);
+                                    $services = get_the_terms( $postpers_id, 'trenirovki' );
+                                    $dopimg = get_field( 'fotografiya_speczialista' );
+                                    $secondimg = $dopimg[0]["fotografiya_speczialista"];
+                                    ?>
+
+                                    <a href="<?php the_permalink();?>" class="treners__similar-item swiper-slide">
+                                        <div class="specialists__item-image">
+                                            <img src="<?php echo $image;?>">
+                                            <div class="img hover-img">
+                                                <img src="<?php echo $secondimg?>">
+                                            </div>
+
+
+                                        </div>
+                                        <h3 class="specialists__item-name">
+                                            <?php echo $name;?>
+                                        </h3>
+                                        <div class="specialists__item-service">
+                                            <?php
+                                            if( is_array( $services ) ){
+                                                foreach( $services as $service ){
+                                                    echo '<span>' . $service->name . '</span>';
+                                                }
+                                            }
+                                            ?>
+                                        </div>
+                                    </a>
+                                <?php endforeach; ?>
+                            <?php wp_reset_postdata(); // ВАЖНО - сбросьте значение $post object чтобы избежать ошибок в дальнейшем коде ?>
+                        <?php endif;
+
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php
-    get_template_part('inc/words-carusel');
-    ?>
+
+    <?php get_template_part( 'inc/seo-section' ); ?>
+    <?php get_template_part('inc/words-carusel'); ?>
 
     <?php get_footer(); ?>
     <script>
-        if ($(".treners__content").length) {
-            var TrenerSlider = new Swiper(".treners__photo-cotainer", {
-                loop: true,
-                autoplay: {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: ".treners__photo-cotainer .text-primary",
-                    type: "fraction",
-                },
-                navigation: {
-                    nextEl: ".treners__photo-cotainer .carousel-control-next",
-                    prevEl: ".treners__photo-cotainer .carousel-control-prev",
-                },
-            });
-        }
+        $("document").ready(function(){
+            if ($(".treners__content").length) {
+                var TrenerSlider = new Swiper(".treners__photo-cotainer", {
+                    loop: true,
+                    autoHeight: true,
+                    effect: 'fade',
+                    fadeEffect: {
+                        crossFade: true
+                    },
+                    autoplay: {
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: ".treners__photo-cotainer .text-primary",
+                        type: "fraction",
+                    },
+                    navigation: {
+                        nextEl: ".treners__photo-cotainer .carousel-control-next",
+                        prevEl: ".treners__photo-cotainer .carousel-control-prev",
+                    },
+                });
+            }
+
+        });
+
     </script>

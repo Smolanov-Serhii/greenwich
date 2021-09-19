@@ -53,6 +53,7 @@ if ( ! function_exists( 'greenwich_setup' ) ) :
 				'Page-menu' => esc_html__( 'Меню страниц', 'greenwich' ),
 				'Content-menu' => esc_html__( 'Меню контента', 'greenwich' ),
 				'Footer-menu' => esc_html__( 'Меню футер', 'greenwich' ),
+				'Menu-burger' => esc_html__( 'Меню бургер', 'greenwich' ),
 			)
 		);
 
@@ -652,3 +653,4 @@ function rename_posts_labels( $labels ){
 
     return (object) array_merge( (array) $labels, $new );
 }
+

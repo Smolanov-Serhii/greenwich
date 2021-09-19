@@ -38,10 +38,18 @@ $post_id = get_the_ID();
                     $image = get_field('fotografiya_dlya_straniczy_vseh_trenerov', $postpers_id);
                     $name = get_field('imya_speczialista', $postpers_id);
                     $services = get_the_terms( $postpers_id, 'trenirovki' );
+                    $dopimg = get_field( 'fotografiya_speczialista' );
+                    $secondimg = $dopimg[0]["fotografiya_speczialista"];
                     ?>
+
                     <a href="<?php the_permalink();?>" class="specialists__item">
                         <div class="specialists__item-image">
                             <img src="<?php echo $image;?>">
+                            <div class="img hover-img">
+                                <img src="<?php echo $secondimg?>">
+                            </div>
+
+
                         </div>
                         <h3 class="specialists__item-name">
                             <?php echo $name;?>
@@ -62,9 +70,13 @@ $post_id = get_the_ID();
             wp_reset_query(); ?>
         </div>
     </div>
-    <div class="about__buttons">
-        <a class="btn btn-outline-primary" href="<?php echo the_field('ekskursiya', 'options'); ?>"><?php echo the_field('ekskursiya', 'options'); ?></a>
-        <a class="btn btn-primary" href="<?php echo the_field('raspisanie', 'options'); ?>"><?php echo the_field('raspisanie', 'options'); ?></a>
+    <div class="about__buttons content-container">
+        <a class="btn btn-outline-primary" href="<?php echo the_field('ekskursiya', 'options'); ?>">
+            <?php echo the_field('ekskursiya', 'options'); ?>
+        </a>
+        <a class="btn btn-primary" href="<?php echo the_field('raspisanie', 'options'); ?>">
+            <span><?php echo the_field('raspisanie', 'options'); ?></span>
+        </a>
     </div>
 </div>
 <div class="type-trening">
@@ -117,25 +129,7 @@ $post_id = get_the_ID();
         </div>
     </div>
 </div>
-<div class="about-seo section sec8 bg-white py-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="motion">
-                    <h3 class="title text-lightgray"><?php echo the_field('zagolovok_bloka_seo', $post_id); ?></h3>
-                </div>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('levyj_blok_seo', $post_id); ?>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('pravyj_blok_seo', $post_id); ?>
-            </div>
-        </div>
-    </div>
-</div>
-<?php
-get_template_part('inc/words-carusel');
-?>
+<?php get_template_part( 'inc/seo-section' ); ?>
+<?php get_template_part('inc/words-carusel'); ?>
 
 <?php get_footer(); ?>

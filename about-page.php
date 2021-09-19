@@ -36,7 +36,7 @@ $post_id = get_the_ID();
 
                     </h1>
                 </div>
-                <div class="btn-main">
+                <div class="btn-main" data-aos="fade-up">
                     <div class="js-<?php echo the_field('rol_knopki', $post_id); ?> btn btn-secondary btn-lg text-primary">
                         <span><?php echo the_field('nadpis_na_knopke_banera', $post_id) ?></span>
                     </div>
@@ -60,23 +60,33 @@ $post_id = get_the_ID();
                 ?>
                 <div class="about__item">
                     <div class="about__text-part">
-                        <h3 class="about__item-title text-primary">
+                        <h3 class="about__item-title text-primary"  data-aos="fade-up">
                             <?php echo $title; ?>
                         </h3>
-                        <div class="about__item-exerpt">
+                        <div class="about__item-exerpt"  data-aos="fade-up">
                             <?php echo $exerpt; ?>
                         </div>
                         <div class="about__item-full" style="display: none;">
-                            <?php echo $fullcontent; ?>
+                            <div class="about__item-full-container">
+                                <div class="close-item-about">
+                                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="15.3867" y="4.89569" width="0.989092" height="14.8364" transform="rotate(45 15.3867 4.89569)" fill="#191919"></rect>
+                                        <rect x="16.0859" y="15.3867" width="0.989092" height="14.8364" transform="rotate(135 16.0859 15.3867)" fill="#191919"></rect>
+                                    </svg>
+                                </div>
+                                <div class="about__item-full-wrapper">
+                                    <?php echo $fullcontent; ?>
+                                </div>
+                            </div>
                         </div>
-                        <div class="about__show-item js-show-case-item text-primary">
+                        <div class="about__show-item js-show-case-item text-primary"  data-aos="fade-up">
                             <?php echo the_field('podrobnee', 'options'); ?>
                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10 0.838313L9.1879 -3.54978e-08L5.57423 3.73048L5.00002 4.33171L4.42574 3.73048L0.812097 -4.01616e-07L-3.66438e-08 0.838313L5.00002 6L10 0.838313Z" fill="#1D8FBD"/>
                             </svg>
                         </div>
                     </div>
-                    <div class="about__img-part">
+                    <div class="about__img-part"  data-aos="fade-up">
                         <img src="<?php echo $image; ?>" alt="<?php echo $alt; ?>">
                         <div class="ramka">
                             <svg width="100%" height="100%" viewBox="0 0 780 516" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,11 +99,15 @@ $post_id = get_the_ID();
         <?php endif; ?>
     </div>
     <div class="about__buttons">
-        <a class="btn btn-outline-primary" href="<?php echo the_field('ekskursiya', 'options'); ?>"><?php echo the_field('ekskursiya', 'options'); ?></a>
-        <a class="btn btn-primary" href="<?php echo the_field('raspisanie', 'options'); ?>"><?php echo the_field('raspisanie', 'options'); ?></a>
+        <a class="btn btn-outline-primary" href="<?php echo the_field('ekskursiya', 'options'); ?>">
+            <span><?php echo the_field('ekskursiya', 'options'); ?></span>
+        </a>
+        <a class="btn btn-primary" href="<?php echo the_field('raspisanie', 'options'); ?>">
+            <span><?php echo the_field('raspisanie', 'options'); ?></span>
+        </a>
     </div>
 </section>
-<section class="partners">
+<section class="partners"  data-aos="fade-up">
     <h2 class="partners__title title text-primary">
         <?php echo the_field('zagolovok_nashi_partnyory', $post_id) ?>
     </h2>
@@ -118,15 +132,15 @@ $post_id = get_the_ID();
 </section>
 <div class="type-trening">
     <div class="type-trening__container content-container">
-        <div class="type-trening__item">
+        <div class="type-trening__item" data-aos="fade-up">
             <?php
             $groupimg = get_field('kartinka_dlya_gruppovye_trenirovki', $post_id);
             ?>
             <div class="type-trening__img">
                 <img src="<?php echo esc_url($groupimg['url']); ?>" alt="<?php echo esc_attr($groupimg['alt']); ?>">
                 <div class="ramka">
-                    <svg width="100%" height="100%" viewBox="0 0 780 516" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0.5" y="0.5" width="calc(100% - 1px)" height="100%" stroke="#FFFFFF"/>
+                    <svg width="100%" height="100%" viewBox="0 0 100% 100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="100%" height="100%" stroke="#FFFFFF"></rect>
                     </svg>
                 </div>
             </div>
@@ -139,19 +153,19 @@ $post_id = get_the_ID();
                 </a>
             </div>
         </div>
-        <div class="type-trening__item">
+        <div class="type-trening__item" data-aos="fade-up">
             <?php
             $indimg = get_field('kartinka_dlya_individualnye_trenirovki', $post_id);
             ?>
             <div class="type-trening__img">
                 <img src="<?php echo esc_url($indimg['url']); ?>" alt="<?php echo esc_attr($indimg['alt']); ?>">
                 <div class="ramka">
-                    <svg width="100%" height="100%" viewBox="0 0 780 516" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0.5" y="0.5" width="779" height="515" stroke="#FFFFFF"/>
+                    <svg width="100%" height="100%" viewBox="0 0 100% 100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="100%" height="100%" stroke="#FFFFFF"></rect>
                     </svg>
                 </div>
             </div>
-            <div class="type-trening__content">
+            <div class="type-trening__content" data-aos="fade-up">
                 <h3 class="type-trening__title">
                     <?php echo the_field('zagolovok_dlya_individualnye_trenirovki', $post_id); ?>
                 </h3>
@@ -162,25 +176,7 @@ $post_id = get_the_ID();
         </div>
     </div>
 </div>
-<div class="about-seo section sec8 bg-white py-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="motion">
-                    <h3 class="title text-lightgray"><?php echo the_field('zagolovok_bloka_seo', $post_id); ?></h3>
-                </div>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('levyj_blok_seo', $post_id); ?>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('pravyj_blok_seo', $post_id); ?>
-            </div>
-        </div>
-    </div>
-</div>
-<?php
-get_template_part( 'inc/words-carusel' );
-?>
+<?php get_template_part( 'inc/seo-section' ); ?>
+<?php get_template_part('inc/words-carusel'); ?>
 
 <?php get_footer(); ?>

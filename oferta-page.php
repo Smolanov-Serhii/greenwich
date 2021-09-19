@@ -53,25 +53,7 @@ $post_id = get_the_ID();
         </div>
     </div>
 </div>
-<div class="about-seo section sec8 bg-white py-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="motion">
-                    <h3 class="title text-lightgray"><?php echo the_field('zagolovok_bloka_seo', $post_id); ?></h3>
-                </div>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('levyj_blok_seo', $post_id); ?>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('pravyj_blok_seo', $post_id); ?>
-            </div>
-        </div>
-    </div>
-</div>
-<?php
-get_template_part('inc/words-carusel');
-?>
+<?php get_template_part( 'inc/seo-section' ); ?>
+<?php get_template_part('inc/words-carusel'); ?>
 
 <?php get_footer(); ?>

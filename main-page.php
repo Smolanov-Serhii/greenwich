@@ -50,7 +50,7 @@ $post_id = get_the_ID();
     <div class="about-slider__container content-container">
         <div class="about-slider__list">
             <div class="about-slider__item about-img-slider">
-                <div class="motion">
+                <div data-aos="fade-up">
                     <div class="about-photo-slider">
                         <div class="ramka">
                             <svg class="img-fluid" width="609" height="916" viewBox="0 0 609 916" fill="none"
@@ -103,13 +103,13 @@ $post_id = get_the_ID();
             </div>
 
             <div class="about-slider__item">
-                <div class="motion">
+                <div data-aos="fade-up">
                     <h2 class="title text-primary"><?php echo the_field('zagolovok_bloka_o_nas', $post_id); ?></h2>
                 </div>
-                <div class="motion">
+                <div data-aos="fade-up">
                     <p class="mb-5"><?php echo the_field('opisanie_pod_blokom_o_nas', $post_id); ?></p>
                 </div>
-                <div class="video-slider mt-5 motion m-down">
+                <div class="video-slider mt-5 m-down" data-aos="fade-up">
                     <div id="carouselVideoSlider">
 <!--                        <div class="ramka">-->
 <!--                            <svg class="img-fluid" width="910" height="510" viewBox="0 0 910 510" fill="none"-->
@@ -174,7 +174,7 @@ $post_id = get_the_ID();
     <div class="content-container tabs-content">
         <div class="row justify-content-between">
             <div class="col-lg-6">
-                <div class="motion">
+                <div data-aos="fade-up">
                     <h2 class="title text-primary"><?php echo the_field('zagolovok_bloka_pochemu_greenwich', $post_id); ?></h2>
                 </div>
                 <ul class="sp item__list">
@@ -182,14 +182,14 @@ $post_id = get_the_ID();
                     if (have_rows('perechen_punktov', $post_id)): ?>
                         <?php while (have_rows('perechen_punktov', $post_id)): the_row();
                             $title = get_sub_field('zagolovok_na_punkt'); ?>
-                            <li class="lead"><span class="motion"><?php echo $title; ?></span></li>
+                            <li class="lead"><span data-aos="fade-up"><?php echo $title; ?></span></li>
                         <?php endwhile;
                         ?>
                     <?php endif; ?>
                 </ul>
             </div>
             <div class="col-lg-5">
-                <div class="motion">
+                <div data-aos="fade-up">
                     <div class="ramka">
                         <svg class="img-fluid" width="609" height="910" viewBox="0 0 610 910" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -224,7 +224,7 @@ $post_id = get_the_ID();
     <div class="content-container mt-5">
         <div class="row justify-content-between pt-5 apps-section__list">
             <div class="col-lg-7">
-                <div class="motion text-right pt-5 phone-img-container">
+                <div class="text-right pt-5 phone-img-container" data-aos="fade-up">
                     <?php
                     $leftimg = get_field('levaya_kartinka', $post_id);
                     $rightimg = get_field('pravaya_kartinka', $post_id);
@@ -236,21 +236,23 @@ $post_id = get_the_ID();
                 </div>
             </div>
             <div class="col-lg-5 text-white text-part">
-                <div class="motion title">
+                <div class="title" data-aos="fade-up">
                     <h2 class="pb-5 title"><?php echo the_field('zagolovok_bloka_prilozheniya', $post_id); ?></h2>
                 </div>
 
-                <div class="motion content">
+                <div class="content" data-aos="fade-up">
                     <p><?php echo the_field('opisanie_bloka_prilozheniya', $post_id); ?></p>
                 </div>
 
-                <div class="motion button-all">
-                    <p class="pt-4"><a href="http://g.tomorrowheads.com/#"
-                                       class="btn btn-primary"><?php echo the_field('nadpis_na_knopke_zagruzit_prilozhenie', $post_id); ?></a>
+                <div class="button-all" data-aos="fade-up">
+                    <p class="pt-4">
+                        <a href="http://g.tomorrowheads.com/#" class="btn btn-primary">
+                            <span><?php echo the_field('nadpis_na_knopke_zagruzit_prilozhenie', $post_id); ?></span>
+                        </a>
                     </p>
                 </div>
 
-                <div class="motion">
+                <div data-aos="fade-up">
                     <div class="btn-group mt-5 d-block d-lg-flex">
                         <?php
                         $appimage = get_field('ikonka_appstore', 'options');
@@ -270,17 +272,17 @@ $post_id = get_the_ID();
 </div>
 
 <div class="section sec4 bg-white reviewes">
-    <div class="container">
-        <div class="row justify-content-between">
+    <div class="content-container">
+        <div class="row justify-content-between reviewes__header">
             <div class="col-lg-6">
-                <div class="motion">
+                <div data-aos="fade-up">
                     <h2 class="text-primary title mb-0"><?php echo the_field('zagolovok_bloka_otzyvy', $post_id); ?>
                         <small class="count-sliders px-5"><span class="count_review">1</span>/<span
                                     class="slides_reviews">3</span></small></h2>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="controls row justify-content-end motion">
+                <div class="controls row justify-content-end" data-aos="fade-up">
                     <div class="col-auto">
                         <button class="carousel-control-prev btn" type="button" data-bs-target="#carouselReview"
                                 data-bs-slide="prev">
@@ -305,16 +307,16 @@ $post_id = get_the_ID();
             </div>
         </div>
     </div>
-    <div class="motion">
-        <div id="carouselReview" class="reviewes__slider swiper-container">
+    <div data-aos="fade-up">
+        <div id="carouselReview" class="reviewes__slider swiper-container content-container">
             <div class="reviewes__wrapper swiper-wrapper">
                 <?php echo do_shortcode('[testimonial_view id="1"]'); ?>
             </div>
         </div>
     </div>
 
-    <div class="col-12 text-center py-5 mt-5">
-        <div class="motion">
+    <div class="col-12 text-center py-5 mt-5 left-reviewes">
+        <div data-aos="fade-up">
             <a href="<?php echo the_field('ssylka_na_resurs_dlya_otzyva', $post_id); ?>"
                class="btn btn-outline-primary"><?php echo the_field('nadpis_na_knopke_ostavit_otzyv', $post_id); ?></a>
         </div>
@@ -325,14 +327,14 @@ $post_id = get_the_ID();
 
 <div class="section sec6 bg-white py-0 main-map" style="overflow: hidden;">
     <div class="container-fluid p-0">
-        <div class="row g-0 justify-content-between">
-            <div class="col-lg-6"
+        <div class="row g-0 justify-content-between main-map__container">
+            <div class="col-lg-6 desc-block"
                  style="background-image: url(<?php echo the_field('kartinka_na_fon_bloka_kontakty', $post_id); ?>); background-size: cover; background-repeat: no-repeat; background-position: 0% 0%;">
                 <div class="main-map__desc">
-                    <div class="motion">
+                    <div data-aos="fade-up">
                         <h2 class="title text-white" style="text-align: left"><?php echo the_field('zagolovok_dlya_kontakty', $post_id); ?></h2>
                     </div>
-                    <div class="motion text-white pb-5" style="text-align: left">
+                    <div class="text-white pb-5" style="text-align: left" data-aos="fade-up">
                         <p class="leader mb-1">
                             <strong>
                                 <?php echo the_field('adres', 'options'); ?>
@@ -375,7 +377,8 @@ $post_id = get_the_ID();
                             <?php echo the_field('vs_vremya_raboty', 'options'); ?>
                         </p>
                     </div>
-                    <div class="motion">
+                    <div class="map-buttons" data-aos="fade-up"
+                    >
                         <a href="https://www.google.com/maps" class="btn btn-outline-secondary"><?php echo the_field('prolozhit_marshrut', 'options'); ?></a>
                         <a href="http://g.tomorrowheads.com/#222" class="btn text-white"><?php echo the_field('dobavit_v_kontakty', 'options'); ?></a>
                     </div>
@@ -390,42 +393,24 @@ $post_id = get_the_ID();
     </div>
 </div>
 
-<div class="section sec7 bg-white">
+<div class="section sec7 bg-white btn-ekskurs">
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <div class="motion">
-                    <a href="http://g.tomorrowheads.com/#222" class="btn btn-primary"><?php echo the_field('ekskursiya', 'options'); ?></a>
+                <div data-aos="fade-up">
+                    <div class="btn btn-primary js-exursion">
+                        <span><?php echo the_field('ekskursiya', 'options'); ?></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="section sec8 bg-white py-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="motion">
-                    <h3 class="title text-lightgray"><?php echo the_field('zagolovok_dlya_kontakty', $post_id); ?></h3>
-                </div>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('levyj_blok_seo', $post_id); ?>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('pravyj_blok_seo', $post_id); ?>
-            </div>
-        </div>
-    </div>
-</div>
+<?php get_template_part( 'inc/seo-section' ); ?>
 
-<?php
-    get_template_part( 'inc/words-carusel' );
-?>
+<?php get_template_part( 'inc/words-carusel' ); ?>
 
-
-<div class="section py-5 bg-white"></div>
 
 <?php get_footer(); ?>
 

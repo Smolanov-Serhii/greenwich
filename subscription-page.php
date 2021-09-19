@@ -45,6 +45,13 @@ $post_id = get_the_ID();
         </div>
     </div>
 </div>
+<div class="create-subscription">
+    <div class="create-subscription__button btn btn-primary">
+            <span>
+                <?php echo the_field('nadpis_sozdaj_svoj_abonement', 'options')?>
+            </span>
+    </div>
+</div>
 <div class="subscription">
     <div class="subscription__container content-container">
         <?php
@@ -97,7 +104,7 @@ $post_id = get_the_ID();
                                     <div class="srok"><?php echo the_field('srok_abonementa') ?></div>
                                     <div class="price"><?php echo the_field('czena_abonementa') ?></div>
                                     <div class="subscription__item-by btn btn-primary">
-                                        Купить
+                                        <span><?php echo the_field('nadpis_kupit', 'options'); ?></span>
                                     </div>
                                 </div>
 
@@ -160,9 +167,8 @@ $post_id = get_the_ID();
             <div class="type-trening__img">
                 <img src="<?php echo esc_url($groupimg['url']); ?>" alt="<?php echo esc_attr($groupimg['alt']); ?>">
                 <div class="ramka">
-                    <svg width="100%" height="100%" viewBox="0 0 780 516" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0.5" y="0.5" width="calc(100% - 1px)" height="100%" stroke="#FFFFFF"/>
+                    <svg width="100%" height="100%" viewBox="0 0 100% 100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="100%" height="100%" stroke="#FFFFFF"></rect>
                     </svg>
                 </div>
             </div>
@@ -183,9 +189,8 @@ $post_id = get_the_ID();
             <div class="type-trening__img">
                 <img src="<?php echo esc_url($indimg['url']); ?>" alt="<?php echo esc_attr($indimg['alt']); ?>">
                 <div class="ramka">
-                    <svg width="100%" height="100%" viewBox="0 0 780 516" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0.5" y="0.5" width="779" height="515" stroke="#FFFFFF"/>
+                    <svg width="100%" height="100%" viewBox="0 0 100% 100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="100%" height="100%" stroke="#FFFFFF"></rect>
                     </svg>
                 </div>
             </div>
@@ -201,25 +206,7 @@ $post_id = get_the_ID();
         </div>
     </div>
 </div>
-<div class="about-seo section sec8 bg-white py-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="motion">
-                    <h3 class="title text-lightgray"><?php echo the_field('zagolovok_bloka_seo', $post_id); ?></h3>
-                </div>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('levyj_blok_seo', $post_id); ?>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('pravyj_blok_seo', $post_id); ?>
-            </div>
-        </div>
-    </div>
-</div>
-<?php
-get_template_part('inc/words-carusel');
-?>
+<?php get_template_part( 'inc/seo-section' ); ?>
+<?php get_template_part('inc/words-carusel'); ?>
 
 <?php get_footer(); ?>

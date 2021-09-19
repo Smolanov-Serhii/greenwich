@@ -1,4 +1,4 @@
-<div class="section sec9 bg-white">
+<div class="section sec9 bg-white words-carusel">
     <div class="container-fluid position-absolute ">
         <div class="row bg-white align-items-center">
             <div class="col-auto">
