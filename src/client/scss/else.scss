@@ -43,14 +43,20 @@ hr:not([size]) {
 }
 
 .h1, h1 {
-  font-size: calc(1.40625rem + 1.875vw)
-}
-
-@media (min-width: 1200px) {
-  .h1, h1 {
-    font-size: 2.8125rem
+  font-size: calc(1.40625rem + 1.875vw);
+  @media (max-width: 1200px) {
+    .h1, h1 {
+      font-size: 70px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .h1, h1 {
+      font-size: 2.8125rem
+    }
   }
 }
+
+
 
 .h2, h2 {
   font-size: calc(1.525rem + 3.3vw)
@@ -98,7 +104,10 @@ hr:not([size]) {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem
+  margin-bottom: 1rem;
+  @media (max-width: 500px) {
+    font-size: 16px;
+  }
 }
 
 abbr[data-bs-original-title], abbr[title] {
@@ -12723,19 +12732,28 @@ ul.sp li:hover:before {
     -webkit-transform: translateY(-120px);
     transform: translateY(-120px);
     letter-spacing: 25px;
-    font-size: 132px
+    font-size: 132px;
+    @media (max-width: 1200px) {
+      font-size: 70px;
+    }
   }
   30% {
     -webkit-transform: translateY(-120px);
     transform: translateY(-120px);
     letter-spacing: 10px;
-    font-size: 124px
+    font-size: 124px;
+    @media (max-width: 1200px) {
+      font-size: 70px;
+    }
   }
   100% {
     -webkit-transform: translateY(-90px);
     transform: translateY(-90px);
     letter-spacing: 0;
-    font-size: 112px
+    font-size: 112px;
+    @media (max-width: 1200px) {
+      font-size: 70px;
+    }
   }
 }
 
@@ -12744,19 +12762,28 @@ ul.sp li:hover:before {
     -webkit-transform: translateY(-120px);
     transform: translateY(-120px);
     letter-spacing: 25px;
-    font-size: 132px
+    font-size: 132px;
+    @media (max-width: 1200px) {
+      font-size: 70px;
+    }
   }
   30% {
     -webkit-transform: translateY(-120px);
     transform: translateY(-120px);
     letter-spacing: 10px;
-    font-size: 124px
+    font-size: 124px;
+    @media (max-width: 1200px) {
+      font-size: 70px;
+    }
   }
   100% {
     -webkit-transform: translateY(-90px);
     transform: translateY(-90px);
     letter-spacing: 0;
-    font-size: 112px
+    font-size: 112px;
+    @media (max-width: 1200px) {
+      font-size: 70px;
+    }
   }
 }
 

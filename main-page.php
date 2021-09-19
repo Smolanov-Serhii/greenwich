@@ -18,12 +18,24 @@ $post_id = get_the_ID();
     <div class="container main-title-paralax__content">
         <div class="row justify-content-center align-items-center">
             <div class="col text-center">
-                <div class="logo">
-                    <?php echo the_field('zagolovok_v_bloke_h1', $post_id) ?>
-                </div>
+                <div class="main-title-paralax__header">
+                    <div class="logo">
+                        <?php echo the_field('zagolovok_v_bloke_h1', $post_id) ?>
+                    </div>
 
-                <h1 class="text-white mb-0"><?php echo the_field('zagolovok_v_bloke_h1', $post_id) ?><span
-                            class="d-block"><?php echo the_field('podzagolovok_v_banner', $post_id) ?></span></h1>
+                    <h1 class="text-white mb-0"><?php echo the_field('zagolovok_v_bloke_h1', $post_id) ?>
+                        <?php
+                        if(get_field('podzagolovok_v_banner', $post_id)){
+                            ?>
+                            <span
+                                    class="d-block"><?php echo the_field('podzagolovok_v_banner', $post_id) ?>
+                                </span>
+                            <?php
+                        }
+                        ?>
+
+                    </h1>
+                </div>
                 <div class="btn-main">
                     <div class="js-<?php echo the_field('rol_knopki', $post_id); ?> btn btn-secondary btn-lg text-primary">
                         <span><?php echo the_field('nadpis_na_knopke_banera', $post_id) ?></span>
@@ -34,19 +46,18 @@ $post_id = get_the_ID();
     </div>
 </div>
 
-<div class="section sec1 bg-white">
-    <div class="container">
-
-        <div class="row justify-content-between align-items-center">
-            <div class="col-lg-6">
+<div class="section about-slider">
+    <div class="about-slider__container content-container">
+        <div class="about-slider__list">
+            <div class="about-slider__item about-img-slider">
                 <div class="motion">
-                    <div class="ramka">
-                        <svg class="img-fluid" width="609" height="916" viewBox="0 0 609 916" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="1" width="608" height="915"></rect>
-                        </svg>
-                    </div>
                     <div class="about-photo-slider">
+                        <div class="ramka">
+                            <svg class="img-fluid" width="609" height="916" viewBox="0 0 609 916" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1" width="608" height="915"></rect>
+                            </svg>
+                        </div>
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
                                 <?php if (have_rows('levyj_slader_o_nas', $post_id)): ?>
@@ -62,36 +73,36 @@ $post_id = get_the_ID();
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <div class="controls row mt-1">
-                            <div class="col-4">
-                                <button class="carousel-control-prev btn" type="button"
-                                        data-bs-target="#carouselMainSlider" data-bs-slide="prev">
-                                    <svg width="19" height="11" viewBox="0 0 19 11" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg" class="img-fluid">
-                                        <path d="M5.21122 11L6.05754 10.1067L2.29143 6.13165L19.0002 6.13165L19.0002 4.86831L2.29143 4.86831L6.05753 0.893307L5.21122 1.20547e-06L0.00024366 5.50002L5.21122 11Z"
-                                              fill="#1D8FBD"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="col-4 text-center">
-                                <p class="text-primary lead mb-0"></p>
-                            </div>
-                            <div class="col-4 text-right">
-                                <button class="carousel-control-next  btn" type="button"
-                                        data-bs-target="#carouselMainSlider" data-bs-slide="next">
-                                    <svg width="19" height="11" viewBox="0 0 19 11" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M13.789 0L12.9427 0.893305L16.7088 4.86835H0V6.13169H16.7088L12.9427 10.1067L13.789 11L19 5.49998L13.789 0Z"
-                                              fill="#1D8FBD"></path>
-                                    </svg>
-                                </button>
-                            </div>
+                    </div>
+                    <div class="controls row mt-1">
+                        <div class="col-4">
+                            <button class="carousel-control-prev btn" type="button"
+                                    data-bs-target="#carouselMainSlider" data-bs-slide="prev">
+                                <svg width="19" height="11" viewBox="0 0 19 11" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg" class="img-fluid">
+                                    <path d="M5.21122 11L6.05754 10.1067L2.29143 6.13165L19.0002 6.13165L19.0002 4.86831L2.29143 4.86831L6.05753 0.893307L5.21122 1.20547e-06L0.00024366 5.50002L5.21122 11Z"
+                                          fill="#1D8FBD"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="col-4 text-center">
+                            <p class="text-primary lead mb-0"></p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <button class="carousel-control-next  btn" type="button"
+                                    data-bs-target="#carouselMainSlider" data-bs-slide="next">
+                                <svg width="19" height="11" viewBox="0 0 19 11" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.789 0L12.9427 0.893305L16.7088 4.86835H0V6.13169H16.7088L12.9427 10.1067L13.789 11L19 5.49998L13.789 0Z"
+                                          fill="#1D8FBD"></path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-5">
+            <div class="about-slider__item">
                 <div class="motion">
                     <h2 class="title text-primary"><?php echo the_field('zagolovok_bloka_o_nas', $post_id); ?></h2>
                 </div>
@@ -99,13 +110,13 @@ $post_id = get_the_ID();
                     <p class="mb-5"><?php echo the_field('opisanie_pod_blokom_o_nas', $post_id); ?></p>
                 </div>
                 <div class="video-slider mt-5 motion m-down">
-                    <div class="ramka">
-                        <svg class="img-fluid" width="910" height="510" viewBox="0 0 910 510" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="1" width="909" height="509"></rect>
-                        </svg>
-                    </div>
                     <div id="carouselVideoSlider">
+<!--                        <div class="ramka">-->
+<!--                            <svg class="img-fluid" width="910" height="510" viewBox="0 0 910 510" fill="none"-->
+<!--                                 xmlns="http://www.w3.org/2000/svg">-->
+<!--                                <rect x="1" y="1" width="909" height="509"></rect>-->
+<!--                            </svg>-->
+<!--                        </div>-->
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
                                 <?php if (have_rows('slajder_s_video', $post_id)): ?>
@@ -126,30 +137,30 @@ $post_id = get_the_ID();
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <div class="controls row">
-                            <div class="col">
-                                <button class="carousel-control-prev btn" type="button"
-                                        data-bs-target="#carouselVideoSlider" data-bs-slide="prev">
-                                    <svg width="19" height="11" viewBox="0 0 19 11" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg" class="img-fluid">
-                                        <path d="M5.21122 11L6.05754 10.1067L2.29143 6.13165L19.0002 6.13165L19.0002 4.86831L2.29143 4.86831L6.05753 0.893307L5.21122 1.20547e-06L0.00024366 5.50002L5.21122 11Z"
-                                              fill="#1D8FBD"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="col-4 text-center">
-                                <p class="text-primary lead mb-0">1/4</p>
-                            </div>
-                            <div class="col text-right">
-                                <button class="carousel-control-next btn" type="button"
-                                        data-bs-target="#carouselVideoSlider" data-bs-slide="next">
-                                    <svg width="19" height="11" viewBox="0 0 19 11" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M13.789 0L12.9427 0.893305L16.7088 4.86835H0V6.13169H16.7088L12.9427 10.1067L13.789 11L19 5.49998L13.789 0Z"
-                                              fill="#1D8FBD"></path>
-                                    </svg>
-                                </button>
-                            </div>
+                    </div>
+                    <div class="controls row">
+                        <div class="col">
+                            <button class="carousel-control-prev btn" type="button"
+                                    data-bs-target="#carouselVideoSlider" data-bs-slide="prev">
+                                <svg width="19" height="11" viewBox="0 0 19 11" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg" class="img-fluid">
+                                    <path d="M5.21122 11L6.05754 10.1067L2.29143 6.13165L19.0002 6.13165L19.0002 4.86831L2.29143 4.86831L6.05753 0.893307L5.21122 1.20547e-06L0.00024366 5.50002L5.21122 11Z"
+                                          fill="#1D8FBD"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="col-4 text-center">
+                            <p class="text-primary lead mb-0">1/4</p>
+                        </div>
+                        <div class="col text-right">
+                            <button class="carousel-control-next btn" type="button"
+                                    data-bs-target="#carouselVideoSlider" data-bs-slide="next">
+                                <svg width="19" height="11" viewBox="0 0 19 11" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.789 0L12.9427 0.893305L16.7088 4.86835H0V6.13169H16.7088L12.9427 10.1067L13.789 11L19 5.49998L13.789 0Z"
+                                          fill="#1D8FBD"></path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -160,7 +171,7 @@ $post_id = get_the_ID();
 </div>
 
 <div class="section sec2 bg-white">
-    <div class="container tabs-content">
+    <div class="content-container tabs-content">
         <div class="row justify-content-between">
             <div class="col-lg-6">
                 <div class="motion">
@@ -210,8 +221,8 @@ $post_id = get_the_ID();
 
 <div class="section sec3 pb-0 bg-white apps-section"
      style="overflow: hidden; background-image: url(<?php echo the_field('fon_dlya_bloka_prilozheniya', $post_id); ?>); background-size: cover; background-repeat: no-repeat; background-position: 0% 100%; padding-top: 0">
-    <div class="container mt-5">
-        <div class="row justify-content-between pt-5">
+    <div class="content-container mt-5">
+        <div class="row justify-content-between pt-5 apps-section__list">
             <div class="col-lg-7">
                 <div class="motion text-right pt-5 phone-img-container">
                     <?php
@@ -225,22 +236,22 @@ $post_id = get_the_ID();
                 </div>
             </div>
             <div class="col-lg-5 text-white text-part">
-                <div class="motion">
+                <div class="motion title">
                     <h2 class="pb-5 title"><?php echo the_field('zagolovok_bloka_prilozheniya', $post_id); ?></h2>
                 </div>
 
-                <div class="motion">
+                <div class="motion content">
                     <p><?php echo the_field('opisanie_bloka_prilozheniya', $post_id); ?></p>
                 </div>
 
-                <div class="motion">
+                <div class="motion button-all">
                     <p class="pt-4"><a href="http://g.tomorrowheads.com/#"
                                        class="btn btn-primary"><?php echo the_field('nadpis_na_knopke_zagruzit_prilozhenie', $post_id); ?></a>
                     </p>
                 </div>
 
                 <div class="motion">
-                    <div class="btn-group mt-5 d-block text-center d-lg-flex">
+                    <div class="btn-group mt-5 d-block d-lg-flex">
                         <?php
                         $appimage = get_field('ikonka_appstore', 'options');
                         $googleimage = get_field('ikonka_googleplay', 'options');

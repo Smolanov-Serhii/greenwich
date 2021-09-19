@@ -7,10 +7,10 @@ $post_id = get_the_ID();
     <div class="treners__container content-container">
         <div class="treners__header">
             <div class="move-under">
-                <span class="untitle-stroke"><?php echo the_field("imya_speczialista", $post_id);?> <?php echo the_field("familiya_speczialista", $post_id); ?></span>
+                <span class="untitle-stroke"><?php echo the_field("imya_speczialista", $post_id); ?><?php echo the_field("familiya_speczialista", $post_id); ?></span>
             </div>
             <div class="move-header">
-                <h1><?php echo the_field("imya_speczialista", $post_id);?> <?php echo the_field("familiya_speczialista", $post_id); ?></h1>
+                <h1><?php echo the_field("imya_speczialista", $post_id); ?><?php echo the_field("familiya_speczialista", $post_id); ?></h1>
             </div>
         </div>
         <div class="treners__content">
@@ -71,7 +71,7 @@ $post_id = get_the_ID();
                 <div class="treners__desc-tags">
                     <?php
                     $postpers_id = get_the_ID();
-                    $services = get_the_terms( $postpers_id, 'trenirovki' );
+                    $services = get_the_terms($postpers_id, 'trenirovki');
 
                     if (is_array($services)) {
                         foreach ($services as $service) {
@@ -80,9 +80,21 @@ $post_id = get_the_ID();
                     }
                     ?>
                 </div>
-                <div class="treners__desc-socials">
-                    <?php
-                    if (have_rows('ssylki_na_soczseti_speczialista', $post_id)): ?>
+
+                <?php
+                if (have_rows('ssylki_na_soczseti_speczialista', $post_id)):
+                    $check = get_field( 'ssylki_na_soczseti_speczialista', $post_id);
+                    $firstrow = $check[0];
+                    $first_row_img = $firstrow[ 'ikonka_soczseti' ];
+                    ?>
+
+                        <?php
+                        if ($first_row_img){
+                            ?>
+                            <div class="treners__desc-socials">
+                            <?php
+                        };
+                        ?>
                         <?php while (have_rows('ssylki_na_soczseti_speczialista', $post_id)): the_row();
                             $image = get_sub_field('ikonka_soczseti');
                             $lnk = get_sub_field('ssylka_na_soczset');
@@ -92,12 +104,28 @@ $post_id = get_the_ID();
                             </a>
                         <?php endwhile;
                         ?>
-                    <?php endif; ?>
-                </div>
-                <div class="treners__desc-sert">
-                    <h2 class="treners__desc-title"><?php echo the_field('nadpis_nagrad', $post_id); ?></h2>
-                    <?php
-                    if (have_rows('fotografii_nagrad', $post_id)): ?>
+                                <?php
+                                if ($first_row_img){
+                                ?>
+                                    </div>
+                                    <?php
+                                    };
+                                    ?>
+
+                <?php endif; ?>
+                <?php if (have_rows('fotografii_nagrad', $post_id)):
+                    $check = get_field( 'fotografii_nagrad', $post_id);
+                    $firstrow = $check[0];
+                    $first_row_img = $firstrow[ 'izobrazhenie_nagrady' ];
+                    ?>
+                    <div class="treners__desc-sert">
+                        <?php
+                        if ($first_row_img){
+                            ?>
+                            <h2 class="treners__desc-title"><?php echo the_field('nadpis_nagrad', $post_id); ?></h2>
+                            <?php
+                        };
+                        ?>
                         <?php while (have_rows('fotografii_nagrad', $post_id)): the_row();
                             $image = get_sub_field('izobrazhenie_nagrady');
                             $alt = get_sub_field('opisanie_nagrady'); ?>
@@ -106,68 +134,68 @@ $post_id = get_the_ID();
                             </div>
                         <?php endwhile;
                         ?>
-                    <?php endif; ?>
-                </div>
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="send-wanted js-zapisatsa btn btn-primary">
                 <?php echo the_field('zapisatsya_na_trenirovku', 'options') ?>
             </div>
-        <div class="treners__similar">
+            <div class="treners__similar">
 
+            </div>
         </div>
     </div>
-</div>
-<div class="">
-    <div class="container">
-        <div class="row">
-            <div class="">
+    <div class="">
+        <div class="container">
+            <div class="row">
                 <div class="">
-                    <?php echo the_field('zagolovok_shapka_tekst', $post_id) ?>
+                    <div class="">
+                        <?php echo the_field('zagolovok_shapka_tekst', $post_id) ?>
+                    </div>
+                    <h1 class=""><?php echo the_field('zagolovok_shapka_tekst', $post_id) ?></h1>
                 </div>
-                <h1 class=""><?php echo the_field('zagolovok_shapka_tekst', $post_id) ?></h1>
             </div>
         </div>
     </div>
-</div>
 
-<div class="about-seo section sec8 bg-white py-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="motion">
-                    <h3 class="title text-lightgray"><?php echo the_field('zagolovok_bloka_seo', $post_id); ?></h3>
+    <div class="about-seo section sec8 bg-white py-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="motion">
+                        <h3 class="title text-lightgray"><?php echo the_field('zagolovok_bloka_seo', $post_id); ?></h3>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('levyj_blok_seo', $post_id); ?>
-            </div>
-            <div class="col-lg-6 text-lightgray">
-                <?php echo the_field('pravyj_blok_seo', $post_id); ?>
+                <div class="col-lg-6 text-lightgray">
+                    <?php echo the_field('levyj_blok_seo', $post_id); ?>
+                </div>
+                <div class="col-lg-6 text-lightgray">
+                    <?php echo the_field('pravyj_blok_seo', $post_id); ?>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<?php
-get_template_part('inc/words-carusel');
-?>
+    <?php
+    get_template_part('inc/words-carusel');
+    ?>
 
-<?php get_footer(); ?>
-<script>
-    if ($(".treners__content").length) {
-        var TrenerSlider = new Swiper(".treners__photo-cotainer", {
-            loop: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".treners__photo-cotainer .text-primary",
-                type: "fraction",
-            },
-            navigation: {
-                nextEl: ".treners__photo-cotainer .carousel-control-next",
-                prevEl: ".treners__photo-cotainer .carousel-control-prev",
-            },
-        });
-    }
-</script>
+    <?php get_footer(); ?>
+    <script>
+        if ($(".treners__content").length) {
+            var TrenerSlider = new Swiper(".treners__photo-cotainer", {
+                loop: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".treners__photo-cotainer .text-primary",
+                    type: "fraction",
+                },
+                navigation: {
+                    nextEl: ".treners__photo-cotainer .carousel-control-next",
+                    prevEl: ".treners__photo-cotainer .carousel-control-prev",
+                },
+            });
+        }
+    </script>
