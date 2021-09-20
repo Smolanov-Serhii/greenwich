@@ -102,7 +102,39 @@ $post_id = get_the_ID();
                                     </div>
                                     <div class="dlit"><?php echo the_field('kol-vo_zanyatij') ?></div>
                                     <div class="srok"><?php echo the_field('srok_abonementa') ?></div>
-                                    <div class="price"><?php echo the_field('czena_abonementa') ?></div>
+                                    <div class="price">
+                                        <?php
+                                        $today = date("d.m.Y");
+                                        if(get_field('data_okonchaniya_skidki')){
+                                            ?>
+                                            <div class="expired">
+                                                <?php
+                                                echo the_field('dejstvuet_do', 'options')
+                                                ?>
+                                                <span><?php echo the_field('data_okonchaniya_skidki') ?></span>
+                                            </div>
+                                            <?php
+                                        }
+                                        ?>
+                                        <?php
+                                            if(get_field('czena_do_skidki')){
+                                                ?>
+                                                    <div class="sale">
+                                                        <?php
+                                                            echo the_field('czena_do_skidki');
+                                                        ?>
+                                                        <span><?php echo the_field('valyuta', 'options') ?></span>
+                                                    </div>
+                                                <?php
+                                            }
+                                        ?>
+                                        <div class="normal">
+                                            <?php echo the_field('czena_abonementa') ?>
+                                            <span>
+                                            <?php echo the_field('valyuta', 'options') ?>
+                                        </span>
+                                        </div>
+                                    </div>
                                     <div class="subscription__item-by btn btn-primary">
                                         <span><?php echo the_field('nadpis_kupit', 'options'); ?></span>
                                     </div>

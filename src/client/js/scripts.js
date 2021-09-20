@@ -88,6 +88,22 @@ $( document ).ready(function() {
     };
 
     if ($(".js-search-popup").length){
+        $(".subscription__item-by").click( function(e) {
+            var CurrentAbonement = $(this).closest('.subscription__item').find('.subscription__item-title').html();
+            var CurrentRubrika = $(this).closest('.subscription__group').find('.subscription__title').html();
+            console.log(CurrentAbonement);
+            $('input.zakaz').val(CurrentAbonement);
+            $('input.rubrika').val(CurrentRubrika);
+            $('body').addClass('locked');
+            $('.popup-fade').fadeIn(300);
+            $('.popup-abonement').fadeIn(300);
+        });
+        $(".close-abonement").click( function(e) {
+            $('body').removeClass('locked');
+            $('.popup-fade').fadeOut(300);
+            $('.popup-abonement').fadeOut(300);
+        });
+
         $(".js-search-popup").click( function(e) {
             $('body').addClass('locked');
             $('.popup-fade').fadeIn(300);
@@ -125,6 +141,7 @@ $( document ).ready(function() {
             $('body').removeClass('locked');
             $('.popup-fade > div').fadeOut(300);
             $('.popup-fade').fadeOut(300);
+            $('.wpcf7-response-output').empty();
             setTimeout(function (){
                 $('#success-send').removeClass('active-popup');
             }, 2000);
@@ -227,6 +244,40 @@ $( document ).ready(function() {
         });
     }
 
+    if ($(".similar-trening__list").length){
+        var ASimilarTreining = new Swiper(".similar-trening__list", {
+            slidesPerView: 4,
+            spaceBetween: 6,
+            autoHeight: true, //enable auto height
+            // autoplay: {
+            //     delay: 2000,
+            //     disableOnInteraction: false,
+            // },
+            navigation: {
+                nextEl: ".similar-trening .carousel-control-next",
+                prevEl: ".similar-trening .carousel-control-prev",
+            },
+            breakpoints: {
+                300: {
+                    slidesPerView: 1,
+                    spaceBetween: 6,
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 6,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 6,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 6,
+                },
+            },
+        });
+    }
+
 
     var ticking
 
@@ -313,5 +364,8 @@ $( document ).ready(function() {
     };
     $(document).ready(initializeContactsMap);
 });
+
+// var mySVG = document.getElementById('svg');
+// mySVG.setAttribute("viewBox", "0 0 100 100");
 
 

@@ -54,6 +54,7 @@ if ( ! function_exists( 'greenwich_setup' ) ) :
 				'Content-menu' => esc_html__( 'Меню контента', 'greenwich' ),
 				'Footer-menu' => esc_html__( 'Меню футер', 'greenwich' ),
 				'Menu-burger' => esc_html__( 'Меню бургер', 'greenwich' ),
+				'Trenings-burger' => esc_html__( 'Тренировки бургер', 'greenwich' ),
 			)
 		);
 
@@ -263,6 +264,54 @@ function mayak_taxonomy_register3(){
         '_builtin'              => false,
     );
     register_taxonomy('trenirovki', array('treners'), $args);
+}
+
+add_action( 'init', 'mayak_taxonomy_register_5' );
+function mayak_taxonomy_register_5(){
+    $labels = array(
+        'name'                     => 'Виды тренировок', // основное название во множественном числе
+        'singular_name'            => 'Вид тренировки', // название единичного элемента таксономии
+        'menu_name'                => 'Виды тренировок', // Название в меню. По умолчанию: name.
+        'all_items'                => 'Все виды тренировок',
+        'edit_item'                => 'Изменить вид',
+        'view_item'                => 'Просмотр вида', // текст кнопки просмотра записи на сайте (если поддерживается типом)
+        'update_item'              => 'Обновить вид',
+        'add_new_item'             => 'Добавить вид',
+        'new_item_name'            => 'Название новой',
+        'parent_item'              => 'Родительский вид', // только для таксономий с иерархией
+        'parent_item_colon'        => 'Родительский вид:',
+        'search_items'             => 'Искать вид',
+        'popular_items'            => 'Популярные виды', // для таксономий без иерархий
+        'separate_items_with_commas' => 'Разделяйте виды запятыми',
+        'add_or_remove_items'      => 'Добавить или удалить вид',
+        'choose_from_most_used'    => 'Выбрать из часто используемых тренировок',
+        'not_found'                => 'вида не найден',
+        'back_to_items'            => '← Назад к полам',
+    );
+    $args = array(
+        'labels'                => $labels,
+        'label'                 => 'Виды тренировок',
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_nav_menus'     => true,
+        'show_in_rest'          => false,
+        'rest_base'             => 'url_rest',
+        'rest_controller_class' => 'WP_REST_Terms_Controller',
+        'show_tagcloud'         => true,
+        'show_in_quick_edit'    => true,
+        'meta_box_cb'           => null,
+        'show_admin_column'     => true,
+        'description'           => '',
+        'hierarchical'          => true,
+        'update_count_callback' => '',
+        'query_var'             => $taxonomy,
+        'rewrite'               => true,
+        'sort'                  => true,
+        '_builtin'              => false,
+    );
+    register_taxonomy('trenirovkivid', array('trenings'), $args);
 }
 
 add_action( 'init', 'mayak_taxonomy_register1' );
@@ -569,7 +618,7 @@ function register_post_types()
         //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
         'hierarchical' => false,
         'supports' => ['title','editor'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-        'taxonomies'		 => array('trenirovkitype'),
+        'taxonomies'		 => array('trenirovkitype', 'trenirovkivid'),
         'has_archive' => true,
         'rewrite' => true,
         'query_var' => true,

@@ -73,7 +73,7 @@ $post_id = get_the_ID();
     </div>
 </div>
 
-<section class="about__content content-container">
+<section class="about__content content-container single-trener">
     <div class="about__cases">
         <?
                 $image = get_field('kartinka_dlya_bloka', $post_id);
@@ -81,9 +81,13 @@ $post_id = get_the_ID();
                 $fullcontent = get_field('polnoe_opisanie', $post_id);
                 $title = get_field('zagolovok_bloka', $post_id);
                 $alt = get_field('zagolovok_bloka', $post_id);
+                $absolute = get_field('nadpis_dlya_zadnego_plata', $post_id);
                 ?>
                 <div class="about__item">
                     <div class="about__text-part">
+                        <div class="about__text-part-absolute">
+                            <?php echo $absolute; ?>
+                        </div>
                         <h3 class="about__item-title text-primary">
                             <?php echo $title; ?>
                         </h3>
@@ -91,7 +95,17 @@ $post_id = get_the_ID();
                             <?php echo $exerpt; ?>
                         </div>
                         <div class="about__item-full" style="display: none;">
-                            <?php echo $fullcontent; ?>
+                            <div class="about__item-full-container">
+                                <div class="close-item-about">
+                                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="15.3867" y="4.89569" width="0.989092" height="14.8364" transform="rotate(45 15.3867 4.89569)" fill="#191919"></rect>
+                                        <rect x="16.0859" y="15.3867" width="0.989092" height="14.8364" transform="rotate(135 16.0859 15.3867)" fill="#191919"></rect>
+                                    </svg>
+                                </div>
+                                <div class="about__item-full-wrapper">
+                                <?php echo $fullcontent; ?>
+                                </div>
+                            </div>
                         </div>
                         <div class="about__show-item js-show-case-item text-primary">
                             <?php echo the_field('podrobnee', 'options'); ?>
@@ -111,11 +125,125 @@ $post_id = get_the_ID();
                 </div>
         <?php ?>
     </div>
-    <div class="about__buttons">
-        <div class="btn btn-outline-primary js-exursion"><?php echo the_field('ekskursiya', 'options'); ?></div>
-        <a class="btn btn-primary" href="<?php echo the_field('raspisanie', 'options'); ?>"><?php echo the_field('raspisanie', 'options'); ?></a>
+</section>
+<section class="our-treners">
+    <div class="content-container">
+        <h2 class="title text-primary"><?php echo the_field('zagolovok_dlya_svyaannyh_trenerov'); ?></h2>
+        <div class="specialists__list">
+            <?php
+            $post_objects = get_field('trenera');
+            if( $post_objects ): ?>
+                <?php foreach( $post_objects as $post): ?>
+                    <?php setup_postdata($post); ?>
+                    <?php
+                    $postpers_id = get_the_ID();
+                    $image = get_field('fotografiya_dlya_straniczy_vseh_trenerov', $postpers_id);
+                    $name = get_field('imya_speczialista', $postpers_id);
+                    $services = get_the_terms( $postpers_id, 'trenirovki' );
+                    $dopimg = get_field( 'fotografiya_speczialista' );
+                    $secondimg = $dopimg[0]["fotografiya_speczialista"];
+                    ?>
+
+                    <a href="<?php the_permalink();?>" class="specialists__item">
+                        <div class="specialists__item-image">
+                            <img src="<?php echo $image;?>">
+                            <div class="img hover-img">
+                                <img src="<?php echo $secondimg?>">
+                            </div>
+
+
+                        </div>
+                        <h3 class="specialists__item-name">
+                            <?php echo $name;?>
+                        </h3>
+                        <div class="specialists__item-service">
+                            <?php
+                            if( is_array( $services ) ){
+                                foreach( $services as $service ){
+                                    echo '<span>' . $service->name . '</span>';
+                                }
+                            }
+                            ?>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+                <?php wp_reset_postdata(); // ВАЖНО - сбросьте значение $post object чтобы избежать ошибок в дальнейшем коде ?>
+            <?php endif;
+
+            ?>
+        </div>
     </div>
 </section>
+<section class="similar-trening">
+    <div class="content-container">
+        <div class="similar-trening__header">
+            <h2 class="title text-primary text-white"><?php echo the_field('zagolovok_dlya_bloka_similar-treining'); ?></h2>
+            <div class="controls row justify-content-end" data-aos="fade-up">
+                <div class="col-auto">
+                    <button class="carousel-control-prev btn" type="button">
+                        <svg class="img-fluid" width="47" height="27" viewBox="0 0 47 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.8903 27L14.9838 24.8073L5.66768 15.0504L47 15.0504L47 11.9495L5.66768 11.9495L14.9838 2.19266L12.8903 -8.32733e-07L2.63449e-06 13.5001L12.8903 27Z" fill="#FFFFFF"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="col-auto">
+                    <button class="carousel-control-next btn" type="button">
+                        <svg class="img-fluid" width="46" height="27" viewBox="0 0 46 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M33.384 0L31.335 2.19266L40.4529 11.9496H0V15.0505H40.4529L31.335 24.8073L33.384 27L46 13.4999L33.384 0Z" fill="#FFFFFF"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="similar-trening__list swiper-container">
+            <div class="similar-trening__wrapper swiper-wrapper">
+                <?php
+                $post_objects = get_field('pohozhie_trenirovki_list');
+                if( $post_objects ): ?>
+                    <?php foreach( $post_objects as $post): ?>
+                        <?php setup_postdata($post); ?>
+                        <?php
+                        $postpers_id = get_the_ID();
+                        $image = get_field('kartinka_dlya_straniczi_vseh_trenirovok', $postpers_id);
+                        $services = get_the_terms( $postpers_id, 'trenirovkitype' );
+                        ?>
+
+                        <a href="<?php the_permalink();?>" class="similar-trening__item swiper-slide">
+                            <div class="similar-trening__item-image">
+                                <img src="<?php echo $image;?>">
+                            </div>
+                            <span class="similar-trening__item-content">
+                                <h3 class="similar-trening__item-name">
+                                <?php the_title();?>
+                            </h3>
+                            <div class="similar-trening__item-service">
+                                <?php
+                                if( is_array( $services ) ){
+                                    foreach( $services as $service ){
+                                        echo '<span>' . $service->name . '</span>';
+                                    }
+                                }
+                                ?>
+                            </div>
+                            </span>
+                        </a>
+                    <?php endforeach; ?>
+                    <?php wp_reset_postdata(); // ВАЖНО - сбросьте значение $post object чтобы избежать ошибок в дальнейшем коде ?>
+                <?php endif;
+                ?>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="about__buttons content-container">
+    <div class="btn btn-outline-primary js-exursion">
+        <span><?php echo the_field('ekskursiya', 'options'); ?></span>
+    </div>
+    <a class="btn btn-primary" href="<?php echo the_field('raspisanie', 'options'); ?>">
+        <span><?php echo the_field('raspisanie', 'options'); ?></span>
+    </a>
+</div>
 
 <?php get_template_part( 'inc/seo-section' ); ?>
 <?php get_template_part('inc/words-carusel'); ?>

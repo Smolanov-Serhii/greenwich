@@ -244,13 +244,13 @@ $post_id = get_the_ID();
                     <p><?php echo the_field('opisanie_bloka_prilozheniya', $post_id); ?></p>
                 </div>
 
-                <div class="button-all" data-aos="fade-up">
-                    <p class="pt-4">
-                        <a href="http://g.tomorrowheads.com/#" class="btn btn-primary">
-                            <span><?php echo the_field('nadpis_na_knopke_zagruzit_prilozhenie', $post_id); ?></span>
-                        </a>
-                    </p>
-                </div>
+<!--                <div class="button-all" data-aos="fade-up">-->
+<!--                    <p class="pt-4">-->
+<!--                        <a href="http://g.tomorrowheads.com/#" class="btn btn-primary">-->
+<!--                            <span>--><?php //echo the_field('nadpis_na_knopke_zagruzit_prilozhenie', $post_id); ?><!--</span>-->
+<!--                        </a>-->
+<!--                    </p>-->
+<!--                </div>-->
 
                 <div data-aos="fade-up">
                     <div class="btn-group mt-5 d-block d-lg-flex">
@@ -318,7 +318,9 @@ $post_id = get_the_ID();
     <div class="col-12 text-center py-5 mt-5 left-reviewes">
         <div data-aos="fade-up">
             <a href="<?php echo the_field('ssylka_na_resurs_dlya_otzyva', $post_id); ?>"
-               class="btn btn-outline-primary"><?php echo the_field('nadpis_na_knopke_ostavit_otzyv', $post_id); ?></a>
+               class="btn btn-outline-primary">
+                <span><?php echo the_field('nadpis_na_knopke_ostavit_otzyv', $post_id); ?></span>
+            </a>
         </div>
     </div>
 

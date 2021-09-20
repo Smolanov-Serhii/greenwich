@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: О клубе (страница)
+ * Template Name: Кардио
  *
  */
 get_header();
@@ -28,7 +28,7 @@ $post_id = get_the_ID();
                         if(get_field('podzagolovok_v_banner', $post_id)){
                             ?>
                             <span
-                                    class="d-block"><?php echo the_field('podzagolovok_v_banner', $post_id) ?>
+                                class="d-block"><?php echo the_field('podzagolovok_v_banner', $post_id) ?>
                                 </span>
                             <?php
                         }
@@ -57,6 +57,7 @@ $post_id = get_the_ID();
                 $fullcontent = get_sub_field('polnoe_opisanie_kejsa');
                 $title = get_sub_field('zagolovok_dlya_odnogo_kejsa');
                 $alt = get_sub_field('seo_opisanie_dlya_kartinki');
+                $pdf = get_sub_field('pdf_dokument');
                 ?>
                 <div class="about__item">
                     <div class="about__text-part">
@@ -79,12 +80,18 @@ $post_id = get_the_ID();
                                 </div>
                             </div>
                         </div>
-                        <div class="about__show-item js-show-case-item text-primary"  data-aos="fade-up">
-                            <?php echo the_field('podrobnee', 'options'); ?>
-                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 0.838313L9.1879 -3.54978e-08L5.57423 3.73048L5.00002 4.33171L4.42574 3.73048L0.812097 -4.01616e-07L-3.66438e-08 0.838313L5.00002 6L10 0.838313Z" fill="#1D8FBD"/>
-                            </svg>
+                        <div class="about__wrapper" data-aos="fade-up">
+                            <div class="about__show-item js-show-case-item text-primary">
+                                <?php echo the_field('podrobnee', 'options'); ?>
+                                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 0.838313L9.1879 -3.54978e-08L5.57423 3.73048L5.00002 4.33171L4.42574 3.73048L0.812097 -4.01616e-07L-3.66438e-08 0.838313L5.00002 6L10 0.838313Z" fill="#1D8FBD"/>
+                                </svg>
+                            </div>
+                            <div class="pdf-download">
+                                <a href="<?php echo $pdf; ?>" download="">PDF</a>
+                                </div>
                         </div>
+
                     </div>
                     <div class="about__img-part"  data-aos="fade-up">
                         <img src="<?php echo $image; ?>" alt="<?php echo $alt; ?>">

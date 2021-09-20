@@ -25,7 +25,7 @@
                 </h6>
                 <p class="small w-75">Фитнес-клуб «GREENWICH» - это абсолютно новое и современное фитнес-пространство в Харькове. Здесь занятия приносят не только спортивные успехи, но и удовольствие!</p>
                 <p><strong>Разработано в TH</strong></p>
-                <p class="small">GREENWICH. All right reserved. 2021</p>
+                <p class="small">GREENWICH. All right reserved. <?php echo date('Y'); ?></p>
                 <div class="my-3">
                     <?php
                     $visa = get_field('ikonka_visa', 'options');
@@ -40,30 +40,49 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <ul class="list-unstyled medium">
-                    <li><a class="btn px-0 py-2 strong" href="#">О клубе</a></li>
-                    <li><a class="btn px-0 py-2 strong" href="#">Тренеры и Массажисты</a></li>
-                    <li><a class="btn px-0 py-2 strong" href="#">Индивидуальные занятия</a></li>
-                    <li><a class="btn px-0 py-2 strong" href="#">Групповые занятия</a></li>
-                    <li><a class="btn px-0 py-2 strong" href="#">Массаж и Спа</a></li>
-                    <li><a class="btn px-0 py-2 strong" href="#">Абонементы</a></li>
-                    <li><a class="btn px-0 py-2 strong" href="#">Фитнес-услуги</a></li>
-                    <li><a class="btn px-0 py-2 strong" href="#">Контакты</a></li>
-                    <li><a class="btn px-0 py-2 strong" href="#">Оферта</a></li>
-                </ul>
+                <?php
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'Footer-menu',
+                        'menu_id'        => 'Footer-menu',
+                        'menu' => 'Footer-menu',
+                        'depth' => 2,
+                        'container' => '',
+                        'items_wrap'      => '<ul id="%1$s" class="list-unstyled medium">%3$s</ul>',
+                        'container_class' => '',
+                        'menu_class' => 'menu-burger-move',
+                    )
+                );
+                ?>
+                <script>
+                    $( document ).ready(function() {
+                        (function($){
+                            $('#Footer-menu a').removeClass('btn-lg');
+                            $('#Footer-menu a').addClass('btn px-0 py-2 strong');
+                        })(jQuery);
+                    });
+                </script>
             </div>
             <div class="col-md-3 medium">
-                <h6><strong>График работы:</strong></h6>
-                <p>
-                    <strong>ПН - ПТ:</strong> 08:00 – 21:00<br>
-                    <strong>СБ:</strong> 09:00 – 20:00<br>
-                    <strong>ВС:</strong> виходной
-                </p>
+                <h6><strong><?php echo the_field('grafik_raboty', 'options'); ?></strong></h6>
+                <br>
+                    <strong>
+                        <?php echo the_field('pn_-_pt', 'options'); ?>
+                    </strong>
+                    <?php echo the_field('pn_-_pt_vremya_raboty', 'options'); ?><br>
+                    <strong>
+                        <?php echo the_field('sb', 'options'); ?>
+                    </strong>
+                    <?php echo the_field('sb_vremya_raboty', 'options'); ?><br>
+                <strong>
+                    <?php echo the_field('vs', 'options'); ?>
+                </strong>
+                <?php echo the_field('vs_vremya_raboty', 'options'); ?>
             </div>
-            <div class="col-md text-right">
-                <p class="mb-0 ">Харьков, пр. Науки, 45/3, к. 3 </p>
-                <a href="#" class="btn text-primary px-0 btn-lg py-0"><strong>+38 098 005 88 60</strong></a>
-                <p>greenwich.fitnessclub@gmail.com</p>
+            <div class="col-md text-right footer-adress-block" >
+                <p class="mb-0 "><?php echo the_field('adress', 'options'); ?></p>
+                <a href="tel:<?php echo the_field('nomer_telefona', 'options'); ?>" class="btn text-primary px-0 btn-lg py-0"><strong><?php echo the_field('nomer_telefona', 'options'); ?></strong></a>
+                <p><?php echo the_field('e-mail', 'options'); ?></p>
                 <div class="col-md-auto">
                     <?php
                     $instagram = get_field('instagram', 'options');
@@ -157,12 +176,22 @@
         </div>
         <?php echo do_shortcode('[contact-form-7 id="529" title="Пробная тренировка"]')?>
     </div>
+    <div class="popup-abonement" style="display: none;">
+        <div class="close-abonement">
+            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="15.3867" y="4.89569" width="0.989092" height="14.8364" transform="rotate(45 15.3867 4.89569)" fill="#191919"/>
+                <rect x="16.0859" y="15.3867" width="0.989092" height="14.8364" transform="rotate(135 16.0859 15.3867)" fill="#191919"/>
+            </svg>
+        </div>
+        <?php echo do_shortcode('[contact-form-7 id="586" title="Пробная тренировка_copy"]')?>
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/jquery.marquee/1.4.0/jquery.marquee.min.js"></script>
 <script src="https://maps.google.com/maps/api/js?key="></script>
 <!--AIzaSyBHgn3V0cmGfWXOY_chTAV3eY0yWa1Msz0-->
 <?php wp_footer(); ?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.Marquee/1.5.0/jquery.marquee.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 <script src="<?php echo get_template_directory_uri() . '/dist/js/fresco.min.js'?>">
 
 </script>

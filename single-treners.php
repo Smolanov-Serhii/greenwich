@@ -4,16 +4,28 @@ get_header();
 $post_id = get_the_ID();
 ?>
 <div class="treners">
-    <div class="treners__container content-container">
+    <div class="treners__container">
         <div class="treners__header">
-            <div class="move-under">
-                <span class="untitle-stroke"><?php echo the_field("imya_speczialista", $post_id); ?> <?php echo the_field("familiya_speczialista", $post_id); ?></span>
-            </div>
-            <div class="move-header">
-                <h1><?php echo the_field("imya_speczialista", $post_id); ?> <?php echo the_field("familiya_speczialista", $post_id); ?></h1>
+<!--            <div class="move-under">-->
+<!--                <span class="untitle-stroke">--><?php //echo the_field("imya_speczialista", $post_id); ?><!-- --><?php //echo the_field("familiya_speczialista", $post_id); ?><!--</span>-->
+<!--            </div>-->
+            <div class="move-header marquee personal-page">
+                <div class="inner">
+                    <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
+                    <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
+                    <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
+                    <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
+                    <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
+                    <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
+                    <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
+                    <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
+                    <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
+                    <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
+                    <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
+                </div>
             </div>
         </div>
-        <div class="treners__content">
+        <div class="treners__content content-container">
             <div class="treners__photo">
                 <div class="treners__photo-cotainer swiper-container">
                     <div class="swiper-wrapper">
@@ -56,13 +68,26 @@ $post_id = get_the_ID();
                     </div>
                 </div>
             </div>
-            <div class="treners__desc">
+            <div class="treners__desc about__text-part">
                 <h2 class="treners__desc-title title text-primary"><?php echo the_field('nadpis_nad_opisaniem', $post_id); ?></h2>
                 <div class="treners__desc-content">
                     <?php echo the_field('opisanie_korotkoe_pro_speczialista', $post_id); ?>
                 </div>
+                <div class="about__item-full" style="display: none;">
+                    <div class="about__item-full-container">
+                        <div class="close-item-about">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="15.3867" y="4.89569" width="0.989092" height="14.8364" transform="rotate(45 15.3867 4.89569)" fill="#191919"></rect>
+                                <rect x="16.0859" y="15.3867" width="0.989092" height="14.8364" transform="rotate(135 16.0859 15.3867)" fill="#191919"></rect>
+                            </svg>
+                        </div>
+                        <div class="about__item-full-wrapper">
+                            <?php echo the_field('opisanie_polnoe_pro_speczialista', $post_id); ?>
+                        </div>
+                    </div>
+                </div>
                 <div class="about__show-item js-show-case-item text-primary">
-                    Подробнее
+                    <?php echo the_field('podrobnee', 'options'); ?>
                     <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10 0.838313L9.1879 -3.54978e-08L5.57423 3.73048L5.00002 4.33171L4.42574 3.73048L0.812097 -4.01616e-07L-3.66438e-08 0.838313L5.00002 6L10 0.838313Z"
                               fill="#1D8FBD"></path>
@@ -118,31 +143,36 @@ $post_id = get_the_ID();
                     $firstrow = $check[0];
                     $first_row_img = $firstrow[ 'izobrazhenie_nagrady' ];
                     ?>
-                    <div class="treners__desc-sert">
+
                         <?php
                         if ($first_row_img){
                             ?>
-                            <h2 class="treners__desc-title"><?php echo the_field('nadpis_nagrad', $post_id); ?></h2>
+                            <div class="treners__desc-sert">
+                            <h2 class="treners__desc-title text-primary"><?php echo the_field('nadpis_nagrad', $post_id); ?></h2>
+                            <?php while (have_rows('fotografii_nagrad', $post_id)): the_row();
+                                $image = get_sub_field('izobrazhenie_nagrady');
+                                $alt = get_sub_field('opisanie_nagrady'); ?>
+                                <div href="<?php echo $image; ?>" class="sert-item fresco">
+                                    <img src="<?php echo $image; ?>" alt="<?php echo $alt; ?>">
+                                </div>
+                            <?php endwhile;
+                            ?>
                             <?php
                         };
                         ?>
-                        <?php while (have_rows('fotografii_nagrad', $post_id)): the_row();
-                            $image = get_sub_field('izobrazhenie_nagrady');
-                            $alt = get_sub_field('opisanie_nagrady'); ?>
-                            <div href="<?php echo $image; ?>" class="sert-item fresco">
-                                <img src="<?php echo $image; ?>" alt="<?php echo $alt; ?>">
-                            </div>
-                        <?php endwhile;
-                        ?>
+
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="send-wanted js-zapisatsa btn btn-primary">
-                <?php echo the_field('zapisatsya_na_trenirovku', 'options') ?>
+            <div class="content-container text-center" style="text-align: center">
+                <div class="send-wanted js-zapisatsa btn btn-primary">
+                    <Span><?php echo the_field('zapisatsya_na_trenirovku', 'options') ?></Span>
+                </div>
             </div>
+
             <div class="treners__similar">
                 <div class="treners__similar-header">
-                    <h2 class="treners__similar-title about__title text-primary">
+                    <h2 class="treners__similar-title about__title text-primary text-left">
                         <?php echo the_field('nadpis_vas_mogut_zainteresovat', 'options') ?>
                     </h2>
                     <div class="controls row justify-content-end motion">
@@ -242,4 +272,28 @@ $post_id = get_the_ID();
 
         });
 
+    </script>
+    <script>
+        $( document ).ready(function() {
+            var speedParam = 0;
+            if ( $(window).width() > 768 ) {
+                speedParam = 18000;
+            } else {
+                speedParam = 8000;
+            }
+
+
+            $('.marquee').marquee({
+                //speed in milliseconds of the marquee
+                duration: speedParam,
+                //gap in pixels between the tickers
+                gap: 0,
+                //time in milliseconds before the marquee will start animating
+                delayBeforeStart: 0,
+                //'left' or 'right'
+                direction: 'left',
+                //true or false - should the marquee be duplicated to show an effect of continues flow
+                duplicated: true
+            });
+        });
     </script>

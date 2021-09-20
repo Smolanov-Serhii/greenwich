@@ -272,25 +272,27 @@
                             </div>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php
-                                $args = array(
-                                    'post_type' => 'trenings',
-                                    'showposts' => "-1", //сколько показать статей
-                                    'orderby' => "menu_order", //сортировка по дате
-                                    'caller_get_posts' => 1);
-                                $my_query = new wp_query($args);
-                                if ($my_query->have_posts()) {
-                                    while ($my_query->have_posts()) {
-                                        $my_query->the_post();
-                                        $postpers_id = get_the_ID();
-                                        $services = get_field('napravlenie', $postpers_id);
-                                        ?>
-                                        <a class="dropdown-item" href="<?php the_permalink();?>"><?php the_title();?></a>
-                                    <?php }
-                                }
-                                wp_reset_query(); ?>
-
-                                <!--                            <div class="dropdown-divider"></div>-->
-                                <!--                            <a class="dropdown-item" href="#">Something else here</a>-->
+                                wp_nav_menu(
+                                    array(
+                                        'theme_location' => 'Trenings-burger',
+                                        'menu_id'        => 'Trenings-burger-tren',
+                                        'menu' => 'Page-men',
+                                        'depth' => 2,
+                                        'container' => '',
+                                        'items_wrap'      => '<ul id="%1$s" class="list-unstyled medium">%3$s</ul>',
+                                        'container_class' => '',
+                                        'menu_class' => 'menu-burger-move',
+                                    )
+                                );
+                                ?>
+                                <script>
+                                    $( document ).ready(function() {
+                                        (function($){
+                                            $('#Trenings-burger-tren li').addClass('dropdown-item');
+                                            $('#Trenings-burger-tren a').removeClass();
+                                        })(jQuery);
+                                    });
+                                </script>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -410,22 +412,26 @@
                                     <p class="lead strong mb-3">Тренировки</p>
                                 </li>
                                 <?php
-                                $args = array(
-                                    'post_type' => 'trenings',
-                                    'showposts' => "-1", //сколько показать статей
-                                    'orderby' => "menu_order", //сортировка по дате
-                                    'caller_get_posts' => 1);
-                                $my_query = new wp_query($args);
-                                if ($my_query->have_posts()) {
-                                    while ($my_query->have_posts()) {
-                                        $my_query->the_post();
-                                        $postpers_id = get_the_ID();
-                                        $services = get_field('napravlenie', $postpers_id);
-                                        ?>
-                                        <li><a class="btn px-0 py-2" href="<?php the_permalink();?>"><?php the_title();?></a></li>
-                                    <?php }
-                                }
-                                wp_reset_query(); ?>
+                                wp_nav_menu(
+                                    array(
+                                        'theme_location' => 'Trenings-burger',
+                                        'menu_id'        => 'Trenings-burger',
+                                        'menu' => 'Page-men',
+                                        'depth' => 2,
+                                        'container' => '',
+                                        'items_wrap'      => '<ul id="%1$s" class="list-unstyled medium">%3$s</ul>',
+                                        'container_class' => '',
+                                        'menu_class' => 'menu-burger-move',
+                                    )
+                                );
+                                ?>
+                                <script>
+                                    $( document ).ready(function() {
+                                        (function($){
+                                            $('#Trenings-burger a').addClass('btn px-0 py-2');
+                                        })(jQuery);
+                                    });
+                                </script>
                             </ul>
                         </div>
                         <div class="col-3 py-5 siloviy">
@@ -473,8 +479,12 @@
                             </a>
                         </div>
                         <div class="mobile-header-buttons">
-                            <div class="btn btn-outline-primary js-exursion"><?php echo the_field('ekskursiya', 'options'); ?></div>
-                            <a href="#" class="btn btn-primary"><?php echo the_field('raspisanie', 'options'); ?></a>
+                            <div class="btn btn-outline-primary js-exursion">
+                                <span><?php echo the_field('ekskursiya', 'options'); ?></span>
+                            </div>
+                            <a href="#" class="btn btn-primary">
+                                <span><?php echo the_field('raspisanie', 'options'); ?></span>
+                            </a>
                         </div>
                     </div>
                 </div>
