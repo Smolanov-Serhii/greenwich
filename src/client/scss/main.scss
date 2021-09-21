@@ -146,6 +146,18 @@ $systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif; // System Fon
 .btn-burger{
   width: 16px;
 }
+.search-container{
+  max-width: 611px;
+  margin: auto;
+  @media all and (max-width: 611px){
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  @media all and (max-width: 500px){
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 .content-container{
   max-width: 1600px;
   padding-left: calc((100% - 1600px) / 2);
@@ -231,8 +243,8 @@ $systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif; // System Fon
     }
   }
   &__nav{
-    .navbar-nav{
-
+    nav.navbar {
+      border-bottom: 1px solid #ECECEC;
     }
     .navbar-brand{
       padding-top: 35px;
@@ -1465,6 +1477,9 @@ header{
 .specialists{
   padding-bottom: 175px;
   padding-top: 120px;
+  @media (max-width: 1100px) {
+    padding-top: 50px;
+  }
   @media (max-width: 768px) {
     padding-top: 70px;
   }
@@ -1477,7 +1492,109 @@ header{
   @media (max-width: 500px) {
     padding-top: 44px;
   }
+  &__filter{
+    .filter-header{
+      margin-left: 0;
+      margin-bottom: 40px;
+      align-items: center;
+      display: none;
+      @media (max-width: 768px) {
+        display: flex;
+      }
+      .title{
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #191919;
+        margin-left: 34px;
+        display: block;
+      }
+    }
+    form{
+      .sf-label-checkbox{
+        @media (max-width: 1300px) {
+          font-size: 15px;
+        }
+      }
+      h4{
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #191919;
+        display: flex;
+        align-items: center;
+        @media (max-width: 1100px) {
+          text-align: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+        @media (max-width: 500px) {
+          text-align: left;
+          justify-content: flex-start;
+        }
+        &:after{
+          content: "";
+          width: 6px;
+          height: 6px;
+
+          border-right: 1px solid black;
+          border-bottom: 1px solid black;
+          margin-left: 11px;
+          display: none;
+          @media (max-width: 1100px) {
+            display: block;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+      > ul{
+        display: flex;
+        margin-right: -40px;
+        padding-left: 0;
+        flex-wrap: wrap;
+        @media (max-width: 1100px) {
+          flex-direction: column;
+          margin-right: 0;
+        }
+        > li{
+          width: calc(25% - 40px);
+          margin-right: 40px;
+          @media (max-width: 1100px) {
+            width: calc(100% - 40px);
+            max-width: 320px;
+            margin: auto;
+            padding-top: 32px;
+            padding-bottom: 27px;
+            border-bottom: 1px solid #ECECEC;
+            &:first-child{
+              border-top: 1px solid #ECECEC;
+            }
+          }
+          @media (max-width: 500px) {
+            width: 100%;
+            max-width: none;
+          }
+          ul{
+            padding-left: 0;
+            @media (max-width: 1100px) {
+              display: none;
+              max-width: 200px;
+              margin: auto!important;
+            }
+            @media (max-width: 500px) {
+              display: none;
+              max-width: none;
+              margin: 0!important;
+            }
+          }
+        }
+      }
+    }
+  }
   &__list{
+    margin-top: 110px;
     display: flex;
     flex-wrap: wrap;
     margin-right: -40px;
@@ -1487,6 +1604,9 @@ header{
       margin-right: -20px;
       width: calc(100% + 20px);
     }
+    @media (max-width: 1100px) {
+      margin-top: 50px;
+    }
     @media (max-width: 1024px) {
       padding-top: 70px;
     }
@@ -1495,9 +1615,10 @@ header{
       width: calc(100% + 20px);
     }
     @media (max-width: 500px) {
-      padding-top: 70px;
+      padding-top: 0;
       width: 100%;
       margin-right: 0;
+      margin-top: 0;
     }
   }
   &__item{
@@ -2484,7 +2605,7 @@ header{
     max-width: none;
   }
 }
-.popup-ekskursia, .popup-trenerovka, .popup-abonement{
+.popup-ekskursia, .popup-trenerovka, .popup-abonement, .popup-zapisatsa{
   width: 385px;
   background-color: white;
   padding: 60px 40px 20px 40px;
@@ -2533,7 +2654,7 @@ header{
     padding: 16px 30px;
     text-transform: uppercase;
   }
-  .close-ekskursia, .close-trenerovka, .close-abonement{
+  .close-ekskursia, .close-trenerovka, .close-abonement, .close-zapisatsa{
     position: absolute;
     right: 16px;
     top: 16px;
@@ -2920,5 +3041,68 @@ header{
         width: 100%;
       }
     }
+  }
+}
+.search{
+  &-container{
+    &__found{
+      form{
+        margin-bottom: 90px;
+      }
+    }
+  }
+  article{
+    margin-bottom: 66px;
+    .permalink{
+      font-size: 12px;
+      line-height: 15px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.05em;
+      color: #777777;
+    }
+    .entry-header{
+      margin-bottom: 16px;
+    }
+    .entry-title{
+      margin-bottom: 0;
+      a{
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 4px;
+        display: block;
+        @media all and (max-width: 500px){
+          font-size: 20px;
+          line-height: 120%;
+        }
+      }
+    }
+  }
+  .treners__header{
+    margin-top: 50px;
+  }
+  #searchform{
+    margin-top: 112px;
+    display: flex;
+    align-items: flex-end;
+    input[type="text"]{
+      flex: 1;
+      height: 100%;
+      border: none;
+      border-bottom: 1px solid black;
+      margin-right: 36px;
+      padding-bottom: 10px;
+      font-weight: 700;
+      @media all and (max-width: 500px){
+        margin-right: 16px;
+        width: 100px;
+      }
+    }
+    input[type="suubmit"]{
+      padding: 16px 30px;
+    }
+  }
+  .no-found{
+    margin-top: 92px;
   }
 }

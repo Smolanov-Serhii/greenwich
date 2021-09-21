@@ -9,7 +9,7 @@ $post_id = get_the_ID();
 <!--            <div class="move-under">-->
 <!--                <span class="untitle-stroke">--><?php //echo the_field("imya_speczialista", $post_id); ?><!-- --><?php //echo the_field("familiya_speczialista", $post_id); ?><!--</span>-->
 <!--            </div>-->
-            <div class="move-header marquee personal-page">
+            <div class="move-header marquee personal-page" data-name="<?php echo the_field("imya_speczialista", $post_id); ?> <?php echo the_field("familiya_speczialista", $post_id); ?>">
                 <div class="inner">
                     <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
                     <p class="name"><?php echo the_field("imya_speczialista", $post_id); ?></p><p class="sirname"><?php echo the_field("familiya_speczialista", $post_id); ?></p>
@@ -170,7 +170,7 @@ $post_id = get_the_ID();
                 </div>
             </div>
 
-            <div class="treners__similar">
+            <div class="treners__similar content-container">
                 <div class="treners__similar-header">
                     <h2 class="treners__similar-title about__title text-primary text-left">
                         <?php echo the_field('nadpis_vas_mogut_zainteresovat', 'options') ?>

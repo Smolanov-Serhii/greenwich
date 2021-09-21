@@ -99,9 +99,9 @@ $post_id = get_the_ID();
         <?php endif; ?>
     </div>
     <div class="about__buttons">
-        <a class="btn btn-outline-primary" href="<?php echo the_field('ekskursiya', 'options'); ?>">
+        <div class="btn btn-outline-primary js-exursion">
             <span><?php echo the_field('ekskursiya', 'options'); ?></span>
-        </a>
+        </div>
         <a class="btn btn-primary" href="<?php echo the_field('raspisanie', 'options'); ?>">
             <span><?php echo the_field('raspisanie', 'options'); ?></span>
         </a>

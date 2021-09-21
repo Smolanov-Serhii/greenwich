@@ -91,7 +91,6 @@ $( document ).ready(function() {
         $(".subscription__item-by").click( function(e) {
             var CurrentAbonement = $(this).closest('.subscription__item').find('.subscription__item-title').html();
             var CurrentRubrika = $(this).closest('.subscription__group').find('.subscription__title').html();
-            console.log(CurrentAbonement);
             $('input.zakaz').val(CurrentAbonement);
             $('input.rubrika').val(CurrentRubrika);
             $('body').addClass('locked');
@@ -102,6 +101,19 @@ $( document ).ready(function() {
             $('body').removeClass('locked');
             $('.popup-fade').fadeOut(300);
             $('.popup-abonement').fadeOut(300);
+        });
+
+        $(".js-zapisatsa").click( function(e) {
+            var CurrentTrener = $('.move-header ').data('name');
+            $('input.zakaz').val(CurrentTrener);
+            $('body').addClass('locked');
+            $('.popup-fade').fadeIn(300);
+            $('.popup-zapisatsa').fadeIn(300);
+        });
+        $(".close-zapisatsa").click( function(e) {
+            $('body').removeClass('locked');
+            $('.popup-fade').fadeOut(300);
+            $('.popup-zapisatsa').fadeOut(300);
         });
 
         $(".js-search-popup").click( function(e) {
@@ -137,7 +149,6 @@ $( document ).ready(function() {
             $('.popup-trenerovka').fadeOut(300);
         });
         document.addEventListener( 'wpcf7mailsent', function( event ) {
-            console.log('sended');
             $('body').removeClass('locked');
             $('.popup-fade > div').fadeOut(300);
             $('.popup-fade').fadeOut(300);

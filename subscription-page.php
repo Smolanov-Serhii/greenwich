@@ -170,7 +170,17 @@ $post_id = get_the_ID();
                     <?php echo the_field('korotkoe_opisanie_zagolovok_blok_dlya_kontenta', $post_id); ?>
                 </div>
                 <div class="about__item-full" style="display: none;">
-                    <?php echo the_field('polnoe_opisanie_blok_dlya_kontenta', $post_id); ?>
+                    <div class="about__item-full-container">
+                        <div class="close-item-about">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="15.3867" y="4.89569" width="0.989092" height="14.8364" transform="rotate(45 15.3867 4.89569)" fill="#191919"></rect>
+                                <rect x="16.0859" y="15.3867" width="0.989092" height="14.8364" transform="rotate(135 16.0859 15.3867)" fill="#191919"></rect>
+                            </svg>
+                        </div>
+                        <div class="about__item-full-wrapper">
+                            <?php echo the_field('polnoe_opisanie_blok_dlya_kontenta', $post_id); ?>
+                        </div>
+                    </div>
                 </div>
                 <div class="about__show-item js-show-case-item text-primary">
                     <?php echo the_field('podrobnee', 'options'); ?>
