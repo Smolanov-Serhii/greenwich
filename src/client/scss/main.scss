@@ -1,6 +1,7 @@
 @import "else";
 @import "swiper-bundle";
 @import "fresco";
+//@import "selectric";
 //@import "jquery.mCustomScrollbar";
 @import "aos";
 // FONTS LOAD SECTION
@@ -1493,11 +1494,18 @@ header{
     padding-top: 44px;
   }
   &__filter{
+    .sf-field-reset{
+      display: none;
+      @media (max-width: 500px) {
+        display: inline-block;
+      }
+    }
     .filter-header{
       margin-left: 0;
-      margin-bottom: 40px;
+      margin-bottom: 0px;
       align-items: center;
-      display: none;
+      display: inline-flex;
+      cursor: pointer;
       @media (max-width: 768px) {
         display: flex;
       }
@@ -1525,6 +1533,7 @@ header{
         color: #191919;
         display: flex;
         align-items: center;
+        cursor: pointer;
         @media (max-width: 1100px) {
           text-align: center;
           justify-content: center;
@@ -1538,11 +1547,12 @@ header{
           content: "";
           width: 6px;
           height: 6px;
-
           border-right: 1px solid black;
           border-bottom: 1px solid black;
           margin-left: 11px;
           display: none;
+          display: block;
+          transform: rotate(-45deg);
           @media (max-width: 1100px) {
             display: block;
             transform: rotate(-45deg);
@@ -1561,6 +1571,17 @@ header{
         > li{
           width: calc(25% - 40px);
           margin-right: 40px;
+          position: relative;
+          > label{
+              select{
+                padding: 5px 0 5px 0;
+                border: none;
+                margin-left: -3px;
+              }
+            option{
+              padding: 5px;
+            }
+          }
           @media (max-width: 1100px) {
             width: calc(100% - 40px);
             max-width: 320px;
@@ -1568,6 +1589,7 @@ header{
             padding-top: 32px;
             padding-bottom: 27px;
             border-bottom: 1px solid #ECECEC;
+
             &:first-child{
               border-top: 1px solid #ECECEC;
             }
@@ -1578,6 +1600,9 @@ header{
           }
           ul{
             padding-left: 0;
+            display: none;
+            //position: absolute;
+            left: 0;
             @media (max-width: 1100px) {
               display: none;
               max-width: 200px;
@@ -1594,7 +1619,7 @@ header{
     }
   }
   &__list{
-    margin-top: 110px;
+    margin-top: 60px;
     display: flex;
     flex-wrap: wrap;
     margin-right: -40px;
@@ -1651,7 +1676,6 @@ header{
       position: absolute;
       top: 0;
       left: auto;
-      right: -100%;
       width: 100%;
       height: 100%;
       opacity: 0;
@@ -1716,6 +1740,9 @@ header{
   }
 }
 .treners{
+  &__header{
+    overflow: hidden;
+  }
   .col-auto{
     &:first-child{
       padding-left: 0;
@@ -1734,8 +1761,13 @@ header{
       margin-right: 0;
       @media (max-width: 700px) {
         position: absolute;
-        right: 0;
+        right: 50px;
         bottom: -40px;
+        margin-right: 0;
+      }
+      @media (max-width: 500px) {
+        right: 20px;
+
       }
       .col-auto{
         padding: 0;
@@ -1790,7 +1822,7 @@ header{
         position: absolute;
         top: 0;
         left: auto;
-        right: -100%;
+        //right: -100%;
         width: 100%;
         height: 100%;
         opacity: 0;
@@ -1969,8 +2001,8 @@ header{
         padding: 6px 14px 5px 14px;
         border: 1px solid #1D8FBD;
         margin-right: 12px;
-        cursor: pointer;
-        text-transform: lowercase;
+        //cursor: pointer;
+        text-transёform: lowercase;
         margin-bottom: 12px;
       }
     }
@@ -2720,7 +2752,6 @@ header{
   .specialists__list{
     padding-top: 0;
     @media all and (max-width: 500px){
-
     }
   }
 }

@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+
     AOS.init({
         // Global settings:
         disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
@@ -31,7 +32,7 @@ $( document ).ready(function() {
                 prevEl: ".treners__similar .carousel-control-prev",
             },
             breakpoints: {
-                500: {
+                200: {
                     slidesPerView: 1,
                     spaceBetween: 20,
                 },
@@ -59,7 +60,7 @@ $( document ).ready(function() {
                 disableOnInteraction: false,
             },
             breakpoints: {
-                500: {
+                200: {
                     slidesPerView: 1,
                     spaceBetween: 20,
                 },
@@ -269,7 +270,7 @@ $( document ).ready(function() {
                 prevEl: ".similar-trening .carousel-control-prev",
             },
             breakpoints: {
-                300: {
+                200: {
                     slidesPerView: 1,
                     spaceBetween: 6,
                 },

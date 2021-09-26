@@ -1,11 +1,11 @@
-$selectric-main-color:      #BFBFBF !default;                                              // Color used in border
-$selectric-secondary-color: #BBB !default;                                              // Color used in button
-$selectric-text-color:      #B7B7C6 !default;                                              // Color used in label
+$selectric-main-color:      #1d8fbd !default;                                              // Color used in border
+$selectric-secondary-color: rgba(29,143,189,1) !default;                                              // Color used in button
+$selectric-text-color:      #1d8fbd !default;                                              // Color used in label
 $selectric-bg-color:        #FFFFFF !default;                                           // Background color
-$selectric-btn-bg-color:    transparent !default;                                           // Button background color
+$selectric-btn-bg-color:    #FFFFFF !default;                                           // Button background color
 $selectric-height:          50px !default;                                              // Outer height
 $selectric-spacing:         10px !default;                                              // Label left padding
-$selectric-border-width:    0px !default;                                               // Outer border width
+$selectric-border-width:    1px !default;                                               // Outer border width
 $selectric-border-radius:   0px !default;                                               // Border radius
 $selectric-inner-height:    $selectric-height - ($selectric-border-width * 2) !default; // Inner height
 $selectric-font-size:       16px !default;                                              // Font size

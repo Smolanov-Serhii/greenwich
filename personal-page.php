@@ -81,9 +81,9 @@ $post_id = get_the_ID();
         </div>
     </div>
     <div class="about__buttons content-container">
-        <a class="btn btn-outline-primary" href="<?php echo the_field('ekskursiya', 'options'); ?>">
-            <?php echo the_field('ekskursiya', 'options'); ?>
-        </a>
+        <div class="btn btn-outline-primary js-exursion">
+            <span><?php echo the_field('ekskursiya', 'options'); ?></span>
+        </div>
         <a class="btn btn-primary" href="<?php echo the_field('raspisanie', 'options'); ?>">
             <span><?php echo the_field('raspisanie', 'options'); ?></span>
         </a>
@@ -105,7 +105,7 @@ $post_id = get_the_ID();
             </div>
             <div class="type-trening__content" data-aos="fade-up">
                 <h3 class="type-trening__title">
-                    <?php echo the_field('zagolovok_dlya_individualnye_trenirovki', 11); ?>
+                    <?php echo the_field('zagolovok_dlya_gruppovye_trenirovki', 11); ?>
                 </h3>
                 <a href="<?php echo site_url().'/individualnye-trenirovki/'; ?>" class="type-trening__lnk btn btn-outline-primary">
                     <span><?php echo the_field('podrobnee', 'options'); ?></span>
@@ -141,11 +141,26 @@ $post_id = get_the_ID();
 <?php get_footer(); ?>
 <script>
     $( document ).ready(function() {
-        if( $(window).width() < 1100 ) {
-            $( ".specialists__filter h4" ).click(function() {
-                $(this).toggleClass('showed');
+
+        $( ".specialists__filter h4" ).click(function() {
+            if( $(window).width() > 1100 ) {
+                $('.specialists__filter h4').removeClass('showed');
+                $('.specialists__filter form > ul > li > ul').closest('li').find('ul').fadeToggle(300);
+                $('.sf-field-reset').fadeToggle(300);
+            } else {
+                // $('.specialists__filter form > ul > li > ul').closest('li').find('ul').fadeOut(300);
                 $(this).closest('li').find('ul').fadeToggle(300);
-            });
-        }
+                $(this).toggleClass('showed');
+            }
+
+
+        });
+        // $(document).mouseup(function (e){ // событие клика по веб-документу
+        //     var div = $(".specialists__filter form"); // тут указываем ID элемента
+        //     if (!div.is(e.target) // если клик был не по нашему блоку
+        //         && div.has(e.target).length === 0) { // и не по его дочерним элементам
+        //         $('.specialists__filter form > ul > li > ul').closest('li').find('ul').fadeToggle(300);
+        //     }
+        // });
     });
 </script>
