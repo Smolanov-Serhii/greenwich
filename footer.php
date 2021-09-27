@@ -81,7 +81,7 @@
             <div class="col-md text-right footer-adress-block" >
                 <p class="mb-0 "><?php echo the_field('adress', 'options'); ?></p>
                 <a href="tel:<?php echo the_field('nomer_telefona', 'options'); ?>" class="btn text-primary px-0 btn-lg py-0"><strong><?php echo the_field('nomer_telefona', 'options'); ?></strong></a>
-                <p><?php echo the_field('e-mail', 'options'); ?></p>
+                <p><a href="mailto:<?php echo the_field('e-mail', 'options'); ?>"><?php echo the_field('e-mail', 'options'); ?></a></p>
                 <div class="col-md-auto">
                     <?php
                     $instagram = get_field('instagram', 'options');

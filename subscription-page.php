@@ -45,13 +45,13 @@ $post_id = get_the_ID();
         </div>
     </div>
 </div>
-<div class="create-subscription">
-    <div class="create-subscription__button btn btn-primary">
-            <span>
-                <?php echo the_field('nadpis_sozdaj_svoj_abonement', 'options')?>
-            </span>
-    </div>
-</div>
+<!--<div class="create-subscription">-->
+<!--    <div class="create-subscription__button btn btn-primary">-->
+<!--            <span>-->
+<!--                --><?php //echo the_field('nadpis_sozdaj_svoj_abonement', 'options')?>
+<!--            </span>-->
+<!--    </div>-->
+<!--</div>-->
 <div class="subscription">
     <div class="subscription__container content-container">
         <?php

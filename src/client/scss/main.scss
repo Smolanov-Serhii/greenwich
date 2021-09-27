@@ -1174,7 +1174,7 @@ header{
       object-position: top center;
       width: 100%;
       height: 100%;
-      transition: ease-in 0.5s;
+      transition: ease-in 0.8s;
     }
   }
   &__content{
@@ -2716,6 +2716,9 @@ header{
   .row{
     flex-wrap: nowrap;
   }
+  mask, .col-auto, .logog{
+    overflow: visible;
+  }
 }
 .create-subscription{
   display: block;
@@ -2996,6 +2999,10 @@ header{
     margin-top: 170px;
     .btn-outline-primary{
       margin-top: 40px;
+      width: 100%;
+      &:last-child{
+        margin-top: 10px;
+      }
     }
     @media (max-width: 1200px){
       margin-top: 150px;
@@ -3013,6 +3020,12 @@ header{
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      p{
+        a{
+          text-decoration: none;
+          color: rgb(25,25,25);
+        }
+      }
       > div{
         width: calc(25% - 30px);
         @media (max-width: 1300px){
@@ -3059,6 +3072,10 @@ header{
     padding-bottom: 150px!important;
   }
   .footer-adress-block{
+    a{
+      text-decoration: none;
+      color: rgb(25,25,25);
+    }
     @media (max-width: 1040px){
       text-align: left;
     }

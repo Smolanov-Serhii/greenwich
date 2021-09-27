@@ -102,18 +102,23 @@ $post_id = get_the_ID();
                 <strong>
                     <?php echo the_field('nomer_telefona_n', 'options'); ?>
                 </strong>
-                <?php echo the_field('nomer_telefona', 'options'); ?>
+                <a href="tel:<?php echo the_field('nomer_telefona', 'options'); ?>"><?php echo the_field('nomer_telefona', 'options'); ?></a>
+
             </p>
             <p class="leader mb-1">
                 <strong>
                     <?php echo the_field('e-mail-n', 'options'); ?>
                 </strong>
-                <?php echo the_field('e-mail', 'options'); ?>
+                <a href="mailto:<?php echo the_field('e-mail', 'options'); ?>"><?php echo the_field('e-mail', 'options'); ?></a>
             </p>
             <div class="map-buttons" data-aos="fade-up">
                 <a href="https://www.google.com/maps"
                    class="btn btn-outline-primary">
                     <span><?php echo the_field('prolozhit_marshrut', 'options'); ?></span>
+                </a>
+                <a href="<?php echo get_template_directory_uri() ?>/csv/contacts.vcf"
+                   class="btn btn-outline-primary">
+                    <span><?php echo the_field('dobavit_v_kontakty', 'options'); ?></span>
                 </a>
             </div>
         </div>
