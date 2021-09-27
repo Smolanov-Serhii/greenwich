@@ -86,60 +86,61 @@ $post_id = get_the_ID();
                     </div>
                     <div class="subscription__list" style="display: none">
                         <?php while ($query->have_posts()) : $query->the_post(); ?>
-                            <div class="subscription__item">
-                                <h3 class="subscription__item-title" style="background-color: <?php echo the_field('vydelyat_element') ?>"><?php the_title(); ?></h3>
-                                <div class="subscription__item-content">
-                                    <?php $abscount = get_field('chislo_na_fone_kartochki');
-                                    if ($abscount > 9){
-                                        $docclass = "more-move";
-                                    } else {
-                                        $docclass = "";
-                                    }
-                                    ?>
-
-                                    <div class="subscription__item-absolute <?php echo $docclass;?>">
-                                        <?php echo $abscount; ?>
-                                    </div>
-                                    <div class="dlit"><?php echo the_field('kol-vo_zanyatij') ?></div>
-                                    <div class="srok"><?php echo the_field('srok_abonementa') ?></div>
-                                    <div class="price">
-                                        <?php
-                                        $today = date("d.m.Y");
-                                        if(get_field('data_okonchaniya_skidki')){
-                                            ?>
-                                            <div class="expired">
-                                                <?php
-                                                echo the_field('dejstvuet_do', 'options')
-                                                ?>
-                                                <span><?php echo the_field('data_okonchaniya_skidki') ?></span>
-                                            </div>
-                                            <?php
+                            <div class="subscription__item card">
+                                <div class="card-item">
+                                    <h3 class="subscription__item-title" style="background-color: <?php echo the_field('vydelyat_element') ?>"><?php the_title(); ?></h3>
+                                    <div class="subscription__item-content">
+                                        <?php $abscount = get_field('chislo_na_fone_kartochki');
+                                        if ($abscount > 9){
+                                            $docclass = "more-move";
+                                        } else {
+                                            $docclass = "";
                                         }
                                         ?>
-                                        <?php
-                                            if(get_field('czena_do_skidki')){
+
+                                        <div class="subscription__item-absolute <?php echo $docclass;?>">
+                                            <?php echo $abscount; ?>
+                                        </div>
+                                        <div class="dlit"><?php echo the_field('kol-vo_zanyatij') ?></div>
+                                        <div class="srok"><?php echo the_field('srok_abonementa') ?></div>
+                                        <div class="price">
+                                            <?php
+                                            $today = date("d.m.Y");
+                                            if(get_field('data_okonchaniya_skidki')){
                                                 ?>
-                                                    <div class="sale">
-                                                        <?php
-                                                            echo the_field('czena_do_skidki');
-                                                        ?>
-                                                        <span><?php echo the_field('valyuta', 'options') ?></span>
-                                                    </div>
+                                                <div class="expired">
+                                                    <?php
+                                                    echo the_field('dejstvuet_do', 'options')
+                                                    ?>
+                                                    <span><?php echo the_field('data_okonchaniya_skidki') ?></span>
+                                                </div>
                                                 <?php
                                             }
-                                        ?>
-                                        <div class="normal">
-                                            <?php echo the_field('czena_abonementa') ?>
-                                            <span>
+                                            ?>
+                                            <?php
+                                            if(get_field('czena_do_skidki')){
+                                                ?>
+                                                <div class="sale">
+                                                    <?php
+                                                    echo the_field('czena_do_skidki');
+                                                    ?>
+                                                    <span><?php echo the_field('valyuta', 'options') ?></span>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
+                                            <div class="normal">
+                                                <?php echo the_field('czena_abonementa') ?>
+                                                <span>
                                             <?php echo the_field('valyuta', 'options') ?>
                                         </span>
+                                            </div>
+                                        </div>
+                                        <div class="subscription__item-by btn btn-primary">
+                                            <span><?php echo the_field('nadpis_kupit', 'options'); ?></span>
                                         </div>
                                     </div>
-                                    <div class="subscription__item-by btn btn-primary">
-                                        <span><?php echo the_field('nadpis_kupit', 'options'); ?></span>
-                                    </div>
                                 </div>
-
                             </div>
                             <?php $counter++;
                             if($counter > 10){
@@ -207,7 +208,10 @@ $post_id = get_the_ID();
             $groupimg = get_field('kartinka_dlya_gruppovye_trenirovki', 11);
             ?>
             <div class="type-trening__img">
-                <img src="<?php echo esc_url($groupimg['url']); ?>" alt="<?php echo esc_attr($groupimg['alt']); ?>">
+                <div class="wrapper">
+                    <img src="<?php echo esc_url($groupimg['url']); ?>" alt="<?php echo esc_attr($groupimg['alt']); ?>">
+                </div>
+
                 <div class="ramka">
                     <svg width="100%" height="100%" viewBox="0 0 100% 100%" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="0.5" width="100%" height="100%" stroke="#FFFFFF"></rect>
@@ -229,7 +233,10 @@ $post_id = get_the_ID();
             $indimg = get_field('kartinka_dlya_individualnye_trenirovki', 11);
             ?>
             <div class="type-trening__img">
-                <img src="<?php echo esc_url($indimg['url']); ?>" alt="<?php echo esc_attr($indimg['alt']); ?>">
+                <div class="wrapper">
+                    <img src="<?php echo esc_url($indimg['url']); ?>" alt="<?php echo esc_attr($indimg['alt']); ?>">
+                </div>
+
                 <div class="ramka">
                     <svg width="100%" height="100%" viewBox="0 0 100% 100%" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="0.5" width="100%" height="100%" stroke="#FFFFFF"></rect>
@@ -252,3 +259,22 @@ $post_id = get_the_ID();
 <?php get_template_part('inc/words-carusel'); ?>
 
 <?php get_footer(); ?>
+<script>
+    const cards = document.querySelectorAll('.card');
+    for (let i=0; i < cards.length; i++){
+        const  card = cards[i];
+        card.addEventListener('mousemove', startRotate);
+        card.addEventListener('mouseout', stopRotate);
+    }
+    function startRotate(event){
+        const cardItem = this.querySelector('.card-item');
+        const halfHeight = cardItem.offsetHeight / 2;
+        const halfWidth = cardItem.offsetWidth / 2;
+
+        cardItem.style.transform = 'rotateX(' + -(event.offsetY - halfHeight) / 15 +'deg) rotateY(' + (event.offsetX - halfWidth) / 15 + 'deg)';
+    }
+    function stopRotate(event){
+        const cardItem = this.querySelector('.card-item');
+        cardItem.style.transform = 'rotate(0)';
+    }
+</script>

@@ -223,8 +223,8 @@ $post_id = get_the_ID();
      style="overflow: hidden; background-image: url(<?php echo the_field('fon_dlya_bloka_prilozheniya', $post_id); ?>); background-size: cover; background-repeat: no-repeat; background-position: 0% 100%; padding-top: 0">
     <div class="content-container mt-5">
         <div class="row justify-content-between pt-5 apps-section__list">
-            <div class="col-lg-7">
-                <div class="text-right pt-5 phone-img-container" data-aos="fade-up">
+            <div class="col-lg-7" id="container-3d">
+                <div class="text-right pt-5 phone-img-container" data-aos="fade-up" id="inner-3d">
                     <?php
                     $leftimg = get_field('levaya_kartinka', $post_id);
                     $rightimg = get_field('pravaya_kartinka', $post_id);
@@ -345,15 +345,18 @@ $post_id = get_the_ID();
                         </p>
                         <p class="leader mb-1">
                             <strong>
+                                <a href="tel:"></a>
                                 <?php echo the_field('nomer_telefona_n', 'options'); ?>
                             </strong>
-                            <?php echo the_field('nomer_telefona', 'options'); ?>
+                            <a href="tel:<?php echo the_field('nomer_telefona', 'options'); ?>"><?php echo the_field('nomer_telefona', 'options'); ?></a>
+
                         </p>
                         <p class="leader mb-1">
                             <strong>
                                 <?php echo the_field('e-mail-n', 'options'); ?>
                             </strong>
-                            <?php echo the_field('e-mail', 'options'); ?>
+                            <a href="mailto:<?php echo the_field('e-mail', 'options'); ?>"><?php echo the_field('e-mail', 'options'); ?></a>
+
                         </p>
                         <p class="strong mb-1 mt-4">
                             <strong>
@@ -382,7 +385,7 @@ $post_id = get_the_ID();
                     <div class="map-buttons" data-aos="fade-up"
                     >
                         <a href="https://www.google.com/maps" class="btn btn-outline-secondary"><?php echo the_field('prolozhit_marshrut', 'options'); ?></a>
-                        <a href="http://g.tomorrowheads.com/#222" class="btn text-white"><?php echo the_field('dobavit_v_kontakty', 'options'); ?></a>
+                        <a href="<?php echo get_template_directory_uri() ?>/csv/contacts.vcf" class="btn btn-outline-secondary"><?php echo the_field('dobavit_v_kontakty', 'options'); ?></a>
                     </div>
                 </div>
             </div>
@@ -401,7 +404,7 @@ $post_id = get_the_ID();
             <div class="col text-center">
                 <div data-aos="fade-up">
                     <div class="btn btn-primary js-exursion">
-                        <span><?php echo the_field('ekskursiya', 'options'); ?></span>
+                        <span><?php echo the_field('nadpis_zapisatsya_na_ekskursiyu', 'options'); ?></span>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,10 @@
             $groupimg = get_field('kartinka_dlya_gruppovye_trenirovki', $post_id);
             ?>
             <div class="type-trening__img">
-                <img src="<?php echo esc_url($groupimg['url']); ?>" alt="<?php echo esc_attr($groupimg['alt']); ?>">
+                <div class="wrapper">
+                    <img src="<?php echo esc_url($groupimg['url']); ?>" alt="<?php echo esc_attr($groupimg['alt']); ?>">
+                </div>
+
                 <div class="ramka">
                     <svg width="100%" height="100%" viewBox="0 0 100% 100%" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="0.5" width="100%" height="100%" stroke="#FFFFFF"></rect>
@@ -26,7 +29,9 @@
             $indimg = get_field('kartinka_dlya_individualnye_trenirovki', $post_id);
             ?>
             <div class="type-trening__img">
-                <img src="<?php echo esc_url($indimg['url']); ?>" alt="<?php echo esc_attr($indimg['alt']); ?>">
+                <div class="wrapper">
+                    <img src="<?php echo esc_url($indimg['url']); ?>" alt="<?php echo esc_attr($indimg['alt']); ?>">
+                </div>
                 <div class="ramka">
                     <svg width="100%" height="100%" viewBox="0 0 100% 100%" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="0.5" width="100%" height="100%" stroke="#FFFFFF"></rect>

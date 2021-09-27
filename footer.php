@@ -23,8 +23,7 @@
                         <path d="M112 0.332821V13.1236H110.231V7.43221H102.81V13.1236H101.041V0.332821H102.81V5.64248H110.231V0.332821H112Z" fill="#1D8FBD"/>
                     </svg>
                 </h6>
-                <p class="small w-75">Фитнес-клуб «GREENWICH» - это абсолютно новое и современное фитнес-пространство в Харькове. Здесь занятия приносят не только спортивные успехи, но и удовольствие!</p>
-                <p><strong>Разработано в TH</strong></p>
+                <p class="small w-75"><?php echo the_field('opisanie_tekstovoe_v_futer', 'options'); ?></p>
                 <p class="small">GREENWICH. All right reserved. <?php echo date('Y'); ?></p>
                 <div class="my-3">
                     <?php

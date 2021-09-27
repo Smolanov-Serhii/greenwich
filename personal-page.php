@@ -7,16 +7,21 @@
 get_header();
 $post_id = get_the_ID();
 ?>
-<div class="faq-page content-container">
-    <div class="treners__header text-center">
-        <div class="move-under">
-            <span class="untitle-stroke"><?php echo the_field("zagolovok_shapka_tekst", $post_id);?></span>
-        </div>
-        <div class="move-header">
-            <h1><?php echo the_field("zagolovok_shapka_tekst", $post_id);?></h1>
+<div class="treners__header">
+    <div class="move-header marquee personal-page" data-name="<?php echo the_field("zagolovok_shapka_tekst", $post_id); ?> <?php echo the_field("zagolovok_shapka_tekst", $post_id); ?>">
+        <div class="inner">
+            <p class="name"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p><p class="sirname"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p>
+            <p class="name"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p><p class="sirname"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p>
+            <p class="name"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p><p class="sirname"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p>
+            <p class="name"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p><p class="sirname"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p>
+            <p class="name"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p><p class="sirname"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p>
+            <p class="name"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p><p class="sirname"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p>
+            <p class="name"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p><p class="sirname"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p>
+            <p class="name"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p><p class="sirname"><?php echo the_field("zagolovok_shapka_tekst", $post_id); ?></p>
         </div>
     </div>
 </div>
+
 
 <div class="specialists">
     <div class="specialists__container content-container">
@@ -96,7 +101,10 @@ $post_id = get_the_ID();
             $groupimg = get_field('kartinka_dlya_gruppovye_trenirovki', 11);
             ?>
             <div class="type-trening__img">
-                <img src="<?php echo esc_url($groupimg['url']); ?>" alt="<?php echo esc_attr($groupimg['alt']); ?>">
+                <div class="wrapper">
+                    <img src="<?php echo esc_url($groupimg['url']); ?>" alt="<?php echo esc_attr($groupimg['alt']); ?>">
+                </div>
+
                 <div class="ramka">
                     <svg width="100%" height="100%" viewBox="0 0 100% 100%" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="0.5" width="100%" height="100%" stroke="#FFFFFF"></rect>
@@ -117,7 +125,10 @@ $post_id = get_the_ID();
             $indimg = get_field('kartinka_dlya_individualnye_trenirovki', 11);
             ?>
             <div class="type-trening__img">
-                <img src="<?php echo esc_url($indimg['url']); ?>" alt="<?php echo esc_attr($indimg['alt']); ?>">
+                <div class="wrapper">
+                    <img src="<?php echo esc_url($indimg['url']); ?>" alt="<?php echo esc_attr($indimg['alt']); ?>">
+                </div>
+
                 <div class="ramka">
                     <svg width="100%" height="100%" viewBox="0 0 100% 100%" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="0.5" width="100%" height="100%" stroke="#FFFFFF"></rect>
@@ -162,5 +173,30 @@ $post_id = get_the_ID();
         //         $('.specialists__filter form > ul > li > ul').closest('li').find('ul').fadeToggle(300);
         //     }
         // });
+    });
+
+</script>
+<script>
+    $( document ).ready(function() {
+        var speedParam = 0;
+        if ( $(window).width() > 768 ) {
+            speedParam = 18000;
+        } else {
+            speedParam = 8000;
+        }
+
+
+        $('.marquee').marquee({
+            //speed in milliseconds of the marquee
+            duration: speedParam,
+            //gap in pixels between the tickers
+            gap: 0,
+            //time in milliseconds before the marquee will start animating
+            delayBeforeStart: 0,
+            //'left' or 'right'
+            direction: 'left',
+            //true or false - should the marquee be duplicated to show an effect of continues flow
+            duplicated: true
+        });
     });
 </script>
