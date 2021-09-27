@@ -170,7 +170,7 @@ $post_id = get_the_ID();
                 </div>
             </div>
 
-            <div class="treners__similar content-container">
+            <div class="treners__similar">
                 <div class="treners__similar-header">
                     <h2 class="treners__similar-title about__title text-primary text-left">
                         <?php echo the_field('nadpis_vas_mogut_zainteresovat', 'options') ?>
