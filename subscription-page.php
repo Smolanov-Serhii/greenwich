@@ -224,7 +224,7 @@ $post_id = get_the_ID();
                 </h3>
                 <a href="<?php echo site_url() . '/gruppovye-trenirovki/'; ?>"
                    class="type-trening__lnk btn btn-outline-primary">
-                    <?php echo the_field('podrobnee', 'options'); ?>
+                    <span><?php echo the_field('podrobnee', 'options'); ?></span>
                 </a>
             </div>
         </div>
@@ -249,7 +249,7 @@ $post_id = get_the_ID();
                 </h3>
                 <a href="<?php echo site_url() . '/individualnye-trenirovki/'; ?>"
                    class="type-trening__lnk btn btn-outline-primary">
-                    <?php echo the_field('podrobnee', 'options'); ?>
+                    <span><?php echo the_field('podrobnee', 'options'); ?></span>
                 </a>
             </div>
         </div>
