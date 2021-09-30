@@ -633,13 +633,13 @@ function add_menu_link_class($atts, $item, $args)
 }
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
 
-remove_action( 'load-update-core.php', 'wp_update_plugins' );
-add_filter( 'pre_site_transient_update_plugins', create_function( '$a', "return null;" ) );
-wp_clear_scheduled_hook( 'wp_update_plugins' );
+//remove_action( 'load-update-core.php', 'wp_update_plugins' );
+//add_filter( 'pre_site_transient_update_plugins', create_function( '$a', "return null;" ) );
+//wp_clear_scheduled_hook( 'wp_update_plugins' );
 
-remove_action('load-update-core.php','wp_update_themes');
-add_filter('pre_site_transient_update_themes',create_function('$a', "return null;"));
-wp_clear_scheduled_hook('wp_update_themes');
+//remove_action('load-update-core.php','wp_update_themes');
+//add_filter('pre_site_transient_update_themes',create_function('$a', "return null;"));
+//wp_clear_scheduled_hook('wp_update_themes');
 
 ## заменим слово «записи» на «статьи»
 //$labels = apply_filters( "post_type_labels_{$post_type}", $labels );
