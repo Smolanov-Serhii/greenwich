@@ -2264,15 +2264,26 @@ header{
 }
 .oferta{
   margin-top: 152px;
+  @media (max-width: 1024px) {
+    margin-top: 40px;
+  }
   &__container{
     display: flex;
     position: relative;
     align-items: flex-start;
+    flex-wrap: wrap;
   }
   &__nav{
     width: 50%;
+    padding-right: 10%;
     position: sticky;
     top: 80px;
+    @media (max-width: 1024px) {
+      width: 100%;
+      padding-right: 0;
+      position: static;
+      top: 0;
+    }
     a{
       text-decoration: none;
       margin-bottom: 12px;
@@ -2286,8 +2297,18 @@ header{
   }
   &__description{
     width: 50%;
+    @media (max-width: 1024px) {
+      width: 100%;
+      padding-right: 0;
+      margin-top: 40px;
+    }
     &-item{
       margin-bottom: 40px;
+      @media (max-width: 1024px) {
+        p{
+          text-align: left!important;
+        }
+      }
     }
   }
 }
