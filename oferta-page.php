@@ -53,7 +53,7 @@ $post_id = get_the_ID();
         </div>
     </div>
 </div>
-<?php get_template_part( 'inc/seo-section' ); ?>
+<?php //get_template_part( 'inc/seo-section' ); ?>
 <?php get_template_part('inc/words-carusel'); ?>
 
 <?php get_footer(); ?>

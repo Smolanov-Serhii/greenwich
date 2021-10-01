@@ -215,6 +215,28 @@ $( document ).ready(function() {
             $('.popup-search').fadeOut(300);
         });
 
+        $(".js-to-kardio").click( function(e) {
+            $('body').addClass('locked');
+            $('.popup-fade').fadeIn(300);
+            $('.popup-kardio').fadeIn(300);
+        });
+        $(".close-kardio").click( function(e) {
+            $('body').removeClass('locked');
+            $('.popup-fade').fadeOut(300);
+            $('.popup-kardio').fadeOut(300);
+        });
+
+        $(".js-slimming ").click( function(e) {
+            $('body').addClass('locked');
+            $('.popup-fade').fadeIn(300);
+            $('.popup-slimming').fadeIn(300);
+        });
+        $(".close-slimming ").click( function(e) {
+            $('body').removeClass('locked');
+            $('.popup-fade').fadeOut(300);
+            $('.popup-slimming').fadeOut(300);
+        });
+
         $(".js-exursion").click( function(e) {
             $('body').addClass('locked');
             $('.popup-fade').fadeIn(300);
