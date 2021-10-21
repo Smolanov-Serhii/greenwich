@@ -118,8 +118,19 @@ $post_id = get_the_ID();
                 if (have_rows('karusel_logotipov', $post_id)): ?>
                     <?php while (have_rows('karusel_logotipov', $post_id)): the_row();
                         $image = get_sub_field('logotip_partnyora');
-                        $title = get_sub_field('opisanie_partnyora_seo'); ?>
-                        <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" class="img-fluid">
+                        $title = get_sub_field('opisanie_partnyora_seo');
+                        $link = get_sub_field('ssylka_na_logotip'); ?>
+                        <?php
+                            if($link){
+                                ?>
+                                <a href="<?php echo $link;?>"><img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" class="img-fluid"></a>
+                                <?php
+                            } else {
+                                ?>
+                                <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" class="img-fluid">
+                                <?php
+                            }
+                        ?>
                     <?php endwhile;
                     ?>
                 <?php endif; ?>

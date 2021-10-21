@@ -1079,6 +1079,10 @@ header{
     display: flex;
     flex-wrap: nowrap;
   }
+  a{
+    display: inline-block;
+    width: auto;
+  }
   img{
     height: 70px;
     width: auto;
@@ -1827,6 +1831,7 @@ header{
   }
 }
 .treners{
+  overflow: hidden;
   &__header{
     //overflow: hidden;
   }
@@ -2262,16 +2267,20 @@ header{
     }
   }
 }
+.page-template-oferta-page{
+  @media (max-width: 500px) {
+    .move-under{
+      display: none;
+    }
+  }
+}
 .oferta{
   margin-top: 152px;
   @media (max-width: 1024px) {
     margin-top: 40px;
   }
   &__container{
-    display: flex;
-    position: relative;
-    align-items: flex-start;
-    flex-wrap: wrap;
+
   }
   &__nav{
     width: 50%;
@@ -2294,6 +2303,25 @@ header{
         color: #1D8FBD;
       }
     }
+  }
+  &__design{
+    position: absolute;
+    top: 45%;
+    left: 0;
+    z-index: -1;
+    max-width: 65%;
+    @media (max-width: 1024px) {
+     display: none;
+    }
+    img{
+      width: 100%;
+    }
+  }
+  &__wrapper{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
   }
   &__description{
     width: 50%;

@@ -142,15 +142,15 @@ $post_id = get_the_ID();
                                     </div>
                                 </div>
                             </div>
-                            <?php $counter++;
-                            if($counter > 10){
-                                $dec++;
-                            }
-                            ?>
-
                         <?php endwhile;
                         wp_reset_postdata(); ?>
                     </div>
+                    <?php $counter++;
+                    if($counter > 10){
+                        $dec++;
+                        $counter=1;
+                    }
+                    ?>
                 </div>
                 <?php endif;
             }

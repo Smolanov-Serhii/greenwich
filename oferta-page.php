@@ -20,36 +20,41 @@ $post_id = get_the_ID();
 </div>
 <div class="oferta">
     <div class="oferta__container content-container">
-        <div class="oferta__nav">
-            <?php if (have_rows('kontent_s_opisaniem', $post_id)): ?>
-                <?php
-                $counter = 1;
-                while (have_rows('kontent_s_opisaniem', $post_id)): the_row();
-                    $title = get_sub_field('zagolovok');
-                    ?>
-                    <a href="#<?php echo 'data_' . $counter?>"><?php echo $title ?></a>
-
+        <div class="oferta__wrapper">
+            <div class="oferta__nav">
+                <?php if (have_rows('kontent_s_opisaniem', $post_id)): ?>
                     <?php
-                    $counter++;
-                endwhile; ?>
-            <?php endif; ?>
-        </div>
-        <div class="oferta__description">
-            <?php if (have_rows('kontent_s_opisaniem', $post_id)): ?>
-                <?php
-                $counter = 1;
-                while (have_rows('kontent_s_opisaniem', $post_id)): the_row();
-                    $content = get_sub_field('blok_s_opisaniem');
-                    $title = get_sub_field('zagolovok');
-                    ?>
-                    <div class="oferta__description-item" id="<?php echo 'data_' . $counter?>">
-                        <h3><?php echo $title ?></h3>
-                        <?php echo $content ?>
-                    </div>
-                <?php
-                    $counter++;
-                endwhile; ?>
-            <?php endif; ?>
+                    $counter = 1;
+                    while (have_rows('kontent_s_opisaniem', $post_id)): the_row();
+                        $title = get_sub_field('zagolovok');
+                        ?>
+                        <a href="#<?php echo 'data_' . $counter?>"><?php echo $title ?></a>
+
+                        <?php
+                        $counter++;
+                    endwhile; ?>
+                <?php endif; ?>
+            </div>
+            <div class="oferta__description">
+                <div class="oferta__design">
+                    <img src="<?php echo the_field("kartinka_na_fon_bloka", $post_id);?>" alt="<?php echo the_field("zagolovok_straniczy", $post_id);?>>">
+                </div>
+                <?php if (have_rows('kontent_s_opisaniem', $post_id)): ?>
+                    <?php
+                    $counter = 1;
+                    while (have_rows('kontent_s_opisaniem', $post_id)): the_row();
+                        $content = get_sub_field('blok_s_opisaniem');
+                        $title = get_sub_field('zagolovok');
+                        ?>
+                        <div class="oferta__description-item" id="<?php echo 'data_' . $counter?>">
+                            <h3><?php echo $title ?></h3>
+                            <?php echo $content ?>
+                        </div>
+                        <?php
+                        $counter++;
+                    endwhile; ?>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>

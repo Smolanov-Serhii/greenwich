@@ -366,8 +366,7 @@ $( document ).ready(function() {
     }
 
     if ($(".similar-trening__list").length){
-        var ASimilarTreining = new Swiper(".similar-trening__list", {
-            slidesPerView: 4,
+        var SimilarTreining = new Swiper(".similar-trening__list", {
             spaceBetween: 6,
             autoHeight: true, //enable auto height
             // autoplay: {
